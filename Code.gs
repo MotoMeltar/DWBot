@@ -29,7 +29,8 @@ var posiciones = { oro: { fila:5, columna: 4, nombre: "Oro", contable: "monedas 
                   magia:{fila:54, columna: 2, nombre: "Mod. Magia", contable: "Magia"},
                   penMagia:{fila:54, columna:5, nombre: "Pen. Magia", contable: "Penalizador"},
                   raza:{fila:5, columna: 6, nombre: "Raza"},
-                   enjuego: { fila:5, columna: 5, nombre: "En juego"}
+                  enjuego: { fila:5, columna: 5, nombre: "En juego"},
+                  equipo: { fila:41, columna: 2, nombre: "En juego",columnaUsos: 3, columnaNotas:6, filafin:51}
                  };
 var masterTabla = { 
   id: "Master Tabla",
@@ -127,6 +128,9 @@ function procesaMensaje(dl) {
   } else if (esComando(comando,"/vida")) {
     Logger.log("Ejecutando comando Mostrar Vida");
     executeVida(dl);
+  } else if (esComando(comando,"/equipo")) {
+    Logger.log("Ejecutando comando Mostrar Equipo");
+    executeEquipo(dl);
   } else if (esComando(comando,"/levelup")) {
     Logger.log("Ejecutando comando Level Up");
     executeLevelUp(dl);
