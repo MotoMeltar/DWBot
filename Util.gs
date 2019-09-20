@@ -106,13 +106,6 @@ function getPrimeraPalabra(text) {
   return respuesta;
 }
 
-/**
- * Indica si el chat es un chat activo de partida
- */
-function esChatActivo(id, chat) {
-  return (id===chat)
-}
-
 /** 
  * Comprueba si el id indicado es el id del GM
  */

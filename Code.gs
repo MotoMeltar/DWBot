@@ -1,7 +1,6 @@
 var tokenString = "750768171:AAHXEU2MPZbjxLa_-7AdcCjqA36sROQayIg"; // FILL IN YOUR OWN TOKEN
 var telegramUrl = "https://api.telegram.org/bot" + tokenString;
 var webAppUrl = "https://script.google.com/macros/s/AKfycbwZwHKwHZOkDhT8jH_UgZ4CJxabNtmL8eDlmJkNrUJg9AEKkW5q/exec"; // FILL IN YOUR GOOGLE WEB APP ADDRESS
-var chatActivo = null;
 var arrayMagos = ["Mago"];
 var arrayClerigos = ["Explorador","Clérigo","Paladín"];
 
@@ -133,10 +132,7 @@ function procesaMensaje(dl) {
     executeLevelUp(dl);
   } else if (dl.isGM) {
     Logger.log("Entramos en comandos de GM");
-    /*if (esComando(comando,"/chatactivo")) {
-      Logger.log("Ejecutando comando ChatActivo");
-      executeChatActivo(id);
-    } else */if (esComando(comando,"/curar") || esComando(comando,"/cura")) {
+    if (esComando(comando,"/curar") || esComando(comando,"/cura")) {
       Logger.log("Ejecutando comando Curar");
       executeCurar(dl);
     } else if (esComando(comando,"/herir")) {
@@ -181,15 +177,6 @@ function executeVida(dl) {
   Logger.log("RESPUESTA: "+respuesta);
   sendText(id,respuesta);
 }
-
-/*function executeChatActivo(id) {
-  grabarXPosicion(SpreadsheetApp.openById(ssId).getSheetByName(masterTabla.id), posiciones.chat, id);
-  chatActivo = id;
-  var respuesta = "Grabado el chat activo con el identificador: "+id;
-  
-  Logger.log("RESPUESTA: "+respuesta);
-  sendText(id,respuesta);
-}*/
 
 function executeMov(dl) {
   
