@@ -119,6 +119,11 @@ function testDisparar() {
   doPostData(dataMensaje);
 }
 
+function testEquipo() {
+  dataMensaje.message.text = "/equipo";
+  doPostData(dataMensaje);
+}
+
 function testHerir() {
     dataMensaje.message.text = "/Herir @MotoMeltar CONSTITUCIÓN";
     doPostData(dataMensaje);

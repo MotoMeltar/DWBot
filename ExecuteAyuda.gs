@@ -28,6 +28,7 @@ var ayuda = {
                   "/car  (mod)(texto)  - Hace una tirada con el atributo de Carisma. En caso de no tener modificador, buscará el valor en la hoja de personaje."+RETORNO_CARRO+
                   "/daño (expresion)(texto) - el personaje hace una tirada de daño, siguiendo una expresión de tirada de dados. Si no hay expresión, usa su tirada de daño de la hoja de personaje."+RETORNO_CARRO+
                   "/mov (movimiento) - Se muestra una descripción del movimiento consultado."+RETORNO_CARRO+
+                  "/equipo - Muestra la lista de equipo del personaje."+RETORNO_CARRO+
                   "/acampar  - el personaje acampa, curándose y reduciendo sus raciones."+RETORNO_CARRO},
   "DJ"         : {indice:3,texto:bold("Comandos para Directores de juego (/ayuda dj)")+RETORNO_CARRO+
                   "/curar (pg curados)(alias) - Recupera PG del personaje del alias proporcionado."+RETORNO_CARRO+
