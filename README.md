@@ -4,6 +4,8 @@ A Telegram Bot useful to play Dungeon World
 Este bot permite organizar y jugar partidas del juego de rol Dungeon World a través de Telegram.
 Para ello, enlaza un archivo de Google Spreadsheets con el chat de juego y sus usuarios para usar los valores del personaje en la partida.
 
+Puede usarse el comando de /ayuda con el bot para recibir descripciones de las posibles acciones del mismo.
+
 # Crear y gestionar partidas
 
 Para crear una partida de Dungeon World, sigue estos pasos.
@@ -22,7 +24,7 @@ Una vez se lance con éito un comando en el chat de grupo, el jugador podrá usa
 /archivo (URL o ID de google spreadsheets)- Sin parámetro, te devuelve cual es tu archivo por defecto. Si pones una URL o ID de hojas de personaje, cambia tu archivo por defecto."},
 
 
-# Comandos para Personajes (/ayuda personajes)
+# Comandos para Personajes
 /ayuda  - Muestra la lista de comandos del bot.
 /status - Muestra la información del personaje. Características, puntos de golpe, experiencia, oro, etc.
 /tira (mod)(texto)  - Hace una tirada de dados de DW. (mod) sería el modificador a la tirada (-2,+1, etc.) o una expresión de dados (1d10+2)
@@ -36,7 +38,7 @@ Una vez se lance con éito un comando en el chat de grupo, el jugador podrá usa
 /mov (movimiento) - Se muestra una descripción del movimiento consultado.
 /acampar  - el personaje acampa, curándose y reduciendo sus raciones.
 
-# Comandos para Directores de juego (/ayuda dj)
+# Comandos para Directores de juego
 /curar (pg curados)(alias) - Recupera PG del personaje del alias proporcionado.
 /herir (herida)(alias) - causa una herida de la característica indicada al personaje del alias proporcionado.
 /dar (cantidad)(atributo)(alias)- Suma o resta una cantidad al atributo indicado para el personaje a partir de su alias.
