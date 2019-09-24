@@ -8,7 +8,6 @@ var RESTA_HTML = "-";
 var BOLD = "**";
 var idGM = "MotoMeltar";
 var nombreBot = "@dwmochilabot";
-var textoChatInactivo = RETORNO_CARRO+cursiva("(Fuera de juego, no se graban datos)");
 
 /**
  * Envía un mensaje al chat de telegram indicado. Usamos POST para que puedan mandarse cadenas más largas.

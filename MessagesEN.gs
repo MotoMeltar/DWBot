@@ -53,6 +53,15 @@ I18N.loadLanguage('messages',"en",
   " - Recupera su conexión con la magia.": { "msgstr" : " - Restores the connection to magic."},
   "¡Puede subir a nivel %s!": { "msgstr" : "¡Can level up to %s!"},
   "No tiene raciones.": { "msgstr" : "Has no rations."},
-    //Texto de executeCharRoll
-  " hace una tirada de %s": { "msgstr" : " makes a %s roll"}
+  //Texto de executeCharRoll
+  " hace una tirada de %s": { "msgstr" : " makes a %s roll"},
+  //Texto de executeDar
+  "El primer parámetro debe ser un número natural: ": { "msgstr" : "The first parameter has to be a natural number: "},
+  "No encuentro el campo que mencionas: ": { "msgstr" : "I can't find the field: "},
+  "El campo indicado no es contable: ": { "msgstr" : "The mentioned field is not numerical: "},
+  "Falta el alias del personaje a modificar": { "msgstr" : "The command has no Alias to modify its character sheet."},
+  " obtiene ": { "msgstr" : " gets "},
+  " pierde ": { "msgstr" : " loses "},
+  "Ahora tiene ": { "msgstr" : "Now has "},
+  "Se ha cumplido el alineamiento esta aventura": { "msgstr" : "Alignment has been fulfilled in this game."}
 });

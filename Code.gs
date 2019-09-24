@@ -25,6 +25,7 @@ var posiciones = { oro: { fila:5, columna: 4, nombre: "Oro", contable: "monedas 
                   sab: { fila:11, columna: 4, nombre: "Sabiduría", herida: "confundido", contable: "puntos de Sabiduría"},
                   car: { fila:12, columna: 4, nombre: "Carisma", herida: "marcado", contable: "puntos de Carisma"},
                   alineamiento:{fila:3, columna: 6, nombre: "Alineamiento"},
+                  checkAlineamiento:{fila:3, columna: 8, nombre: " Check Alineamiento"},
                   magia:{fila:54, columna: 2, nombre: "Mod. Magia", contable: "Magia"},
                   penMagia:{fila:54, columna:5, nombre: "Pen. Magia", contable: "Penalizador"},
                   raza:{fila:5, columna: 6, nombre: "Raza"},
@@ -329,7 +330,7 @@ function executeAcampar(dl) {
       Logger.log(respuesta);
       
       if (!dl.isActivo)
-        respuesta += textoChatInactivo;
+        respuesta += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
     } else {
       respuesta += _("No tiene raciones.");
     }
@@ -384,7 +385,7 @@ function executeDar(dl) {
   var texto_alineamiento = "";
   //Primer parámetro: Modificador
   if (dl.parametros.length==0 || isNaN(dl.parametros[0])) {
-    sendText(id,"El primer parámetro debe ser un número natural:"+parametros[0]);
+    sendText(id,_("El primer parámetro debe ser un número natural: ")+parametros[0]);
     return;
   }
   modificador = dl.parametros[0];
@@ -395,11 +396,11 @@ function executeDar(dl) {
   var posicion = posiciones[dl.parametros[0]];
   Logger.log("Posicion: "+JSON.stringify(posicion));
   if (posicion == undefined) {
-    sendText(dl.id,"No encuentro el campo que mencionas: "+dl.parametros[0]);
+    sendText(dl.id,_("No encuentro el campo que mencionas: ")+dl.parametros[0]);
     return;
   }
   if (posicion.contable == undefined) {
-    sendText(dl.id,"El campo indicado no es contable: "+dl.parametros[0]);
+    sendText(dl.id,_("El campo indicado no es contable: ")+dl.parametros[0]);
     return;
   }
   dl.parametros.shift();
@@ -416,15 +417,15 @@ function executeDar(dl) {
       Logger.log("hoja objetivo:"+valorXPosicion(hojaPJ,posiciones.nombre));
       dl.parametros.shift();
     } else {
-      sendText(dl.id,"No se encuentra hoja de personaje para Alias:"+nombrePJ);
+      sendText(dl.id,_("No se encuentra hoja de personaje para Alias:")+nombrePJ);
       return;
     }
   } else {
-      sendText(dl.id,"Falta el alias del personaje a modificar");
+      sendText(dl.id,_("Falta el alias del personaje a modificar"));
       return;
     }
   if (dl.parametros[0]=="al") {
-    texto_alineamiento=marcarAlineamiento(nombrePJ, hojaPJ);
+    texto_alineamiento=marcarAlineamiento(nombrePJ, objetivo,dl.isActivo);
     dl.parametros.shift();
   }
   if (dl.parametros.length>0) {
@@ -438,9 +439,9 @@ function executeDar(dl) {
   respuesta = nombrePJ;
   
   if(modificador>-1) {
-    respuesta += " obtiene ";
+    respuesta += _(" obtiene ");
   } else {
-    respuesta += " pierde ";
+    respuesta += _(" pierde ");
   }
   
   respuesta += Math.abs(modificador)+" "+posicion.contable+RETORNO_CARRO;
@@ -449,12 +450,12 @@ function executeDar(dl) {
   var valorMod = eval(Number(valor)+Number(modificador));
   Logger.log("Valor original:|"+valor+"|   Nuevo valor:"+valorMod);
   
-  respuesta += "Ahora tiene "+valorMod;
+  respuesta += _("Ahora tiene ")+valorMod;
   respuesta += texto_alineamiento;
   if (dl.isActivo) {
     grabarXPosicion(objetivo, posicion,valorMod);
   } else {
-    respuesta += textoChatInactivo;
+    respuesta += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
   }
 
   Logger.log("RESPUESTA dar: "+respuesta);
@@ -462,31 +463,18 @@ function executeDar(dl) {
   sendText(dl.id,sustituir(respuesta,"+",SUMA));
 }
 
-// TODO: CAMBIAR A MARCAR EN LA FICHA
-function marcarAlineamiento(name) {
+function marcarAlineamiento(name, hojaPJ,isActivo) {
   var respuesta = ""
   name = name.replace("@","");
-  var hojaMaster = SpreadsheetApp.openById(dl.ssId).getSheetByName(masterTabla.id);
-  if (hojaMaster!="") {
-    var values = hojaMaster.getDataRange().getValues();
-    Logger.log("VALUES:"+JSON.stringify(values));
-    for(var i=masterTabla.clases.inicial;i<masterTabla.clases.final+1;i++){
-      Logger.log("Comparando "+values[masterTabla.informacion.alias][i]+" con "+name);
-      if (values[masterTabla.informacion.alias][i]===name) {
-        Logger.log("Encontrado check alineamiento para: "+values[masterTabla.informacion.nombre][i]+" con valor:"+values[masterTabla.informacion.checkAlin][i]+" en la posicion "+masterTabla.informacion.checkAlin+","+i);
-        if (values[masterTabla.informacion.checkAlin][i]==true) {
-          Logger.log("El alineamiento ya ha sido marcado");
-          respuesta = RETORNO_CARRO+"El alineamiento ya había sido marcado"
-        } else {
-          Logger.log("MARCAMOS la casilla de alineamiento");
-
-          respuesta = RETORNO_CARRO+cursiva("Se ha cumplido el alineamiento esta aventura");
-          hojaMaster.getRange(masterTabla.informacion.checkAlin+1, i+1, 1, 1).setValue("TRUE");
-        }        
-        return respuesta;
-      }
+  var values = hojaPJ.getDataRange().getValues();
+  if (!values[posiciones.checkAlineamiento.fila-1][posiciones.checkAlineamiento.columna-1]) {
+    respuesta = RETORNO_CARRO+cursiva(_("Se ha cumplido el alineamiento esta aventura"));
+    if (isActivo) {
+      grabarXPosicion(hojaPJ, posiciones.pg,pgActuales);
     }
   }
+    
+  return respuesta;
 }
 
 function executeCurar(dl) {
@@ -544,7 +532,7 @@ function curar(curacion, objetivo, texto_descriptivo,dl) {
     if (dl.isActivo) {
       grabarXPosicion(objetivo, posiciones.pg,pgActuales);
     } else {
-      respuesta += textoChatInactivo;
+      respuesta += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
     }
 
   Logger.log("RESPUESTA curar: "+respuesta);
@@ -605,7 +593,7 @@ function executeHerir(dl) {
   if (dl.isActivo) {
      objetivo.getRange(posicion.fila, posicion.columna+1, 1, 1).setValue("TRUE")
   } else {
-    respuesta += textoChatInactivo;
+    respuesta += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
   }
   sendText(dl.id,sustituir(respuesta,"+",SUMA));
 }

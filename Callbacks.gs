@@ -18,7 +18,7 @@ function disparar_municion(dl) {
       if (dl.isActivo)
         grabarXPosicion(dl.hojaPJ, posiciones.municion, numMunicion);
       else
-        respuesta += textoChatInactivo;
+        respuesta += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
     }
 
   }
@@ -77,7 +77,7 @@ function conjuro_penalizador(dl) {
       if (dl.isActivo)
         grabarXPosicion(dl.hojaPJ, posiciones.penMagia, penMagia+1);
       else
-        respuesta += textoChatInactivo;
+        respuesta += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
     }
 
   }

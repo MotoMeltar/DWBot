@@ -72,7 +72,7 @@ function tiraDW(modificador, texto_descriptivo, texto_accion, dl) {
           grabarXPosicion(dl.hojaPJ, posiciones.px,px+1);
         texto_experiencia = texto_experiencia+RETORNO_CARRO+"PX totales:"+valorXPosicion(dl.hojaPJ, posiciones.px);
         if (!dl.isActivo)
-          texto_experiencia += textoChatInactivo;
+          texto_experiencia += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
       }
   }
   respuesta = nombrePJ + texto_accion+" "+texto_descriptivo+": "+RETORNO_CARRO+
@@ -159,7 +159,7 @@ function tiraDanyo(expresion, objetivo, texto_descriptivo, dl) {
     if (dl.isActivo) {
       grabarXPosicion(objetivo, posiciones.pg,pgActuales);
     } else {
-      respuesta += textoChatInactivo;
+      respuesta += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
     }
   } else {
     respuesta = nombrePJ +texto_descriptivo+": "+expresion+RETORNO_CARRO+

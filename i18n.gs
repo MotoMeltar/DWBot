@@ -108,12 +108,3 @@ Utilities.formatString(I18N.ngettext("I have %s apple", "I have %s apples", n), 
 })();
 
 var _ = I18N.gettext;
-//I18N.loadLanguage('messages',"en","HOLA HOLITA");
-function testI18N() {
-
-  I18N.loadLanguage('messages',"en",{"hola": { "msgstr" : "HOLA HOLITA"}})
-  Logger.log(_("hola"));
-
-  Logger.log(JSON.stringify(I18N));
-
-}

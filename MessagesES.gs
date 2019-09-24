@@ -59,9 +59,16 @@ I18N.loadLanguage('messages',"es",
   "¡Puede subir a nivel %s!": { "msgstr" : "¡Puede subir a nivel %s!"},
   "No tiene raciones.": { "msgstr" : "No tiene raciones."},
   //Texto de executeCharRoll
-  " hace una tirada de %s": { "msgstr" : " hace una tirada de %s"}
-  
-
+  " hace una tirada de %s": { "msgstr" : " hace una tirada de %s"},
+  //Texto de executeDar
+  "El primer parámetro debe ser un número natural: ": { "msgstr" : "El primer parámetro debe ser un número natural: "},
+  "No encuentro el campo que mencionas: ": { "msgstr" : "No encuentro el campo que mencionas: "},
+  "El campo indicado no es contable: ": { "msgstr" : "El campo indicado no es contable: "},
+  "Falta el alias del personaje a modificar": { "msgstr" : "Falta el alias del personaje a modificar"},
+  " obtiene ": { "msgstr" : " obtiene "},
+  " pierde ": { "msgstr" : " pierde "},
+  "Ahora tiene ": { "msgstr" : "Ahora tiene "},
+  "Se ha cumplido el alineamiento esta aventura": { "msgstr" : "Se ha cumplido el alineamiento esta aventura."}
 }
  
 );
