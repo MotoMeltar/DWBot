@@ -25,9 +25,6 @@ function getSheetURL(id) {
 function appendRow(id, name, text, answer) {
   var sheetName = sheet.getSheetByName("DATOS");
   sheetName.appendRow([new Date(),id,name,text,answer])
-  Logger.log(sheet);
-  Logger.log(sheetName.getName());
-
 }
 
 /**

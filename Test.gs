@@ -131,6 +131,7 @@ function testHerir() {
 }
 
 function testMov() {
+    dataMensaje.message.from.language_code = "es";// abastecerse";
     dataMensaje.message.text = "/mov";// abastecerse";
     doPostData(dataMensaje);
 }
@@ -141,6 +142,8 @@ function testLevelup() {
 }
 
 function testStatus() {
+  dataMensaje.message.from.language_code = "en";// abastecerse";
+  
   sendText(id,"Prueba de consulta con parámetro");
   dataMensaje.message.text = "/status@DWMochilaBot @Dafoth";
   doPostData(dataMensaje);
@@ -173,6 +176,7 @@ function testTiraYDX() {
 }
 
 function testVida() {
+  dataMensaje.message.from.language_code = "en";// abastecerse";
   dataMensaje.message.text = "/vida";
   doPostData(dataMensaje);
 }

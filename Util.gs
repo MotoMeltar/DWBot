@@ -67,7 +67,7 @@ function obtenerParametros(text) {
   if (text.indexOf(" ")>-1) {
     var resultados = text.split(" ");
     resultados.shift();
-    Logger.log(resultados);
+    //Logger.log(resultados);
     return resultados;
   }
   return [];
@@ -117,7 +117,6 @@ function checkGM(id) {
  * Comprobamos si el chat es privado o un grupo comparando el tipo de chat recibido
  */
 function checkPrivate(type) {
-  Logger.log("Comprobamos si es un chat privado con "+type+" dando de resultado "+(type==='private'));
   return (type==='private')
 }
 
@@ -125,7 +124,6 @@ function checkPrivate(type) {
  * Comprobamos si la cadena es el comando proporcionado, tanto por si misma como añadiendo la llamada al bot
  */
 function esComando(texto, comando) {
-  //Logger.log("comparando "+texto+" con "+comando);
   return (texto===comando || texto===(comando+nombreBot));
 }
 
