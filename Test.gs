@@ -46,7 +46,7 @@ var dataMensaje = {
       "first_name": "Angel",
       "last_name": "García",
       "username": "MotoMeltar",
-      "language_code": "es" //"es"
+      "language_code": "en" //"es"
     },
     "chat": {
       "id": 2937540,
@@ -107,7 +107,7 @@ function testCurar() {
 }
 
 function testDanyo() {
-  dataMensaje.message.text = "/daño 1d4-1d6";// @MotoMeltar";
+  dataMensaje.message.text = "/daño 1d20+20 @MotoMeltar";
   doPostData(dataMensaje);
 }
 

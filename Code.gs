@@ -602,7 +602,7 @@ function executeDanyo(dl) {
   
   var expresion = "";
   var respuesta = "";
-  var texto_descriptivo = " tira daño";
+  var texto_descriptivo = _(" tira danyo");
   if (dl.parametros.length>0 && dl.parametros[0].toLowerCase().match(rexp)!=null) {
       expresion = dl.parametros[0];
       if (dl.parametros.length>1) {
@@ -619,7 +619,7 @@ function executeDanyo(dl) {
       objetivo = hojaPJ;
       Logger.log("hoja objetivo:"+valorXPosicion(hojaPJ,posiciones.nombre));
       dl.parametros.shift();
-      texto_descriptivo = " sufre daño";
+      texto_descriptivo = _(" sufre daño");
     }
   } 
   if (dl.parametros.length>0) {
@@ -672,7 +672,7 @@ function executeParcialTeclado(dl, texto_accion, posicion, teclado) {
 
 function executeRoll(dl) {
   
-  var texto_accion = " tira los dados";
+  var texto_accion = _(" tira los dados");
   var modificador = 0;
   var texto_descriptivo = "";
   var respuesta = "";
@@ -682,7 +682,7 @@ function executeRoll(dl) {
     if (dl.parametros[0].toLowerCase().match(rexp)!=null) {
       isExpresion = true;
       expresion = dl.parametros[0];
-      texto_descriptivo = " tira dados";
+      texto_descriptivo =  _(" tira los dados");
       if (dl.parametros.length>1) {
         dl.parametros.shift();
       }

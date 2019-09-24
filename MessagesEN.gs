@@ -70,5 +70,15 @@ I18N.loadLanguage('messages',"en",
   //Texto de executeHerir
   "El nombre del atributo o condición a aplicar no se encuentra.": { "msgstr" : "The condition's name  is not found."},
   "Es necesario un atributo o herida que aplicar": { "msgstr" : "You need to specify the characteristic or wound to apply."},
-  " está ahora %s": { "msgstr" : " is %s now."}
+  " está ahora %s": { "msgstr" : " is %s now."},
+  //Texto de executeDanyo
+  " tira danyo": { "msgstr" : " rolls damage"},
+  " sufre daño": { "msgstr" : " suffers damage"},
+  "¡%s obtiene un PX!": { "msgstr" : "¡%s gets an XP!"},
+  "PX totales:": { "msgstr" : "total XP:"},
+  "  TOTAL: ": { "msgstr" : "  TOTAL: "},
+  "A %s le quedan %s PG.": { "msgstr" : "%s has %s HP left."},
+  "¡%s ha CAIDO!": { "msgstr" : "%s has FALLEN!"},
+  //Texto de executeRoll
+  " tira los dados": { "msgstr" : " rolls the dice"}
 });
