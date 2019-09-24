@@ -64,7 +64,7 @@ Utilities.formatString(I18N.ngettext("I have %s apple", "I have %s apples", n), 
     if(!message)
       return msgid1;
 
-    if(plural && (n>1)) {
+    if(plural && (n!=1)) {
       //var plural = catalog.plural || function(n) { return n == 1 ? 0 : 1; };
       //var index = plural(n);
       return message.msgstr_plural;//[index];

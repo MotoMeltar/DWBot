@@ -287,17 +287,17 @@ function executeStatus(dl) {
 
 function executeAcampar(dl) {
 
-  var respuesta = "No hay ningún personaje para el alias de Telegram "+dl.name;
+  var respuesta = _("No se encuentra hoja de personaje para Alias:")+dl.name;
   if (dl.hayHojaPJ) {
     Logger.log("Existe hoja de personaje");
     var numRaciones = dl.values[posiciones.raciones.fila-1][posiciones.raciones.columna-1];
-    respuesta = dl.nombrePJ+ " acampa:";
+    respuesta = bold(dl.nombrePJ)+ _(" acampa:");
     if (!isNaN(numRaciones) && numRaciones > 0) {
       Logger.log("El personaje tiene raciones");
       numRaciones = numRaciones - 1;
       if (dl.isActivo)
         grabarXPosicion(dl.hojaPJ, posiciones.raciones, numRaciones);
-      respuesta += RETORNO_CARRO+" - Le quedan "+numRaciones+" raciones.";
+      respuesta += RETORNO_CARRO+Utilities.formatString(I18N.ngettext(" - Le queda %s ración.",numRaciones),numRaciones);
       var pg = dl.values[posiciones.pg.fila-1][posiciones.pg.columna-1];
       var pgmax = dl.values[posiciones.pgmax.fila-1][posiciones.pgmax.columna-1];
       Logger.log(" PG: "+pg+"/"+pgmax);
@@ -309,11 +309,11 @@ function executeAcampar(dl) {
         Logger.log("Curacion: "+curacion);
         if (dl.isActivo)
           grabarXPosicion(dl.hojaPJ, posiciones.pg, pg+curacion);
-        respuesta += RETORNO_CARRO +" - Se cura "+curacion+" PG para un total de "+(pg+curacion)+".";
+        respuesta += RETORNO_CARRO +Utilities.formatString(_(" - Se cura %s PG para un total de %s."),curacion,(pg+curacion));
       }
       
       if (!isNaN(dl.values[posiciones.penMagia.fila-1][posiciones.penMagia.columna-1]) && (dl.values[posiciones.penMagia.fila-1][posiciones.penMagia.columna-1]>0) ) {
-        respuesta += RETORNO_CARRO +" - Recupera su conexión con la magia.";
+        respuesta += RETORNO_CARRO +_(" - Recupera su conexión con la magia.");
         if (dl.isActivo) {
           grabarXPosicion(dl.hojaPJ, posiciones.penMagia, "0");
         }
@@ -323,7 +323,7 @@ function executeAcampar(dl) {
       var nivel = dl.values[posiciones.nivel.fila-1][posiciones.nivel.columna-1];
       Logger.log(" PX: "+px+" NIVEL: "+nivel);
       if (px>(nivel+6)) {
-        respuesta += RETORNO_CARRO+" - "+bold("¡Puede subir a nivel "+(nivel+1)+"!");
+        respuesta += RETORNO_CARRO+" - "+bold(Utilities.formatString(_("¡Puede subir a nivel %s!"),nivel+1));
       }
       
       Logger.log(respuesta);
@@ -331,7 +331,7 @@ function executeAcampar(dl) {
       if (!dl.isActivo)
         respuesta += textoChatInactivo;
     } else {
-      respuesta += "No tiene raciones.";
+      respuesta += _("No tiene raciones.");
     }
   }
   Logger.log("RESPUESTA: "+respuesta);

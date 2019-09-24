@@ -43,5 +43,12 @@ I18N.loadLanguage('messages',"en",
   " - PG: " :  { "msgstr" : " - HP: "},
   "Alineamiento" :  { "msgstr" : "Alignment"},
   "puedes usar este comando abriéndome un canal %s" :  { "msgstr" : "you can use this command opening me a %s channel"},
-  "privado" :  { "msgstr" : "private" }
+  "privado" :  { "msgstr" : "private" },
+  //Textos de executeAcampar
+  " acampa:" :  { "msgstr" : " camps:" },
+  " - Le queda %s ración.": { "msgstr" : " - has %s ration left.", "msgstr_plural" : " - has %s rations left."},
+  " - Se cura %s PG para un total de %s." :  { "msgstr" : " - heals %s HP for a %s HP total." },
+  " - Recupera su conexión con la magia.": { "msgstr" : " - Restores the connection to magic."},
+  "¡Puede subir a nivel %s!": { "msgstr" : "¡Can level up to %s!"},
+  "No tiene raciones.": { "msgstr" : "Has no rations."}
 });

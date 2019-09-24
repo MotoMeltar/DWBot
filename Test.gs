@@ -67,6 +67,8 @@ var dataMensaje = {
   }
 };
 function testAcampar() {
+    dataMensaje.message.from.language_code = "en";// abastecerse";
+
   dataMensaje.message.text = "/acampar";
   doPostData(dataMensaje);
 }

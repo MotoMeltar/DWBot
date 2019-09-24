@@ -48,7 +48,17 @@ I18N.loadLanguage('messages',"es",
   " - %s PX, " : { "msgstr" : " - %s PX, "},
   " - PG: " :  { "msgstr" : " - PG: "},
   "puedes usar este comando abriéndome un canal %s" :  { "msgstr" : "puedes usar este comando abriéndome un canal %s"},
-  "privado" :  { "msgstr" : "privado" }
+  "privado" :  { "msgstr" : "privado" },
+  //Textos de executeAcampar
+  " acampa:" :  { "msgstr" : " acampa:" },
+  " - Le queda %s ración.": { "msgstr" : " - Le queda %s ración.", "msgstr_plural" : " - Le quedan %s raciones."},
+  " - Se cura %s PG para un total de %s." :  { "msgstr" : "  - Se cura %s PG para un total de %s.:" },
+  " - Recupera su conexión con la magia.": { "msgstr" : " - Recupera su conexión con la magia."},
+  "¡Puede subir a nivel %s!": { "msgstr" : "¡Puede subir a nivel %s!"},
+  "No tiene raciones.": { "msgstr" : "No tiene raciones."}
+
+  
+
 }
  
 );
