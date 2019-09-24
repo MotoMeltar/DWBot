@@ -63,5 +63,12 @@ I18N.loadLanguage('messages',"en",
   " obtiene ": { "msgstr" : " gets "},
   " pierde ": { "msgstr" : " loses "},
   "Ahora tiene ": { "msgstr" : "Now has "},
-  "Se ha cumplido el alineamiento esta aventura": { "msgstr" : "Alignment has been fulfilled in this game."}
+  "Se ha cumplido el alineamiento esta aventura": { "msgstr" : "Alignment has been fulfilled in this game."},
+  //Textos executeCurar
+  "La cantidad de daño a curar debe ser un número:": { "msgstr" : "The damage to heal must be a number:"},
+  " recupera %s PG, para un total de %s/%s.": { "msgstr" : " recovers %s HP, for a total of %s/%s."},
+  //Texto de executeHerir
+  "El nombre del atributo o condición a aplicar no se encuentra.": { "msgstr" : "The condition's name  is not found."},
+  "Es necesario un atributo o herida que aplicar": { "msgstr" : "You need to specify the characteristic or wound to apply."},
+  " está ahora %s": { "msgstr" : " is %s now."}
 });

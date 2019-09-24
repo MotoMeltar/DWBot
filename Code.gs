@@ -483,7 +483,7 @@ function executeCurar(dl) {
   var respuesta = "";
   var texto_descriptivo = "";
   if (dl.parametros.length==0 || isNaN(dl.parametros[0])) {
-    sendText(dl.id,"La cantidad de daño a curar debe ser un número:"+dl.parametros[0]);
+    sendText(dl.id,_("La cantidad de daño a curar debe ser un número:")+dl.parametros[0]);
     return;
   }
   curacion = dl.parametros[0];
@@ -500,7 +500,7 @@ function executeCurar(dl) {
       Logger.log("hoja objetivo:"+valorXPosicion(hojaPJ,posiciones.nombre));
       dl.parametros.shift();
     } else {
-      sendText(dl.id,"No se encuentra hoja de personaje para Alias:"+nombrePJ);
+      sendText(dl.id,_("No se encuentra hoja de personaje para Alias:")+nombrePJ);
       return;
     }
   }
@@ -528,7 +528,7 @@ function curar(curacion, objetivo, texto_descriptivo,dl) {
     curacion = diferencia;
   Logger.log("PG: "+pgActuales+"/"+pgMax+" pasan a "+eval(pgActuales+curacion));
   pgActuales = parseInt(pgActuales)+parseInt(curacion);
-  respuesta = nombrePJ + " recupera "+curacion+" PG, para un total de "+pgActuales+"/"+pgMax;
+  respuesta = nombrePJ + Utilities.formatString(_(" recupera %s PG, para un total de %s/%s."),curacion,pgActuales,pgMax);
     if (dl.isActivo) {
       grabarXPosicion(objetivo, posiciones.pg,pgActuales);
     } else {
@@ -557,39 +557,39 @@ function executeHerir(dl) {
       Logger.log("hoja objetivo:"+nombrePJ);
       dl.parametros.shift();
     } else {
-      sendText(dl.id,"No se encuentra personaje para el alias"+nombrePJ);
+      sendText(dl.id,_("No se encuentra hoja de personaje para Alias:")+nombrePJ);
       return;
     }
   }
   var posicion = "";
   if (dl.parametros.length>0) {
     var herida = dl.parametros[0].toLowerCase();
-    if (herida==posiciones.fue.nombre.toLowerCase() || herida == posiciones.fue.herida.toLowerCase()) {
+    if (herida==_(posiciones.fue.nombre).toLowerCase() || herida == _(posiciones.fue.herida).toLowerCase()) {
       posicion = posiciones.fue;
-    } else if (herida==posiciones.des.nombre.toLowerCase() || herida == posiciones.des.herida.toLowerCase()) {
+    } else if (herida==_(posiciones.des.nombre).toLowerCase() || herida == _(posiciones.des.herida).toLowerCase()) {
       posicion = posiciones.des;
-    } else if (herida==posiciones.con.nombre.toLowerCase() || herida == posiciones.con.herida.toLowerCase()) {
+    } else if (herida==_(posiciones.con.nombre).toLowerCase() || herida == _(posiciones.con.herida).toLowerCase()) {
       posicion = posiciones.con;
-    } else if (herida==posiciones.int.nombre.toLowerCase() || herida == posiciones.int.herida.toLowerCase()) {
+    } else if (herida==_(posiciones.int.nombre).toLowerCase() || herida == _(posiciones.int.herida).toLowerCase()) {
       posicion = posiciones.int;
-    } else if (herida==posiciones.sab.nombre.toLowerCase() || herida == posiciones.sab.herida.toLowerCase()) {
+    } else if (herida==_(posiciones.sab.nombre).toLowerCase() || herida == _(posiciones.sab.herida).toLowerCase()) {
       posicion = posiciones.sab;
-    } else if (herida==posiciones.car.nombre.toLowerCase() || herida == posiciones.car.herida.toLowerCase()) {
+    } else if (herida==_(posiciones.car.nombre).toLowerCase() || herida == _(posiciones.car.herida).toLowerCase()) {
       posicion = posiciones.car;
     }  else {
-      sendText(dl.id,"El nombre del atributo o condición a aplicar no se encuentra.");
+      sendText(dl.id,_("El nombre del atributo o condición a aplicar no se encuentra."));
       return;
     }
     dl.parametros.shift();
   } else {
-    sendText(dl.id,"Es necesario un atributo o herida que aplicar");
+    sendText(dl.id,_("Es necesario un atributo o herida que aplicar"));
     return;
   }
   if (dl.parametros.length>0) {
     texto_descriptivo = " ("+cursiva(mensajeParametros(dl.parametros))+")";
   }
 
-  respuesta = bold(nombrePJ)+" está ahora "+bold(posicion.herida);
+  respuesta = bold(nombrePJ)+Utilities.formatString(_(" está ahora %s"),bold(posicion.herida));
   if (dl.isActivo) {
      objetivo.getRange(posicion.fila, posicion.columna+1, 1, 1).setValue("TRUE")
   } else {
