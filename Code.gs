@@ -349,7 +349,7 @@ function mensajeParametros(parametros) {
 
 function executeCharRoll(dl, posicion) {
 
-  var texto_accion = " hace una tirada de "+posicion.nombre;
+  var texto_accion = Utilities.formatString(_(" hace una tirada de %s"),posicion.nombre);
   var modificador = 0;
   var texto_descriptivo = "";
   var respuesta = "";

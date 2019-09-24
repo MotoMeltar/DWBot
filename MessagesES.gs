@@ -36,6 +36,8 @@ I18N.loadLanguage('messages',"es",
   "aturdido": { "msgstr" : "aturdido"},
   "confundido": { "msgstr" : "confundido"},
   "marcado": { "msgstr" : "marcado"},
+  //Texto chat inactivo
+  "(Fuera de juego, no se graban datos)": { "msgstr" : "(Fuera de juego, no se graban datos)"},
   //Textos de executeMov
   "Los movimientos que puedes consultar son:": { "msgstr" : "Los movimientos que puedes consultar son:"},
   //Textos de executeVida
@@ -55,8 +57,9 @@ I18N.loadLanguage('messages',"es",
   " - Se cura %s PG para un total de %s." :  { "msgstr" : "  - Se cura %s PG para un total de %s.:" },
   " - Recupera su conexión con la magia.": { "msgstr" : " - Recupera su conexión con la magia."},
   "¡Puede subir a nivel %s!": { "msgstr" : "¡Puede subir a nivel %s!"},
-  "No tiene raciones.": { "msgstr" : "No tiene raciones."}
-
+  "No tiene raciones.": { "msgstr" : "No tiene raciones."},
+  //Texto de executeCharRoll
+  " hace una tirada de %s": { "msgstr" : " hace una tirada de %s"}
   
 
 }
