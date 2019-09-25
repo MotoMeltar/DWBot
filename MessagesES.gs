@@ -93,8 +93,14 @@ I18N.loadLanguage('messages',"es",
   "¡%s queda expuesto al peligro!": { "msgstr" : "¡%s queda expuesto al peligro!"},
   "¡%s olvida su conjuro!": { "msgstr" : "¡%s olvida su conjuro!"},
   "¡%s pierde el contacto con la magia!": { "msgstr" : "¡%s pierde el contacto con la magia!"},
-  " - El modificador por magia se reduce a %s": { "msgstr" : " - El modificador por magia se reduce a %s"}
-
-
+  " - El modificador por magia se reduce a %s": { "msgstr" : " - El modificador por magia se reduce a %s"},
+  //Texto de executeArchivo
+  "No tienes ninguna Hoja de Personaje vinculada a este usuario.": { "msgstr" : "No tienes ninguna Hoja de Personaje vinculada a este usuario."},
+  "El archivo por defecto para tu usuario está [aquí](%s)": { "msgstr" : "El archivo por defecto para tu usuario está [aquí](%s)"},
+  "No he podido obtener una hoja de cálculo accesible desde %s": { "msgstr" : "No he podido obtener una hoja de cálculo accesible desde %s"},
+  "Solo pueden declararse chats de grupo como Partidas activas.": { "msgstr" : "Solo pueden declararse chats de grupo como Partidas activas."},
+  "Para la partida %s se usará el archivo enlazado [aquí](%s)": { "msgstr" : "Para la partida %s se usará el archivo enlazado [aquí](%s)"},
+  "No he podido obtener una hoja de cálculo accesible desde %s": { "msgstr" : "No he podido obtener una hoja de cálculo accesible desde %s"},
+  "Es necesario indicar un ID o URL a un Google Spreadsheet correctamente formateado para comenzar una partida.": { "msgstr" : "Es necesario indicar un ID o URL a un Google Spreadsheet correctamente formateado para comenzar una partida."}
 }
 );
