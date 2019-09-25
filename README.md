@@ -1,5 +1,5 @@
 # DWBot
-A Telegram Bot useful to play Dungeon World
+A Telegram Bot, developed in Google Apps Script (gas), useful to play Dungeon World
 
 Este bot permite organizar y jugar partidas del juego de rol Dungeon World a través de Telegram.
 Para ello, enlaza un archivo de Google Spreadsheets con el chat de juego y sus usuarios para usar los valores del personaje en la partida.
