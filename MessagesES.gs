@@ -85,7 +85,16 @@ I18N.loadLanguage('messages',"es",
   "A %s le quedan %s PG.": { "msgstr" : "A %s le quedan %s PG."},
   "¡%s ha CAIDO!": { "msgstr" : "¡%s ha CAIDO!"},
   //Texto de executeRoll
-  " tira los dados": { "msgstr" : " tira los dados"}
+  " tira los dados": { "msgstr" : " tira los dados"},
+  //Textos de Callbacks
+  " gasta 1 punto de munición.": { "msgstr" : " gasta 1 punto de munición."},
+  " - Le queda %s munición.": { "msgstr" : " - Le queda %s munición.", "msgstr_plural" : " - Le quedan %s municiones."},
+  " hace un daño reducido.": { "msgstr" : " hace un daño reducido."},
+  "¡%s queda expuesto al peligro!": { "msgstr" : "¡%s queda expuesto al peligro!"},
+  "¡%s olvida su conjuro!": { "msgstr" : "¡%s olvida su conjuro!"},
+  "¡%s pierde el contacto con la magia!": { "msgstr" : "¡%s pierde el contacto con la magia!"},
+  " - El modificador por magia se reduce a %s": { "msgstr" : " - El modificador por magia se reduce a %s"}
+
 
 }
 );

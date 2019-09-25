@@ -80,5 +80,15 @@ I18N.loadLanguage('messages',"en",
   "A %s le quedan %s PG.": { "msgstr" : "%s has %s HP left."},
   "¡%s ha CAIDO!": { "msgstr" : "%s has FALLEN!"},
   //Texto de executeRoll
-  " tira los dados": { "msgstr" : " rolls the dice"}
+  " tira los dados": { "msgstr" : " rolls the dice"},
+  //Textos de Callbacks
+  " gasta 1 punto de munición.": { "msgstr" : " spends 1 ammunition point."},
+  " - Le queda %s munición.": { "msgstr" : " - Has %s ammunition left.", "msgstr_plural" : " - Has %s ammunition points left."},
+  " hace un daño reducido.": { "msgstr" : " rolls reduced damage."},
+  "¡%s queda expuesto al peligro!": { "msgstr" : "¡%s is exposed to danger!"},
+  "¡%s olvida su conjuro!": { "msgstr" : "¡%s forgets the spell!"},
+  "¡%s pierde el contacto con la magia!": { "msgstr" : "¡%s loses affinity with magic!"},
+  " - El modificador por magia se reduce a %s": { "msgstr" : " - The magic modifier is reduced to %s"}
+
+
 });
