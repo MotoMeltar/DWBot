@@ -88,7 +88,15 @@ I18N.loadLanguage('messages',"en",
   "¡%s queda expuesto al peligro!": { "msgstr" : "¡%s is exposed to danger!"},
   "¡%s olvida su conjuro!": { "msgstr" : "¡%s forgets the spell!"},
   "¡%s pierde el contacto con la magia!": { "msgstr" : "¡%s loses affinity with magic!"},
-  " - El modificador por magia se reduce a %s": { "msgstr" : " - The magic modifier is reduced to %s"}
+  " - El modificador por magia se reduce a %s": { "msgstr" : " - The magic modifier is reduced to %s"},
+  //Texto de executeArchivo
+  "No tienes ninguna Hoja de Personaje vinculada a este usuario.": { "msgstr" : "There is no character sheet file linked to this user."},
+  "El archivo por defecto para tu usuario está [aquí](%s)": { "msgstr" : "Default file for this user is located [here](%s)"},
+  "No he podido obtener una hoja de cálculo accesible desde %s": { "msgstr" : "There is no valid Google Spreadsheet in %s"},
+  "Solo pueden declararse chats de grupo como Partidas activas.": { "msgstr" : "Only group chats can be declared as games."},
+  "Para la partida %s se usará el archivo enlazado [aquí](%s)": { "msgstr" : "For the %s game, we'll use the file linked [here](%s)"},
+  "Es necesario indicar un ID o URL a un Google Spreadsheet correctamente formateado para comenzar una partida.": { "msgstr" : "You must add a valid Google Spreadsheet ID or URL to start a game."},
+  "Usa /archivo (ID o la URL de la hoja de personaje en google spreadsheets) para asociar una a tu usuario, o /ayuda para aprender como crear una.": { "msgstr" : "Use /file (Google Spreadsheet ID or URL) to link a character sheet spreadsheet to your user, or /help to learn how to create one."}
 
 
 });

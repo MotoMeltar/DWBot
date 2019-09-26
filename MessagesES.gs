@@ -100,7 +100,7 @@ I18N.loadLanguage('messages',"es",
   "No he podido obtener una hoja de cálculo accesible desde %s": { "msgstr" : "No he podido obtener una hoja de cálculo accesible desde %s"},
   "Solo pueden declararse chats de grupo como Partidas activas.": { "msgstr" : "Solo pueden declararse chats de grupo como Partidas activas."},
   "Para la partida %s se usará el archivo enlazado [aquí](%s)": { "msgstr" : "Para la partida %s se usará el archivo enlazado [aquí](%s)"},
-  "No he podido obtener una hoja de cálculo accesible desde %s": { "msgstr" : "No he podido obtener una hoja de cálculo accesible desde %s"},
-  "Es necesario indicar un ID o URL a un Google Spreadsheet correctamente formateado para comenzar una partida.": { "msgstr" : "Es necesario indicar un ID o URL a un Google Spreadsheet correctamente formateado para comenzar una partida."}
+  "Es necesario indicar un ID o URL a un Google Spreadsheet correctamente formateado para comenzar una partida.": { "msgstr" : "Es necesario indicar un ID o URL a un Google Spreadsheet correctamente formateado para comenzar una partida."},
+  "Usa /archivo (ID o la URL de la hoja de personaje en google spreadsheets) para asociar una a tu usuario, o /ayuda para aprender como crear una.": { "msgstr" : "Usa /archivo (ID o la URL de la hoja de personaje en google spreadsheets) para asociar una a tu usuario, o /ayuda para aprender como crear una."}
 }
 );
