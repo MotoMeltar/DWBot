@@ -357,13 +357,12 @@ function executeCharRoll(dl, posicion) {
   if (dl.parametros.length>0) {
     if (!isNaN(dl.parametros[0])) {
       modificador = dl.parametros[0];
-      if (dl.parametros.length>1) {
-        dl.parametros.shift();
-      }
+      texto_descriptivo += "["+modificador+"]";
+      dl.parametros.shift();
     }
   }
   if (dl.parametros.length>0) {
-    texto_descriptivo = "("+cursiva(mensajeParametros(dl.parametros))+")";
+    texto_descriptivo += "("+cursiva(mensajeParametros(dl.parametros))+")";
   }
   Logger.log(dl.hayHojaPJ)
   //if (modificador===0) {
@@ -639,13 +638,12 @@ function executeParcialTeclado(dl, texto_accion, posicion, teclado) {
   if (dl.parametros.length>0) {
     if (!isNaN(dl.parametros[0])) {
       modificador = dl.parametros[0];
-      if (dl.parametros.length>1) {
-        dl.parametros.shift();
-      }
+      texto_descriptivo += "["+dl.parametros[0]+"]";
+      dl.parametros.shift();
     }
   }
   if (dl.parametros.length>0) {
-    texto_descriptivo = "("+cursiva(mensajeParametros(dl.parametros))+")";
+    texto_descriptivo += "("+cursiva(mensajeParametros(dl.parametros))+")";
   }
   
   //if (modificador===0) {
