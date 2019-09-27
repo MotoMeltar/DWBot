@@ -350,7 +350,7 @@ function mensajeParametros(parametros) {
 
 function executeCharRoll(dl, posicion) {
 
-  var texto_accion = Utilities.formatString(_(" hace una tirada de %s"),posicion.nombre);
+  var texto_accion = Utilities.formatString(_(" hace una tirada de %s"),_(posicion.nombre));
   var modificador = 0;
   var texto_descriptivo = "";
   var respuesta = "";
@@ -368,7 +368,7 @@ function executeCharRoll(dl, posicion) {
   Logger.log(dl.hayHojaPJ)
   //if (modificador===0) {
     if (dl.hayHojaPJ) {
-      modificador = valorXPosicion(dl.hojaPJ,posicion)+modificador;
+      modificador = parseInt(valorXPosicion(dl.hojaPJ,posicion))+parseInt(modificador);
       Logger.log("VALOR DE CARACTERISTICA + MODIFICADOR: "+modificador);
     }
   //}

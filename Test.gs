@@ -97,7 +97,7 @@ function testCallback() {
 }
 
 function testCon() {
-    dataMensaje.message.text = "/int Me cubro con mi escudo";
+    dataMensaje.message.text = "/int +1 Me cubro con mi escudo";
     doPostData(dataMensaje);
   
 }
