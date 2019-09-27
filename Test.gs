@@ -82,6 +82,12 @@ function testAyuda() {
   Logger.log(JSON.stringify(keyboard.ayuda));
   dataMensaje.message.text = "/ayuda";
   doPostData(dataMensaje);
+    dataMensaje.message.text = "/help game";
+  doPostData(dataMensaje);
+    dataMensaje.message.text = "/help characters";
+  doPostData(dataMensaje);
+    dataMensaje.message.text = "/help gm";
+  doPostData(dataMensaje);
 }
 
 function testCallback() {
