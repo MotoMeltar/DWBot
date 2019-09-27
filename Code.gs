@@ -648,12 +648,12 @@ function executeParcialTeclado(dl, texto_accion, posicion, teclado) {
     texto_descriptivo = "("+cursiva(mensajeParametros(dl.parametros))+")";
   }
   
-  if (modificador===0) {
+  //if (modificador===0) {
     if (dl.hayHojaPJ) {
-      modificador = valorXPosicion(dl.hojaPJ,posicion);
+      modificador = parseInt(valorXPosicion(dl.hojaPJ,posicion))+parseInt(modificador);
       Logger.log("VALOR DE POSICION: "+modificador);
     }
-  }
+  //}
 
   respuesta = tiraDW(modificador, texto_descriptivo, texto_accion, dl);
   var resultado = extraerResultado(respuesta);
