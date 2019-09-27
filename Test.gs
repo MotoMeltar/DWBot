@@ -46,7 +46,7 @@ var dataMensaje = {
       "first_name": "Angel",
       "last_name": "García",
       "username": "MotoMeltar",
-      "language_code": "en" //"es"
+      "language_code": "fr" //"es"
     },
     "chat": {
       "id": 2937540,

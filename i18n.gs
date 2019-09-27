@@ -6,13 +6,17 @@ Utilities.formatString(I18N.ngettext("I have %s apple", "I have %s apples", n), 
 
 (function () {
   var locale;
+  var defaultLocale = 'en';
   var getLocale = function() {
     if(locale === undefined)
-      locale = 'es';
+      locale = defaultLocale;
     return locale;
   };
   var setLocale = function(value) {
-    locale = value;
+    if (catalogs[defaultCatalog][value] !== undefined)
+      locale = value;
+    else 
+      locale = defaultLocale;
   };
 
   var catalogs = {};
@@ -52,6 +56,7 @@ Utilities.formatString(I18N.ngettext("I have %s apple", "I have %s apples", n), 
       return msgid1;
 
     var locale = getLocale();
+    Logger.log("LOCALE:"+locale)
     if(!locale)
       return msgid1;
     

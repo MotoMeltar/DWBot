@@ -99,7 +99,7 @@ I18N.loadLanguage('messages',"en",
   "Usa /archivo (ID o la URL de la hoja de personaje en google spreadsheets) para asociar una a tu usuario, o /ayuda para aprender como crear una.": { "msgstr" : "Use /file (Google Spreadsheet ID or URL) to link a character sheet spreadsheet to your user, or /help to learn how to create one."},
   //Texto de executeAyuda
   "Bienvenido a la ayuda de DWMochilaBot (/ayuda)": { "msgstr" : "Welcome to DWMochilaBot help (/help)"},
-"Este bot permite organizar y jugar partidas del juego de rol Dungeon World a través de Telegram.": { "msgstr" : "This bot allows to organice and play Dongeon worls RPG's games through Telegram."},
+"Este bot permite organizar y jugar partidas del juego de rol Dungeon World a través de Telegram.": { "msgstr" : "This bot allows to organice and play Dungeon worls RPG's games through Telegram."},
 "Para ello, enlaza un archivo de Google Spreadsheets con el chat de juego y sus usuarios para usar los valores del personaje en la partida.": { "msgstr" : "To that end, it links a Google Spreadssheet file with the game chat and uses its values for every character in the game."},
 "Selecciona uno de los temas a consultar.": { "msgstr" : "Choose one of the subjects to read."},
 "Crear y gestionar partidas (/ayuda partida)": { "msgstr" : "Create and host games (/help game)"},
