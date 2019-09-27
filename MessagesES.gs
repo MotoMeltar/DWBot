@@ -39,6 +39,12 @@ I18N.loadLanguage('messages',"es",
   //Texto chat inactivo
   "(Fuera de juego, no se graban datos)": { "msgstr" : "(Fuera de juego, no se graban datos)"},
   //Textos de executeMov
+  "disparar": { "msgstr" : "disparar"},
+  "defensa": { "msgstr" : "defensa"},
+  "conocimientos": { "msgstr" : "conocimientos"},
+  "ayudar": { "msgstr" : "ayudar"},
+  "levelup": { "msgstr" : "levelup"},
+  "viaje": { "msgstr" : "viaje"},
   "Los movimientos que puedes consultar son:": { "msgstr" : "Los movimientos que puedes consultar son:"},
   //Textos de executeVida
   "Resumen de puntos de vida:": { "msgstr" : "Resumen de puntos de vida:"},

@@ -56,7 +56,7 @@ var moves = {
     total:cursiva("Con un 10+")+", el DJ te dirá algo interesante y útil sobre un tema concerniente a tu situación.",
     parcial:cursiva("Entre 7 y 9")+", el DJ te dirá algo interesante. Depende de ti convertirlo en útil.",
     fracaso:"",
-    texto:RETORNO_CARRO+"El DJ puede preguntarte «¿Cómo lo sabes?». Dile la verdad."  
+    texto:RETORNO_CARRO_HTML+"El DJ puede preguntarte «¿Cómo lo sabes?». Dile la verdad."  
     },
     "en": {
       nombre:"Spout Lore",
@@ -86,7 +86,7 @@ var moves = {
       nombre:"Discern Realities",
       condicion:"When you closely study a situation or person, roll /WIS.",
       total:cursiva("On a 10+")+", ask the GM 3 questions from the list below.",
-      parcial:cursiva("On a 7–9")+"ask 1.",
+      parcial:cursiva("On a 7–9")+", ask 1.",
       fracaso:"",
       texto:RETORNO_CARRO+"Either way, take +1 forward when acting on the answers."+RETORNO_CARRO+
         "What happened here recently?"+RETORNO_CARRO+
@@ -98,34 +98,73 @@ var moves = {
     }
   },
   ayudar: {
-    nombre:"Ayudar o Interferir",
-    condicion:"Cuando ayudas o entorpeces a alguien, tira"+SUMA+"VINCULO con él.",
-    total:cursiva("Con un 10+")+", reciben un +1 o –2 a su tirada, según elijas.",
-    parcial:cursiva("Entre 7 y 9")+", siguen recibiendo el modificador, pero también te expones a daño, un castigo o un coste.",
-    fracaso:"",
-    texto:""  },
+    "es": {
+      nombre:"Ayudar o Interferir",
+      condicion:"Cuando ayudas o entorpeces a alguien, tira"+SUMA+"VINCULO con él.",
+      total:cursiva("Con un 10+")+", reciben un +1 o –2 a su tirada, según elijas.",
+      parcial:cursiva("Entre 7 y 9")+", siguen recibiendo el modificador, pero también te expones a daño, un castigo o un coste.",
+      fracaso:"",
+      texto:""
+    },
+    "en": {
+      nombre:"Aid or Interfere",
+      condicion:"When you help or hinder someone , roll+bond with them. (You can have multiple bonds with someone)",
+      total:cursiva("On a 10+")+", they take +1 or -2 to their roll, your choice.",
+      parcial:cursiva("On a 7–9")+", they still get a modifier, but you also expose yourself to danger, retribution, or cost.",
+      fracaso:"",
+      texto:""
+    }
+  },
   levelup: {
-    nombre:"Subir de nivel",
-    condicion:"",
-    total:"",
-    parcial:"",
-    fracaso:"",
-    texto:"Cuando tengas tiempo para descansar (horas o días) y PX iguales (o mayores) a tu nivel actual"+SUMA+"7, puedes reflexionar sobre tus experiencias y perfeccionar tus habilidades."+RETORNO_CARRO+
-          " - Resta 7"+SUMA+"tu nivel actual de tu total de PX."+RETORNO_CARRO+
-          " - Incrementa en 1 tu nivel."+RETORNO_CARRO+
-          " - Elige un nuevo movimiento avanzado de tu clase.."+RETORNO_CARRO+
-          " - Si eres un mago también puedes añadir un nuevo conjuro a tu libro."+RETORNO_CARRO+
-          " - Elige una de tus características e increméntala en 1 (eso puede cambiar el modificador). Cambiar la Constitución incrementará tus PG máximos y actuales. Las puntuaciones de las características no pueden ser mayores de 18."
+    "es": {
+      nombre:"Subir de nivel",
+      condicion:"",
+      total:"",
+      parcial:"",
+      fracaso:"",
+      texto:"Cuando tengas tiempo para descansar (horas o días) y PX iguales (o mayores) a tu nivel actual"+SUMA+"7, puedes reflexionar sobre tus experiencias y perfeccionar tus habilidades."+RETORNO_CARRO+
+      " - Resta 7"+SUMA+"tu nivel actual de tu total de PX."+RETORNO_CARRO+
+      " - Incrementa en 1 tu nivel."+RETORNO_CARRO+
+      " - Elige un nuevo movimiento avanzado de tu clase.."+RETORNO_CARRO+
+      " - Si eres un mago también puedes añadir un nuevo conjuro a tu libro."+RETORNO_CARRO+
+      " - Elige una de tus características e increméntala en 1 (eso puede cambiar el modificador). Cambiar la Constitución incrementará tus PG máximos y actuales. Las puntuaciones de las características no pueden ser mayores de 18."
+    },
+    "en": {
+      nombre:"Level up",
+      condicion:"",
+      total:"",
+      parcial:"",
+      fracaso:"",
+      texto:"When you have downtime (hours or days) and XP equal to (or greater than) your current level+7, you can reflect on your experiences and hone your skills."+RETORNO_CARRO+
+      " - Subtract your current level+7 from your XP."+RETORNO_CARRO+
+      " - Increase your level by 1."+RETORNO_CARRO+
+      " - Choose a new advanced move from your class."+RETORNO_CARRO+
+      " - If you are the wizard, you also get to add a new spell to your spellbook."+RETORNO_CARRO+
+      " - Choose one of your ability scores and increase it by 1 (this may change your modifier). Changing your Constitution increases your maximum and current HP. Ability scores can’t go higher than 18."
+    }
   },
   viaje: {
-    nombre:"Realizar un viaje peligroso",
-    condicion:"Cuando viajáis a través de territorio hostil, elegid a un miembro del grupo para que actúe como guía, otro como vigía y otro como intendente. Cada personaje con una responsabilidad tira /SAB.",
-    total:cursiva("Con un 10+")+RETORNO_CARRO+
-    " - El guía reduce la cantidad de tiempo necesaria para alcanzar vuestro destino (el DJ dirá en cuánto)."+RETORNO_CARRO+
-    " - El vigía detectará cualquier problema lo bastante rápido como para permitiros tener ventaja sobre el mismo."+RETORNO_CARRO+
-    " - El intendente reduce el número de raciones necesarias en 1.",
-    parcial:cursiva("Entre 7 y 9")+", cada uno desempeña su tarea adecuadamente: se consume el número normal de raciones, el viaje dura lo esperado y nadie os pilla por sorpresa, pero tampoco lo pilláis vosotros.",
-    fracaso:"",
-    texto:""  }
+    "es": {
+      nombre:"Realizar un viaje peligroso",
+      condicion:"Cuando viajáis a través de territorio hostil, elegid a un miembro del grupo para que actúe como guía, otro como vigía y otro como intendente. Cada personaje con una responsabilidad tira /SAB.",
+      total:cursiva("Con un 10+")+RETORNO_CARRO+
+      " - El guía reduce la cantidad de tiempo necesaria para alcanzar vuestro destino (el DJ dirá en cuánto)."+RETORNO_CARRO+
+      " - El vigía detectará cualquier problema lo bastante rápido como para permitiros tener ventaja sobre el mismo."+RETORNO_CARRO+
+      " - El intendente reduce el número de raciones necesarias en 1.",
+      parcial:cursiva("Entre 7 y 9")+", cada uno desempeña su tarea adecuadamente: se consume el número normal de raciones, el viaje dura lo esperado y nadie os pilla por sorpresa, pero tampoco lo pilláis vosotros.",
+      fracaso:"",
+      texto:""  }
+    },
+    "en": {
+      nombre:"Undertake a Perilous Journey",
+      condicion:"When you travel through hostile territory, choose one member of the party to act as trailblazer, one to scout ahead, and one to be quartermaster. Each character with a job to do rolls /WIS.",
+      total:cursiva("On a 10+")+RETORNO_CARRO+
+      " - the quartermaster reduces the number of rations required by one"+RETORNO_CARRO+
+      " - the trailblazer reduces the amount of time it takes to reach your destination (the GM will say by how much)"+RETORNO_CARRO+
+      " - the scout will spot any trouble quick enough to let you get the drop on it"+RETORNO_CARRO,
+      parcial:cursiva("On a 7–9")+", each role performs their job as expected: the normal number of rations are consumed, the journey takes about as long as expected, no one gets the drop on you but you don’t get the drop on them either.",
+      fracaso:"",
+      texto:""
+    }
 
 }

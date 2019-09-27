@@ -139,8 +139,7 @@ function testHerir() {
 }
 
 function testMov() {
-    dataMensaje.message.from.language_code = "es";// abastecerse";
-    dataMensaje.message.text = "/mov";// abastecerse";
+    dataMensaje.message.text = "/mov volley";// abastecerse";
     doPostData(dataMensaje);
 }
 

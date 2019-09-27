@@ -187,7 +187,7 @@ function executeVida(dl) {
 
 function executeMov(dl) {
   
-  var movimiento = cargaMovimiento(dl.parametros[0]);
+  var movimiento = moves[_(dl.parametros[0])][I18N.getLocale()];
   Logger.log("Movimiento: "+JSON.stringify(movimiento));
   var respuesta = "";
   if (movimiento == undefined) {
