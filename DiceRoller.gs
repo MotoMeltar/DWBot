@@ -63,16 +63,16 @@ function tiraDW(modificador, texto_descriptivo, texto_accion, dl) {
   } 
   var texto_experiencia = "";
   if (resultado<7) {
-      var cadena = "¡"+nombrePJ+" obtiene un PX!";
+      var cadena = Utilities.formatString("¡%s obtiene un PX!",nombrePJ);
       texto_experiencia = RETORNO_CARRO+bold(cadena);
       if (hayficha) {
         var px = valorXPosicion(dl.hojaPJ, posiciones.px);
         Logger.log("PX ANTIGUOS:"+px);
         if (dl.isActivo) 
           grabarXPosicion(dl.hojaPJ, posiciones.px,px+1);
-        texto_experiencia = texto_experiencia+RETORNO_CARRO+"PX totales:"+valorXPosicion(dl.hojaPJ, posiciones.px);
+        texto_experiencia = texto_experiencia+RETORNO_CARRO+_("PX totales:")+valorXPosicion(dl.hojaPJ, posiciones.px);
         if (!dl.isActivo)
-          texto_experiencia += textoChatInactivo;
+          texto_experiencia += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
       }
   }
   respuesta = nombrePJ + texto_accion+" "+texto_descriptivo+": "+RETORNO_CARRO+
@@ -131,7 +131,7 @@ function tiraDanyo(expresion, objetivo, texto_descriptivo, dl) {
       tirada = tiraDados(danyoPJ);
       expresion = danyoPJ;
     } else {
-      return "No hay expresión de dados ni se encuentra hoja de Personaje para "+name;
+      return _("No se encuentra hoja de personaje para Alias:")+name;
     }
   } else {
     tirada = tiraDados(expresion);
@@ -151,15 +151,15 @@ function tiraDanyo(expresion, objetivo, texto_descriptivo, dl) {
       pgActuales = 0;
     respuesta = nombrePJ +texto_descriptivo+": "+expresion+RETORNO_CARRO+
       tirada+RETORNO_CARRO+
-        " = " + bold(resultado) + " "+RESTA +" armadura:"+armadura+"  TOTAL: "+diferencia+RETORNO_CARRO+
-          "A "+nombrePJ+" le quedan "+pgActuales+" PG.";
+        " = " + bold(resultado) + " "+RESTA +" "+_("Armadura")+":"+armadura+"  TOTAL: "+diferencia+RETORNO_CARRO+
+          Utilities.formatString(_("A %s le quedan %s PG."),nombrePJ,pgActuales);
     Logger.log(respuesta);
     if (pgActuales == 0) 
-      respuesta += RETORNO_CARRO+bold("¡"+nombrePJ +" ha CAIDO!"); 
+      respuesta += RETORNO_CARRO+bold(Utilities.formatString(_("¡%s ha CAIDO!"),nombrePJ)); 
     if (dl.isActivo) {
       grabarXPosicion(objetivo, posiciones.pg,pgActuales);
     } else {
-      respuesta += textoChatInactivo;
+      respuesta += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
     }
   } else {
     respuesta = nombrePJ +texto_descriptivo+": "+expresion+RETORNO_CARRO+

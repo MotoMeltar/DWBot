@@ -7,7 +7,7 @@ var dataCallback = {
 	"callback_query": {
 		"data": "disparar_exponerse",
 		"from": {
-			"language_code": "es",
+			"language_code": "ke",
 			"last_name": "García",
 			"id": 2937540,
 			"is_bot": false,
@@ -46,7 +46,7 @@ var dataMensaje = {
       "first_name": "Angel",
       "last_name": "García",
       "username": "MotoMeltar",
-      "language_code": "es"
+      "language_code": "fr" //"es"
     },
     "chat": {
       "id": 2937540,
@@ -67,6 +67,8 @@ var dataMensaje = {
   }
 };
 function testAcampar() {
+    dataMensaje.message.from.language_code = "en";// abastecerse";
+
   dataMensaje.message.text = "/acampar";
   doPostData(dataMensaje);
 }
@@ -79,6 +81,12 @@ function testArchivo() {
 function testAyuda() {
   Logger.log(JSON.stringify(keyboard.ayuda));
   dataMensaje.message.text = "/ayuda";
+  doPostData(dataMensaje);
+    dataMensaje.message.text = "/help game";
+  doPostData(dataMensaje);
+    dataMensaje.message.text = "/help characters";
+  doPostData(dataMensaje);
+    dataMensaje.message.text = "/help gm";
   doPostData(dataMensaje);
 }
 
@@ -105,7 +113,7 @@ function testCurar() {
 }
 
 function testDanyo() {
-  dataMensaje.message.text = "/daño 1d4-1d6";// @MotoMeltar";
+  dataMensaje.message.text = "/daño 1d20+20 @MotoMeltar";
   doPostData(dataMensaje);
 }
 
@@ -125,12 +133,13 @@ function testEquipo() {
 }
 
 function testHerir() {
-    dataMensaje.message.text = "/Herir @MotoMeltar CONSTITUCIÓN";
+    dataMensaje.message.text = "/Herir @MotoMeltar FUERZA";
     doPostData(dataMensaje);
 
 }
 
 function testMov() {
+    dataMensaje.message.from.language_code = "es";// abastecerse";
     dataMensaje.message.text = "/mov";// abastecerse";
     doPostData(dataMensaje);
 }
@@ -141,6 +150,8 @@ function testLevelup() {
 }
 
 function testStatus() {
+  dataMensaje.message.from.language_code = "en";// abastecerse";
+  
   sendText(id,"Prueba de consulta con parámetro");
   dataMensaje.message.text = "/status@DWMochilaBot @Dafoth";
   doPostData(dataMensaje);
@@ -173,6 +184,7 @@ function testTiraYDX() {
 }
 
 function testVida() {
+  dataMensaje.message.from.language_code = "en";// abastecerse";
   dataMensaje.message.text = "/vida";
   doPostData(dataMensaje);
 }
