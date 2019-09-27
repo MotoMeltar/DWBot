@@ -64,7 +64,7 @@ function executeAyuda(dl) {
   Logger.log("TEXTO FINAL:"+selected);
   
   var textoEncoded = codeMarkdown(selected);
-  var teclado = keyboard.ayuda;
+  var teclado = keyboard.ayuda[I18N.getLocale()];
   teclado.inline_keyboard.splice(selected.indice,1);
   sendTextKeyboard(dl.id,textoEncoded,teclado);
     

@@ -87,6 +87,8 @@ I18N.loadLanguage('messages',"es",
   //Texto de executeRoll
   " tira los dados": { "msgstr" : " tira los dados"},
   //Textos de Callbacks
+  " dispara.": { "msgstr" : " dispara."},
+  " invoca un conjuro.": { "msgstr" : " invoca un conjuro."},
   " gasta 1 punto de munición.": { "msgstr" : " gasta 1 punto de munición."},
   " - Le queda %s munición.": { "msgstr" : " - Le queda %s munición.", "msgstr_plural" : " - Le quedan %s municiones."},
   " hace un daño reducido.": { "msgstr" : " hace un daño reducido."},

@@ -7,7 +7,7 @@ var dataCallback = {
 	"callback_query": {
 		"data": "disparar_exponerse",
 		"from": {
-			"language_code": "es",
+			"language_code": "ke",
 			"last_name": "García",
 			"id": 2937540,
 			"is_bot": false,

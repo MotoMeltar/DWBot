@@ -109,10 +109,10 @@ function procesaMensaje(dl) {
     executeCharRoll(dl, posiciones.car);
   } else if (esComando(comando,"/disparar") || esComando(comando,"/volley")) {
     Logger.log("Ejecutando comando de Tirada Disparar");
-    executeParcialTeclado(dl, " dispara una flecha.", posiciones.des, keyboard.disparar);
+    executeParcialTeclado(dl, _(" dispara."), posiciones.des, keyboard.disparar[I18N.getLocale()]);
   } else if (esComando(comando,"/conjuro") || esComando(comando,"/cast")) {
     Logger.log("Ejecutando comando de Tirada Conjuro");
-    executeParcialTeclado(dl, " invoca un conjuro.", posiciones.magia, keyboard.conjuro);
+    executeParcialTeclado(dl, _(" invoca un conjuro."), posiciones.magia, keyboard.conjuro[I18N.getLocale()]);
   } else if (esComando(comando,"/acampar") || esComando(comando,"/camp")) {
     Logger.log("Ejecutando comando Acampar");
     executeAcampar(dl);
