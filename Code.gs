@@ -83,16 +83,16 @@ function procesaMensaje(dl) {
   
   var comando = getPrimeraPalabra(dl.text).toLowerCase();
   Logger.log("COMANDO: "+comando);
-  if (esComando(comando,"/status")) {
+  if (esComando(comando,"/estado") || esComando(comando,"/status")) {
     Logger.log("Ejecutando comando de status");
     executeStatus(dl);
   } else if (esComando(comando,"/tira") || esComando(comando,"/roll")) {
     Logger.log("Ejecutando comando de Tirada");
     executeRoll(dl);
-  } else if (esComando(comando,"/fue")) {
+  } else if (esComando(comando,"/fue") || esComando(comando,"/str")) {
     Logger.log("Ejecutando comando de Tirada Fuerza");
     executeCharRoll(dl, posiciones.fue);
-  } else if (esComando(comando,"/des")) {
+  } else if (esComando(comando,"/des") || esComando(comando,"/dex")) {
     Logger.log("Ejecutando comando de Tirada Destreza");
     executeCharRoll(dl, posiciones.des);
   } else if (esComando(comando,"/con")) {
@@ -101,25 +101,25 @@ function procesaMensaje(dl) {
   } else if (esComando(comando,"/int")) {
     Logger.log("Ejecutando comando de Tirada Inteligencia");
     executeCharRoll(dl, posiciones.int);
-  } else if (esComando(comando,"/sab")) {
+  } else if (esComando(comando,"/sab") || esComando(comando,"/wis")) {
     Logger.log("Ejecutando comando de Tirada Sabiduria");
     executeCharRoll(dl, posiciones.sab);
-  } else if (esComando(comando,"/car")) {
+  } else if (esComando(comando,"/car") || esComando(comando,"/cha")) {
     Logger.log("Ejecutando comando de Tirada Carisma");
     executeCharRoll(dl, posiciones.car);
-  } else if (esComando(comando,"/disparar")) {
+  } else if (esComando(comando,"/disparar") || esComando(comando,"/volley")) {
     Logger.log("Ejecutando comando de Tirada Disparar");
     executeParcialTeclado(dl, " dispara una flecha.", posiciones.des, keyboard.disparar);
-  } else if (esComando(comando,"/conjuro")) {
+  } else if (esComando(comando,"/conjuro") || esComando(comando,"/cast")) {
     Logger.log("Ejecutando comando de Tirada Conjuro");
     executeParcialTeclado(dl, " invoca un conjuro.", posiciones.magia, keyboard.conjuro);
-  } else if (esComando(comando,"/acampar")) {
+  } else if (esComando(comando,"/acampar") || esComando(comando,"/camp")) {
     Logger.log("Ejecutando comando Acampar");
     executeAcampar(dl);
-  } else if (esComando(comando,"/daño")) {
+  } else if (esComando(comando,"/daño") || esComando(comando,"/danyo") || esComando(comando,"/damage")) {
     Logger.log("Ejecutando comando Daño");
     executeDanyo(dl);
-  } else if (esComando(comando,"/ayuda")) {
+  } else if (esComando(comando,"/ayuda") || esComando(comando,"/help")) {
     Logger.log("Ejecutando comando Ayuda");
     executeAyuda(dl);
   } else if (esComando(comando,"/mov")) {
@@ -128,7 +128,7 @@ function procesaMensaje(dl) {
   } else if (esComando(comando,"/vida")) {
     Logger.log("Ejecutando comando Mostrar Vida");
     executeVida(dl);
-  } else if (esComando(comando,"/equipo")) {
+  } else if (esComando(comando,"/equipo") || esComando(comando,"/equip")) {
     Logger.log("Ejecutando comando Mostrar Equipo");
     executeEquipo(dl);
   } else if (esComando(comando,"/levelup")) {
@@ -136,19 +136,19 @@ function procesaMensaje(dl) {
     executeLevelUp(dl);
   } else if (dl.isGM) {
     Logger.log("Entramos en comandos de GM");
-    if (esComando(comando,"/curar") || esComando(comando,"/cura")) {
+    if (esComando(comando,"/curar") || esComando(comando,"/cura") || esComando(comando,"/heal")) {
       Logger.log("Ejecutando comando Curar");
       executeCurar(dl);
-    } else if (esComando(comando,"/herir")) {
+    } else if (esComando(comando,"/herir") || esComando(comando,"/wound")) {
       Logger.log("Ejecutando comando Herir");
       executeHerir(dl);
-    } else if (esComando(comando,"/dar")) {
+    } else if (esComando(comando,"/dar") || esComando(comando,"/give")) {
       Logger.log("Ejecutando comando Dar");
       executeDar(dl);
-    } else if (esComando(comando,"/archivo")) {
+    } else if (esComando(comando,"/archivo") || esComando(comando,"/file")) {
       Logger.log("Ejecutando comando Archivo");
       executeArchivo(dl);
-    } else if (esComando(comando,"/partida")) {
+    } else if (esComando(comando,"/partida") || esComando(comando,"/game")) {
       Logger.log("Ejecutando comando Partida");
       executePartida(dl);
     }
