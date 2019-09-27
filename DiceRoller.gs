@@ -63,7 +63,7 @@ function tiraDW(modificador, texto_descriptivo, texto_accion, dl) {
   } 
   var texto_experiencia = "";
   if (resultado<7) {
-      var cadena = Utilities.formatString("¡%s obtiene un PX!",nombrePJ);
+      var cadena = Utilities.formatString(_("¡%s obtiene un PX!"),nombrePJ);
       texto_experiencia = RETORNO_CARRO+bold(cadena);
       if (hayficha) {
         var px = valorXPosicion(dl.hojaPJ, posiciones.px);

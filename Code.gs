@@ -191,13 +191,13 @@ function executeMov(dl) {
   Logger.log("Movimiento: "+JSON.stringify(movimiento));
   var respuesta = "";
   if (movimiento == undefined) {
-    var movimientos = Object.keys(cargaTodosMovimiento());
+    var movimientos = Object.keys(moves);
     Logger.log("Movimientos disponibles: "+JSON.stringify(movimientos));
 
     respuesta = _("Los movimientos que puedes consultar son:");
     for(var i=0;i<movimientos.length;i++){
       var key = movimientos[i];
-      respuesta += RETORNO_CARRO+" - "+key;
+      respuesta += RETORNO_CARRO+" - "+_(key);
     }
   } else {
     respuesta += bold(movimiento.nombre)+RETORNO_CARRO;
