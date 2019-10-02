@@ -187,7 +187,12 @@ function executeVida(dl) {
 
 function executeMov(dl) {
   
-  var movimiento = moves[_(dl.parametros[0])][I18N.getLocale()];
+  var movimiento = undefined;
+  if (dl.parametros.length>0) {
+    Logger.log("BUSCANDO MOVIMIENTO:"+dl.parametros[0]);
+    Logger.log("CON IDIOMA:"+I18N.getLocale());
+     movimiento = moves[_(dl.parametros[0])][I18N.getLocale()];
+  }
   Logger.log("Movimiento: "+JSON.stringify(movimiento));
   var respuesta = "";
   if (movimiento == undefined) {

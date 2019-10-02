@@ -148,9 +148,7 @@ function testLevelup() {
   doPostData(dataMensaje);
 }
 
-function testStatus() {
-  dataMensaje.message.from.language_code = "en";// abastecerse";
-  
+function testStatus() {  
   sendText(id,"Prueba de consulta con parámetro");
   dataMensaje.message.text = "/status@DWMochilaBot @Dafoth";
   doPostData(dataMensaje);
