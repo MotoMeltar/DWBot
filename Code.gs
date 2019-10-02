@@ -4,7 +4,7 @@ var webAppUrl = "https://script.google.com/macros/s/AKfycbwZwHKwHZOkDhT8jH_UgZ4C
 var arrayMagos = ["Mago"];
 var arrayClerigos = ["Explorador","Clérigo","Paladín"];
 
-//Logger = BetterLog.useSpreadsheet('1F1TD6wify7UjbG5Im8sssX3-YiRq8VVRq8gbXZyAedY'); 
+Logger = BetterLog.useSpreadsheet('1F1TD6wify7UjbG5Im8sssX3-YiRq8VVRq8gbXZyAedY'); 
 
 var posiciones = { oro: { fila:5, columna: 4, nombre: "Oro", contable: "monedas de Oro"},
                    municion: { fila:15, columna: 11, nombre: "Munición", contable: "munición"},
