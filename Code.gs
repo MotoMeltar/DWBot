@@ -293,12 +293,19 @@ function executeAcampar(dl) {
     Logger.log("Existe hoja de personaje");
     var numRaciones = dl.values[posiciones.raciones.fila-1][posiciones.raciones.columna-1];
     respuesta = bold(dl.nombrePJ)+ _(" acampa:");
+    var puedeAcampar = false;
     if (!isNaN(numRaciones) && numRaciones > 0) {
+      puedeAcampar = true;
       Logger.log("El personaje tiene raciones");
       numRaciones = numRaciones - 1;
       if (dl.isActivo)
         grabarXPosicion(dl.hojaPJ, posiciones.raciones, numRaciones);
       respuesta += RETORNO_CARRO+Utilities.formatString(I18N.ngettext(" - Le queda %s ración.",numRaciones),numRaciones);
+    }
+    if (numRaciones=="D") {
+      puedeAcampar = true;
+    }
+    if (puedeAcampar) {
       var pg = dl.values[posiciones.pg.fila-1][posiciones.pg.columna-1];
       var pgmax = dl.values[posiciones.pgmax.fila-1][posiciones.pgmax.columna-1];
       Logger.log(" PG: "+pg+"/"+pgmax);
