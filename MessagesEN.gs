@@ -105,7 +105,7 @@ I18N.loadLanguage('messages',"en",
   //Texto de executeArchivo
   "No tienes ninguna Hoja de Personaje vinculada a este usuario.": { "msgstr" : "There is no character sheet file linked to this user."},
   "El archivo por defecto para tu usuario está [aquí](%s)": { "msgstr" : "Default file for this user is located [here](%s)"},
-  "No he podido obtener una hoja de cálculo accesible desde %s": { "msgstr" : "There is no valid Google Spreadsheet in %s"},
+  "La Hoja de cálculo con el ID o URL indicada no existe o no tiene el acceso Público.": { "msgstr" : "The spreadsheet belonging to the URL or ID provided doesn't exist or is not declared as Public."},
   "Solo pueden declararse chats de grupo como Partidas activas.": { "msgstr" : "Only group chats can be declared as games."},
   "Para la partida %s se usará el archivo enlazado [aquí](%s)": { "msgstr" : "For the %s game, we'll use the file linked [here](%s)"},
   "Es necesario indicar un ID o URL a un Google Spreadsheet correctamente formateado para comenzar una partida.": { "msgstr" : "You must add a valid Google Spreadsheet ID or URL to start a game."},

@@ -36,9 +36,9 @@ I18N.loadLanguage('messages',"es",
   "aturdido": { "msgstr" : "aturdido"},
   "confundido": { "msgstr" : "confundido"},
   "marcado": { "msgstr" : "marcado"},
-  //Texto chat inactivo
+  //Texto CHAT INACTIVO
   "(Fuera de juego, no se graban datos)": { "msgstr" : "(Fuera de juego, no se graban datos)"},
-  //Textos de executeMov
+  //Textos de EXECUTEMOV
   "disparar": { "msgstr" : "disparar"},
   "defensa": { "msgstr" : "defensa"},
   "conocimientos": { "msgstr" : "conocimientos"},
@@ -46,27 +46,27 @@ I18N.loadLanguage('messages',"es",
   "levelup": { "msgstr" : "levelup"},
   "viaje": { "msgstr" : "viaje"},
   "Los movimientos que puedes consultar son:": { "msgstr" : "Los movimientos que puedes consultar son:"},
-  //Textos de executeVida
+  //Textos de EXECUTEVIDA
   "Resumen de puntos de vida:": { "msgstr" : "Resumen de puntos de vida:"},
   "- %s PG:%s/%s" : { "msgstr" : "- %s PG:%s/%s"},
   "No hay ninguna ficha asignada al chat ni al usuario." : { "msgstr" : "No hay ninguna ficha asignada al chat ni al usuario."},
-  //Textos de executeStatus
+  //Textos de EXECUTESTATUS
   "No se encuentra hoja de personaje para Alias:" : { "msgstr" : "No se encuentra hoja de personaje para Alias:"},
   "%s (%s) tiene:" : { "msgstr" : "%s (%s) tiene:"},
   " - %s PX, " : { "msgstr" : " - %s PX, "},
   " - PG: " :  { "msgstr" : " - PG: "},
   "puedes usar este comando abriéndome un canal %s" :  { "msgstr" : "puedes usar este comando abriéndome un canal %s"},
   "privado" :  { "msgstr" : "privado" },
-  //Textos de executeAcampar
+  //Textos de EXECUTEACAMPAR
   " acampa:" :  { "msgstr" : " acampa:" },
   " - Le queda %s ración.": { "msgstr" : " - Le queda %s ración.", "msgstr_plural" : " - Le quedan %s raciones."},
   " - Se cura %s PG para un total de %s." :  { "msgstr" : "  - Se cura %s PG para un total de %s.:" },
   " - Recupera su conexión con la magia.": { "msgstr" : " - Recupera su conexión con la magia."},
   "¡Puede subir a nivel %s!": { "msgstr" : "¡Puede subir a nivel %s!"},
   "No tiene raciones.": { "msgstr" : "No tiene raciones."},
-  //Texto de executeCharRoll
+  //Texto de EXECUTECHARROLL
   " hace una tirada de %s": { "msgstr" : " hace una tirada de %s"},
-  //Texto de executeDar
+  //Texto de EXECUTEDAR
   "El primer parámetro debe ser un número natural: ": { "msgstr" : "El primer parámetro debe ser un número natural: "},
   "No encuentro el campo que mencionas: ": { "msgstr" : "No encuentro el campo que mencionas: "},
   "El campo indicado no es contable: ": { "msgstr" : "El campo indicado no es contable: "},
@@ -75,14 +75,14 @@ I18N.loadLanguage('messages',"es",
   " pierde ": { "msgstr" : " pierde "},
   "Ahora tiene ": { "msgstr" : "Ahora tiene "},
   "Se ha cumplido el alineamiento esta aventura": { "msgstr" : "Se ha cumplido el alineamiento esta aventura."},
-  //Textos executeCurar
+  //Textos EXECUTECURAR
   "La cantidad de daño a curar debe ser un número:": { "msgstr" : "La cantidad de daño a curar debe ser un número:"},
   " recupera %s PG, para un total de %s/%s.": { "msgstr" : " recupera %s PG, para un total de %s/%s."},
-  //Texto de executeHerir
+  //Texto de EXECUTEHERIR
   "El nombre del atributo o condición a aplicar no se encuentra.": { "msgstr" : "El nombre del atributo o condición a aplicar no se encuentra."},
   "Es necesario un atributo o herida que aplicar": { "msgstr" : "Es necesario un atributo o herida que aplicar."},
   " está ahora %s": { "msgstr" : " está ahora %s"},
-  //Texto de executeDanyo
+  //Texto de EXECUTEDANYO
   " tira danyo": { "msgstr" : " tira daño"},
   " sufre daño": { "msgstr" : " sufre daño"},
   "¡%s obtiene un PX!": { "msgstr" : "¡%s obtiene un PX!"},
@@ -90,9 +90,9 @@ I18N.loadLanguage('messages',"es",
   "  TOTAL: ": { "msgstr" : "  TOTAL: "},
   "A %s le quedan %s PG.": { "msgstr" : "A %s le quedan %s PG."},
   "¡%s ha CAIDO!": { "msgstr" : "¡%s ha CAIDO!"},
-  //Texto de executeRoll
+  //Texto de EXECUTEROLL
   " tira los dados": { "msgstr" : " tira los dados"},
-  //Textos de Callbacks
+  //Textos de CALLBACKS
   " dispara.": { "msgstr" : " dispara."},
   " invoca un conjuro.": { "msgstr" : " invoca un conjuro."},
   " gasta 1 punto de munición.": { "msgstr" : " gasta 1 punto de munición."},
@@ -102,15 +102,15 @@ I18N.loadLanguage('messages',"es",
   "¡%s olvida su conjuro!": { "msgstr" : "¡%s olvida su conjuro!"},
   "¡%s pierde el contacto con la magia!": { "msgstr" : "¡%s pierde el contacto con la magia!"},
   " - El modificador por magia se reduce a %s": { "msgstr" : " - El modificador por magia se reduce a %s"},
-  //Texto de executeArchivo
+  //Texto de EXECUTEARCHIVO
   "No tienes ninguna Hoja de Personaje vinculada a este usuario.": { "msgstr" : "No tienes ninguna Hoja de Personaje vinculada a este usuario."},
   "El archivo por defecto para tu usuario está [aquí](%s)": { "msgstr" : "El archivo por defecto para tu usuario está [aquí](%s)"},
-  "No he podido obtener una hoja de cálculo accesible desde %s": { "msgstr" : "No he podido obtener una hoja de cálculo accesible desde %s"},
+  "La Hoja de cálculo con el ID o URL indicada no existe o no tiene el acceso Público.": { "msgstr" : "La Hoja de cálculo con el ID o URL indicada no existe o no tiene el acceso Público."},
   "Solo pueden declararse chats de grupo como Partidas activas.": { "msgstr" : "Solo pueden declararse chats de grupo como Partidas activas."},
   "Para la partida %s se usará el archivo enlazado [aquí](%s)": { "msgstr" : "Para la partida %s se usará el archivo enlazado [aquí](%s)"},
   "Es necesario indicar un ID o URL a un Google Spreadsheet correctamente formateado para comenzar una partida.": { "msgstr" : "Es necesario indicar un ID o URL a un Google Spreadsheet correctamente formateado para comenzar una partida."},
   "Usa /archivo (ID o la URL de la hoja de personaje en google spreadsheets) para asociar una a tu usuario, o /ayuda para aprender como crear una.": { "msgstr" : "Usa /archivo (ID o la URL de la hoja de personaje en google spreadsheets) para asociar una a tu usuario, o /ayuda para aprender como crear una."},
-  //Texto de executeAyuda
+  //Texto de EXECUTEAYUDA
   "Bienvenido a la ayuda de DWMochilaBot (/ayuda)": { "msgstr" : "Bienvenido a la ayuda de DWMochilaBot (/ayuda)"},
 "Este bot permite organizar y jugar partidas del juego de rol Dungeon World a través de Telegram.": { "msgstr" : "Este bot permite organizar y jugar partidas del juego de rol Dungeon World a través de Telegram."},
 "Para ello, enlaza un archivo de Google Spreadsheets con el chat de juego y sus usuarios para usar los valores del personaje en la partida.": { "msgstr" : "Para ello, enlaza un archivo de Google Spreadsheets con el chat de juego y sus usuarios para usar los valores del personaje en la partida."},

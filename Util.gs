@@ -26,6 +26,7 @@ function sendText(id,text) {
   };
   //var url = telegramUrl + "/sendMessage?chat_id=" + id + "&text=" + text+"&parse_mode=Markdown";
   //var response = UrlFetchApp.fetch(url);
+  Logger.log(JSON.stringify(data));
   var response = UrlFetchApp.fetch('https://api.telegram.org/bot'+tokenString+'/',data);
   Logger.log(response.getContentText());
 }

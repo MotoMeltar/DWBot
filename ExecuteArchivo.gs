@@ -44,8 +44,9 @@ function executePartida(dl) {
     cargaArchivoEnProperties(prefijoChat+dl.id,ssIdPartida);
     respuesta = Utilities.formatString(_("Para la partida %s se usará el archivo enlazado [aquí](%s)"),bold(dl.chatTitle),getSheetURL(ssIdPartida));
   } else {
-    respuesta = Utilities.formatString(_("No he podido obtener una hoja de cálculo accesible desde %s"),dl.parametros[0]);
+    respuesta = _("La Hoja de cálculo con el ID o URL indicada no existe o no tiene el acceso Público.");
   }
+  Logger.log("RESPUESTA PARTIDA:"+respuesta);
    sendText(dl.id,respuesta);
 
 }

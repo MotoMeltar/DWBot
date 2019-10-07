@@ -53,7 +53,7 @@ var dataMensaje = {
       "first_name": "Angel",
       "last_name": "García",
       "username": "MotoMeltar",
-      "type": "private"
+      "type": "group"
     },
     "date": 1566564132,
     "text": "/tira",
@@ -145,6 +145,11 @@ function testMov() {
 
 function testLevelup() {
   dataMensaje.message.text = "/levelup";
+  doPostData(dataMensaje);
+}
+
+function testPartida() {
+  dataMensaje.message.text = "/partida https://docs.google.com/spreadsheets/d/1yjFgHL6HHZnLzDT6PgfOaDEf1K1EZrqJPPj_qCxkcg8/edit";
   doPostData(dataMensaje);
 }
 
