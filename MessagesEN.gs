@@ -102,7 +102,7 @@ I18N.loadLanguage('messages',"en",
   "¡%s olvida su conjuro!": { "msgstr" : "¡%s forgets the spell!"},
   "¡%s pierde el contacto con la magia!": { "msgstr" : "¡%s loses affinity with magic!"},
   " - El modificador por magia se reduce a %s": { "msgstr" : " - The magic modifier is reduced to %s"},
-  //Texto de executeArchivo
+  //Texto de EXECUTEARCHIVO
   "No tienes ninguna Hoja de Personaje vinculada a este usuario.": { "msgstr" : "There is no character sheet file linked to this user."},
   "El archivo por defecto para tu usuario está [aquí](%s)": { "msgstr" : "Default file for this user is located [here](%s)"},
   "La Hoja de cálculo con el ID o URL indicada no existe o no tiene el acceso Público.": { "msgstr" : "The spreadsheet belonging to the URL or ID provided doesn't exist or is not declared as Public."},
@@ -110,7 +110,9 @@ I18N.loadLanguage('messages',"en",
   "Para la partida %s se usará el archivo enlazado [aquí](%s)": { "msgstr" : "For the %s game, we'll use the file linked [here](%s)"},
   "Es necesario indicar un ID o URL a un Google Spreadsheet correctamente formateado para comenzar una partida.": { "msgstr" : "You must add a valid Google Spreadsheet ID or URL to start a game."},
   "Usa /archivo (ID o la URL de la hoja de personaje en google spreadsheets) para asociar una a tu usuario, o /ayuda para aprender como crear una.": { "msgstr" : "Use /file (Google Spreadsheet ID or URL) to link a character sheet spreadsheet to your user, or /help to learn how to create one."},
-  //Texto de executeAyuda
+  "ssIdPlantilla": { "msgstr" : "1ZYMtHsmXuwbm91inW2apSTYuTvxP6IsZg6ccOeTTGQE"},
+  
+  //Texto de EXECUTEAYUDA
   "Bienvenido a la ayuda de DWMochilaBot (/ayuda)": { "msgstr" : "Welcome to DWMochilaBot help (/help)"},
 "Este bot permite organizar y jugar partidas del juego de rol Dungeon World a través de Telegram.": { "msgstr" : "This bot allows to organice and play Dungeon worls RPG's games through Telegram."},
 "Para ello, enlaza un archivo de Google Spreadsheets con el chat de juego y sus usuarios para usar los valores del personaje en la partida.": { "msgstr" : "To that end, it links a Google Spreadssheet file with the game chat and uses its values for every character in the game."},
@@ -140,7 +142,7 @@ I18N.loadLanguage('messages',"en",
 "/sab  (mod)(comentario)  - Hace una tirada con el atributo de Sabiduría.": { "msgstr" : "/wis  (mod)(comment)  - Makes a Wisdom roll. "},
 "/int  (mod)(comentario)  - Hace una tirada con el atributo de Inteligencia.": { "msgstr" : "/int  (mod)(comment)  - Makes an Intelligence roll."},
 "/car  (mod)(comentario)  - Hace una tirada con el atributo de Carisma.": { "msgstr" : "/cha  (mod)(comment)  - Makes a Charisma roll."},
-"/daño (expression)(comentario) - el personaje hace una tirada de daño, siguiendo una expresión de tirada de dados. Si no hay expresión, usa su tirada de daño de la hoja de personaje.": { "msgstr" : "/damage (expression)(comment) - The character rolls for damage, using the die roll expression provided. If there is no expression, will use the Damage roll in their character's sheet."},
+"/daño (expresion)(texto) - el personaje hace una tirada de daño, siguiendo una expresión de tirada de dados. Si no hay expresión, usa su tirada de daño de la hoja de personaje.": { "msgstr" : "/damage (expression)(comment) - The character rolls for damage, using the die roll expression provided. If there is no expression, will use the Damage roll in their character's sheet."},
 "/mov (movimiento) - Se muestra una descripción del movimiento consultado. Si no se incluye un movimiento, devuelve la lista de movimientos a consultar.": { "msgstr" : "/mov (move) - shows a description of the move. If no move is provided, it returns a list of the moves you can read."},
 "/equipo - Muestra la lista de equipo del personaje.": { "msgstr" : "/equip - Shows the character's equipment."},
 "/acampar  - el personaje acampa, curándose y reduciendo sus raciones.": { "msgstr" : "/camp  - the character camps, healing and consuming rations."},

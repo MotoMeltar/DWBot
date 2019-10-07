@@ -6,7 +6,7 @@ function cargaAyuda(param) {
   case "GAME":
     respuesta += bold(_("Crear y gestionar partidas (/ayuda partida)"))+RETORNO_CARRO_HTML;
     respuesta += _('Para crear una partida de Dungeon World, sigue estos pasos.')+RETORNO_CARRO_HTML;
-    respuesta += Utilities.formatString(_("1-Accede a la plantilla de hojas de personaje [aquí(%s)]"),getSheetURL(ssIdPlantilla))+RETORNO_CARRO_HTML;
+    respuesta += Utilities.formatString(_("1-Accede a la plantilla de hojas de personaje [aquí](%s)"),getSheetURL(_("ssIdPlantilla")))+RETORNO_CARRO_HTML;
     respuesta += _("2-Selecciona 'File'-->'Make a Copy'")+RETORNO_CARRO_HTML;
     respuesta += _("3-En tu copia pulsa sobre el Botón 'Share'-->Advanced-->Cambia la visibilidad del archivo a 'Public on the web'")+RETORNO_CARRO_HTML;
     respuesta += _("4-Comparte el enlace con tus jugadores para que creen sus personajes.")+RETORNO_CARRO_HTML;
@@ -15,7 +15,7 @@ function cargaAyuda(param) {
     respuesta += _("El bot encontrará el personaje de cada jugador recorriendo las fichas y tomando aquella cuyo alias de Telegram coincida.")+RETORNO_CARRO_HTML;
     respuesta += _("Una vez se lance con éxito un comando en el chat de grupo, el jugador podrá usar comandos por [privado](https://telegram.me/DWMochilaBot).")+RETORNO_CARRO_HTML+RETORNO_CARRO_HTML;
     respuesta += bold(_("Comandos de gestión de archivos"))+RETORNO_CARRO_HTML;
-    respuesta += _("/partida (URL o ID de google spreadsheets)- Asigna al grupo de Telegram un archivo de fichas de personaje. Todos los comandos que se usen en ese grupo, lo harán contra ese arhivo")+RETORNO_CARRO_HTML;
+    respuesta += _("/partida (URL o ID de google spreadsheets)- Asigna al grupo de Telegram un archivo de fichas de personaje. Todos los comandos que se usen en ese grupo, lo harán contra ese archivo")+RETORNO_CARRO_HTML;
     respuesta += _("/archivo (URL o ID de google spreadsheets)- Sin parámetro, te devuelve cual es tu archivo por defecto. Si pones una URL o ID de hojas de personaje, cambia tu archivo por defecto.");
     break;
   case "PERSONAJES":
@@ -24,14 +24,15 @@ function cargaAyuda(param) {
     respuesta += _("/ayuda  - Muestra la lista de comandos del bot.")+RETORNO_CARRO_HTML;
     respuesta += _("/status - Muestra la información del personaje. Características, puntos de golpe, experiencia, oro, etc.")+RETORNO_CARRO_HTML;
     respuesta += _("/tira (mod)(comentario)  - Hace una tirada de dados de DW. (mod) sería el modificador a la tirada (-2,+1, etc.) o una expresión de dados (1d10+2)")+RETORNO_CARRO_HTML;
-    respuesta += _("/fue  (mod)(texto)  - Hace una tirada con el atributo de Fuerza. En caso de no tener modificador, buscará el valor en la hoja de personaje.")+RETORNO_CARRO_HTML;
-    respuesta += _("/des  (mod)(texto)  - Hace una tirada con el atributo de Destreza. En caso de no tener modificador, buscará el valor en la hoja de personaje.")+RETORNO_CARRO_HTML;
-    respuesta += _("/con  (mod)(texto)  - Hace una tirada con el atributo de Constitución. En caso de no tener modificador, buscará el valor en la hoja de personaje.")+RETORNO_CARRO_HTML;
-    respuesta += _("/sab  (mod)(texto)  - Hace una tirada con el atributo de Sabiduría. En caso de no tener modificador, buscará el valor en la hoja de personaje.")+RETORNO_CARRO_HTML;
-    respuesta += _("/int  (mod)(texto)  - Hace una tirada con el atributo de Inteligencia. En caso de no tener modificador, buscará el valor en la hoja de personaje.")+RETORNO_CARRO_HTML;
-    respuesta += _("/car  (mod)(texto)  - Hace una tirada con el atributo de Carisma. En caso de no tener modificador, buscará el valor en la hoja de personaje.")+RETORNO_CARRO_HTML;
+    respuesta += _("Los comandos de tiradas por características, si no tienen modificador, tomarán el modificador de la hoja de personaje.")+RETORNO_CARRO_HTML;
+    respuesta += _("/fue  (mod)(comentario)  - Hace una tirada con el atributo de Fuerza.")+RETORNO_CARRO_HTML;
+    respuesta += _("/des  (mod)(comentario)  - Hace una tirada con el atributo de Destreza.")+RETORNO_CARRO_HTML;
+    respuesta += _("/con  (mod)(comentario)  - Hace una tirada con el atributo de Constitución.")+RETORNO_CARRO_HTML;
+    respuesta += _("/sab  (mod)(comentario)  - Hace una tirada con el atributo de Sabiduría.")+RETORNO_CARRO_HTML;
+    respuesta += _("/int  (mod)(comentario)  - Hace una tirada con el atributo de Inteligencia.")+RETORNO_CARRO_HTML;
+    respuesta += _("/car  (mod)(comentario)  - Hace una tirada con el atributo de Carisma.")+RETORNO_CARRO_HTML;
     respuesta += _("/daño (expresion)(texto) - el personaje hace una tirada de daño, siguiendo una expresión de tirada de dados. Si no hay expresión, usa su tirada de daño de la hoja de personaje.")+RETORNO_CARRO_HTML;
-    respuesta += _("/mov (movimiento) - Se muestra una descripción del movimiento consultado.")+RETORNO_CARRO_HTML;
+    respuesta += _("/mov (movimiento) - Se muestra una descripción del movimiento consultado. Si no se incluye un movimiento, devuelve la lista de movimientos a consultar.")+RETORNO_CARRO_HTML;
     respuesta += _("/equipo - Muestra la lista de equipo del personaje.")+RETORNO_CARRO_HTML;
     respuesta += _("/acampar  - el personaje acampa, curándose y reduciendo sus raciones.")+RETORNO_CARRO_HTML;
     respuesta += _("/disparar  - el personaje realiza el movimiento de disparar.")+RETORNO_CARRO_HTML;

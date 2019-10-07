@@ -45,7 +45,6 @@ var posiciones_old = { oro: { fila:4, columna: 5, nombre: "Oro", contable: "mone
 
 
 var hojasAMigrar = ["Barbaro","Clerigo","Druida","Explorador","Guerrero","Ladrón","Paladín"];
-var ssIdPlantilla = "1x_2ueQwCL3IBiA3YY7ymssrRRW1wg92rL_OfdMPCe4k";
 
 
 function Migrar() {
@@ -53,7 +52,7 @@ function Migrar() {
   var oldSpreadsheet = SpreadsheetApp.openById(getSsIdFromProperties("DEFAULT"));
   var oldAllsheets = oldSpreadsheet.getSheets();
   
-  var newSpreadsheet = SpreadsheetApp.openById(ssIdPlantilla).copy("DW: Migradas");
+  var newSpreadsheet = SpreadsheetApp.openById(_("ssIdPlantilla")).copy("DW: Migradas");
   var newAllsheets = newSpreadsheet.getSheets();
 
   for (var hojaAMigrar in hojasAMigrar) {
