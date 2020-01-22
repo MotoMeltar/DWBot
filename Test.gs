@@ -108,7 +108,7 @@ function testConjuro() {
 }
 
 function testCurar() {
-  dataMensaje.message.text = "/curar 4 @MotoMeltar";
+  dataMensaje.message.text = "/curar 1d4 @Willmor";
   doPostData(dataMensaje);
 }
 

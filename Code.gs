@@ -535,7 +535,7 @@ function executeFijar(dl) {
   Logger.log("Valor original:|"+values[posicion.fila-1][posicion.columna-1]+"|   Nuevo valor:"+valor);
   
   if (dl.isActivo) {
-    grabarXPosicion(objetivo, posicion,valorMod);
+    grabarXPosicion(objetivo, posicion,valor);
   } else {
     respuesta += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
   }
@@ -564,13 +564,24 @@ function executeCurar(dl) {
   var curacion = "";
   var respuesta = "";
   var texto_descriptivo = "";
-  if (dl.parametros.length==0 || isNaN(dl.parametros[0])) {
+  var expresion = "";
+    var tirada = "";
+
+  if (dl.parametros.length>0 && dl.parametros[0].toLowerCase().match(rexp)!=null) {
+     expresion = dl.parametros[0];
+     tirada = tiraDados(expresion);
+     curacion = eval(tirada);
+  } else if (dl.parametros.length==0 || isNaN(dl.parametros[0])) {
     sendText(dl.id,_("La cantidad de daño a curar debe ser un número:")+dl.parametros[0]);
     return;
+  } else {
+    curacion = dl.parametros[0];
   }
-  curacion = dl.parametros[0];
-  Logger.log("Cantidad de curacion:"+curacion);
+  
   dl.parametros.shift();
+  
+  Logger.log("Cantidad de curacion:"+curacion);
+
   var objetivo = "";
   if (dl.parametros.length>0) {
     var nombrePJ = dl.parametros[0];
