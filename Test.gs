@@ -46,14 +46,14 @@ var dataMensaje = {
       "first_name": "Angel",
       "last_name": "García",
       "username": "MotoMeltar",
-      "language_code": "fr" //"es"
+      "language_code": "es" //"fr"
     },
     "chat": {
       "id": 2937540,
       "first_name": "Angel",
       "last_name": "García",
       "username": "MotoMeltar",
-      "type": "group"
+      "type": "private"
     },
     "date": 1566564132,
     "text": "/tira",
@@ -74,7 +74,7 @@ function testAcampar() {
 }
 
 function testArchivo() {
-  dataMensaje.message.text = "/archivo 1YLm9s-30ZzjwoHCNfdYfn4EfkuWOb0P9ah53Io8DZ5A";
+  dataMensaje.message.text = "/archivo https://docs.google.com/spreadsheets/d/1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw/edit?usp=sharing";
   doPostData(dataMensaje);
 }
 
@@ -97,7 +97,7 @@ function testCallback() {
 }
 
 function testCon() {
-    dataMensaje.message.text = "/int +1 Me cubro con mi escudo";
+    dataMensaje.message.text = "/int +1 herc Me cubro con mi escudo";
     doPostData(dataMensaje);
   
 }
@@ -118,7 +118,7 @@ function testDanyo() {
 }
 
 function testDar() {
-  dataMensaje.message.text = "/dar 1 px @MotoMeltar al";
+  dataMensaje.message.text = "/dar 1 px Willmor al";
   doPostData(dataMensaje);
 }
 
@@ -130,6 +130,11 @@ function testDisparar() {
 function testEquipo() {
   dataMensaje.message.text = "/equipo";
   doPostData(dataMensaje);
+}
+
+function testFijar() {
+    dataMensaje.message.text = "/set 1d10+5 danyo @Willmor";
+    doPostData(dataMensaje);
 }
 
 function testHerir() {
@@ -155,7 +160,7 @@ function testPartida() {
 
 function testStatus() {  
   sendText(id,"Prueba de consulta con parámetro");
-  dataMensaje.message.text = "/status@DWMochilaBot @Dafoth";
+  dataMensaje.message.text = "/status@DWMochilaBot @Willmor";
   doPostData(dataMensaje);
 
   sendText(id,"Prueba de consulta sin parámetro");
@@ -185,9 +190,21 @@ function testTiraYDX() {
   
 }
 
+function testTocar() {
+  dataMensaje.message.from.language_code = "en";// abastecerse";
+  dataMensaje.message.text = "/tocar +2";
+  doPostData(dataMensaje);
+}
+
 function testVida() {
   dataMensaje.message.from.language_code = "en";// abastecerse";
   dataMensaje.message.text = "/vida";
   doPostData(dataMensaje);
+}
+
+function TestConDatosLLamada() {
+  
+  datosLlamada = {"sheet":{},"isActivo":false,"hojaPJ":"","values":null,"parametros":["https://docs.google.com/spreadsheets/d/1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw/edit#gid=1545656547"],"chatTitle":"Crónicas de Murogris: La caza del Orgullo Inmortal","isCallback":false,"text":"/partida https://docs.google.com/spreadsheets/d/1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw/edit#gid=1545656547","name":"MotoMeltar","id":-363628446,"userId":2937540,"chatType":"group","nombrePJ":"MotoMeltar","isPrivate":false,"ssId":"1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw","hayHojaPJ":false,"isGM":true};
+  procesaMensaje(datosLlamada);
 }
             

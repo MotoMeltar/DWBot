@@ -156,6 +156,13 @@ I18N.loadLanguage('messages',"en",
   "MAIN": { "msgstr" : "PRINCIPAL"},
   "GAME" : { "msgstr" : "PARTIDA"},
   "CHARACTERS": { "msgstr" : "PERSONAJES"},
-  "GM": { "msgstr" : "DJ"}
-
-});
+  "GM": { "msgstr" : "DJ"},
+"¡Los apetitos de %s tienen terribles consecuencias!": { "msgstr" : "%s apetites have terrible consequences!"},
+" toca una mágica melodía.": { "msgstr" : " plays a magical melody."},
+"%s cura a su compañero %s pg.": { "msgstr" : "%s heald %s hp to his partner."},
+"%s aumenta el daño de un compañero en +1d4.": { "msgstr" : "%s augments a partner's damage +1d4."},
+"%s libera a un compañero de un encantamiento.": { "msgstr" : "%s frees a friend's mind from an enchantment."},
+"%s hace que la próxima ayuda de un compañero a otro otorgue un +2.": { "msgstr" : "%s raises the help bonus to an ally to +2."},
+"El valor de %s del personaje %s es ahora %s.": { "msgstr" : "%s's value for %s is now %s."}
+}
+);

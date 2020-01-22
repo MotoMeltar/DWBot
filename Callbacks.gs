@@ -84,6 +84,34 @@ function conjuro_penalizador(dl) {
   sendText(dl.id,respuesta);
 }
 
+function musica_curar(dl) {
+  Logger.log("ejecutando callback musica_curar");
+  respuesta =  Utilities.formatString(_("%s cura a su compañero %s pg."),bold(dl.nombrePJ), tiraDX(8));
+  Logger.log("RESPUESTA: "+respuesta);
+  sendText(dl.id,respuesta);
+}
+
+function musica_danyo(dl) {
+  Logger.log("ejecutando callback musica_danyo");
+  respuesta =  Utilities.formatString(_("%s aumenta el daño de un compañero en +1d4."),bold(dl.nombrePJ));
+  Logger.log("RESPUESTA: "+respuesta);
+  sendText(dl.id,respuesta);
+}
+
+function musica_encantamiento(dl) {
+  Logger.log("ejecutando callback musica_encantamiento");
+  respuesta =  Utilities.formatString(_("%s libera a un compañero de un encantamiento."),bold(dl.nombrePJ));
+  Logger.log("RESPUESTA: "+respuesta);
+  sendText(dl.id,respuesta);
+}
+
+function musica_ayudar(dl) {
+  Logger.log("ejecutando callback musica_ayudar");
+  respuesta =  Utilities.formatString(_("%s hace que la próxima ayuda de un compañero a otro otorgue un +2."),bold(dl.nombrePJ));
+  Logger.log("RESPUESTA: "+respuesta);
+  sendText(dl.id,respuesta);
+}
+
 function levelupChar(dl) {
   Logger.log("ejecutando callback levelup_fue");
   var caracteristica = dl.posiciones[parametros[0]];

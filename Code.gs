@@ -32,13 +32,6 @@ var posiciones = { oro: { fila:5, columna: 4, nombre: "Oro", contable: "monedas 
                   enjuego: { fila:5, columna: 5, nombre: "En juego"},
                   equipo: { fila:41, columna: 2, nombre: "En juego",columnaUsos: 3, columnaNotas:6, filafin:51}
                  };
-var masterTabla = { 
-  id: "Master Tabla",
-  informacion: { clase:0,nombre:1,alias:2, pg:8, pgmax:7, check: 3, checkAlin: 6 },
-  clases: { inicial: 1, final: 11 }
-}
-  
-
 
 function getMe() {
   var url = telegramUrl + "/getMe";
@@ -109,10 +102,10 @@ function procesaMensaje(dl) {
     executeCharRoll(dl, posiciones.car);
   } else if (esComando(comando,"/disparar") || esComando(comando,"/volley")) {
     Logger.log("Ejecutando comando de Tirada Disparar");
-    executeParcialTeclado(dl, _(" dispara."), posiciones.des, keyboard.disparar[I18N.getLocale()]);
+    executeTiradaTeclado(dl, _(" dispara."), posiciones.des, keyboard.disparar[I18N.getLocale()], true);
   } else if (esComando(comando,"/conjuro") || esComando(comando,"/cast")) {
     Logger.log("Ejecutando comando de Tirada Conjuro");
-    executeParcialTeclado(dl, _(" invoca un conjuro."), posiciones.magia, keyboard.conjuro[I18N.getLocale()]);
+    executeTiradaTeclado(dl, _(" invoca un conjuro."), posiciones.magia, keyboard.conjuro[I18N.getLocale()], true);
   } else if (esComando(comando,"/acampar") || esComando(comando,"/camp")) {
     Logger.log("Ejecutando comando Acampar");
     executeAcampar(dl);
@@ -134,6 +127,12 @@ function procesaMensaje(dl) {
   } else if (esComando(comando,"/levelup")) {
     Logger.log("Ejecutando comando Level Up");
     executeLevelUp(dl);
+  } else if (esComando(comando,"/archivo") || esComando(comando,"/file")) {
+    Logger.log("Ejecutando comando Archivo");
+    executeArchivo(dl);
+  } else if (esComando(comando,"/tocar") || esComando(comando,"/play")) {
+    Logger.log("Ejecutando comando Tocar");
+    executeTiradaTeclado(dl, _(" toca una mágica melodía."), posiciones.car, keyboard.musica[I18N.getLocale()], false);
   } else if (dl.isGM) {
     Logger.log("Entramos en comandos de GM");
     if (esComando(comando,"/curar") || esComando(comando,"/cura") || esComando(comando,"/heal")) {
@@ -145,12 +144,12 @@ function procesaMensaje(dl) {
     } else if (esComando(comando,"/dar") || esComando(comando,"/give")) {
       Logger.log("Ejecutando comando Dar");
       executeDar(dl);
-    } else if (esComando(comando,"/archivo") || esComando(comando,"/file")) {
-      Logger.log("Ejecutando comando Archivo");
-      executeArchivo(dl);
     } else if (esComando(comando,"/partida") || esComando(comando,"/game")) {
       Logger.log("Ejecutando comando Partida");
       executePartida(dl);
+    } else if (esComando(comando,"/fijar") || esComando(comando,"/set")) {
+      Logger.log("Ejecutando comando Fijar");
+      executeFijar(dl);
     }
   }
 }
@@ -366,10 +365,17 @@ function executeCharRoll(dl, posicion) {
   var modificador = 0;
   var texto_descriptivo = "";
   var respuesta = "";
+  var esHerc = false;
   if (dl.parametros.length>0) {
     if (!isNaN(dl.parametros[0])) {
       modificador = dl.parametros[0];
       texto_descriptivo += "["+modificador+"]";
+      dl.parametros.shift();
+    }
+  }
+  if (dl.parametros.length>0) {
+    if (dl.parametros[0] == 'herc') {
+      esHerc = true;
       dl.parametros.shift();
     }
   }
@@ -384,7 +390,11 @@ function executeCharRoll(dl, posicion) {
     }
   //}
 
-  respuesta = tiraDW(modificador, texto_descriptivo, texto_accion, dl);
+  if (esHerc) {
+    respuesta = tiraHerc(modificador, texto_descriptivo, texto_accion, dl);
+  } else {
+    respuesta = tiraDW(modificador, texto_descriptivo, texto_accion, dl);
+  }
   sendText(dl.id,respuesta);
 }
 
@@ -472,6 +482,67 @@ function executeDar(dl) {
   Logger.log("RESPUESTA dar: "+respuesta);
   
   sendText(dl.id,sustituir(respuesta,"+",SUMA));
+}
+
+function executeFijar(dl) {
+  
+  var respuesta = "";
+  var texto_descriptivo = "";
+  //Primer parámetro: Valor
+  var valor = dl.parametros[0];
+  Logger.log("Valor:"+valor);
+  dl.parametros.shift();
+  
+  //Segundo parámetro: campo a modificar
+  var posicion = posiciones[dl.parametros[0]];
+  Logger.log("Posicion: "+JSON.stringify(posicion));
+  if (posicion == undefined) {
+    sendText(dl.id,_("No encuentro el campo que mencionas: ")+dl.parametros[0]);
+    return;
+  }
+  dl.parametros.shift();
+  
+  //Tercer parámetro: Personaje
+  var objetivo = "";
+  if (dl.parametros.length>0) {
+    var nombrePJ = dl.parametros[0];
+    Logger.log("parametros tras quitar expresion:"+dl.parametros+" y nombre extraído:"+nombrePJ);
+    var hojaPJ = findSheetByPCName(nombrePJ,dl.ssId);
+    var hayficha = hojaPJ!="";
+    if (hayficha) {
+      objetivo = hojaPJ;
+      Logger.log("hoja objetivo:"+valorXPosicion(hojaPJ,posiciones.nombre));
+      dl.parametros.shift();
+    } else {
+      sendText(dl.id,_("No se encuentra hoja de personaje para Alias:")+nombrePJ);
+      return;
+    }
+  } else {
+      sendText(dl.id,_("Falta el alias del personaje a modificar"));
+      return;
+    }
+
+  if (dl.parametros.length>0) {
+    texto_descriptivo = " ("+cursiva(mensajeParametros(dl.parametros))+")";
+  }
+  
+  var values = objetivo.getDataRange().getValues();
+  var nombrePJ = bold(values[posiciones.nombre.fila-1][posiciones.nombre.columna-1]);
+  Logger.log("Nombre del personaje objetivo:"+nombrePJ);
+
+  respuesta = Utilities.formatString(_("El valor de %s del personaje %s es ahora %s."),cursiva(posicion.nombre),nombrePJ,valor);
+    
+  Logger.log("Valor original:|"+values[posicion.fila-1][posicion.columna-1]+"|   Nuevo valor:"+valor);
+  
+  if (dl.isActivo) {
+    grabarXPosicion(objetivo, posicion,valorMod);
+  } else {
+    respuesta += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
+  }
+
+  Logger.log("RESPUESTA fijar: "+respuesta);
+  
+  sendText(dl.id,respuesta);
 }
 
 function marcarAlineamiento(name, hojaPJ,isActivo) {
@@ -642,7 +713,7 @@ function executeDanyo(dl) {
   sendText(dl.id,sustituir(respuesta,"+",SUMA));
 }
 
-function executeParcialTeclado(dl, texto_accion, posicion, teclado) {
+function executeTiradaTeclado(dl, texto_accion, posicion, teclado, soloParcial) {
   
   var modificador = 0;
   var texto_descriptivo = "";
@@ -671,7 +742,7 @@ function executeParcialTeclado(dl, texto_accion, posicion, teclado) {
   Logger.log("RESPUESTA: "+respuesta+" con resultado:"+resultado);
 
   
-  if (resultado!=null && isExitoParcial(resultado)) {
+  if (resultado!=null && (isExitoParcial(resultado) || (!soloParcial && resultado>6))) {
     var textoEncoded = codeMarkdown(respuesta);
     sendTextKeyboard(dl.id,textoEncoded,teclado);
   } else {
@@ -734,7 +805,7 @@ function doPost(e) {
 function doPostData(data) {
   var datosLlamada = new DatosLlamada(data);
   
-  //Logger.log("Objeto DatosLlamada:"+JSON.stringify(datosLlamada));
+  Logger.log("Objeto DatosLlamada:"+JSON.stringify(datosLlamada));
 
   
   if (datosLlamada.isCallback) {

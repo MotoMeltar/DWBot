@@ -156,6 +156,13 @@ I18N.loadLanguage('messages',"es",
   "PRINCIPAL": { "msgstr" : "PRINCIPAL"},
   "PARTIDA" : { "msgstr" : "PARTIDA"},
   "PERSONAJES": { "msgstr" : "PERSONAJES"},
-  "DJ": { "msgstr" : "DJ"}
+  "DJ": { "msgstr" : "DJ"},
+"¡Los apetitos de %s tienen terribles consecuencias!": { "msgstr" : "¡Los apetitos de %s tienen terribles consecuencias!"},
+" toca una mágica melodía.": { "msgstr" : " toca una mágica melodía."},
+"%s cura a su compañero %s pg.": { "msgstr" : "%s cura a su compañero %s pg."},
+"%s aumenta el daño de un compañero en +1d4.": { "msgstr" : "%s aumenta el daño de un compañero en +1d4."},
+"%s libera a un compañero de un encantamiento.": { "msgstr" : "%s libera a un compañero de un encantamiento."},
+"%s hace que la próxima ayuda de un compañero a otro otorgue un +2.": { "msgstr" : "%s hace que la próxima ayuda de un compañero a otro otorgue un +2."},
+"El valor de %s del personaje %s es ahora %s.": { "msgstr" : "El valor de %s del personaje %s es ahora %s."}
 }
 );

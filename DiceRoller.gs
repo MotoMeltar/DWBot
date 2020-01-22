@@ -82,6 +82,58 @@ function tiraDW(modificador, texto_descriptivo, texto_accion, dl) {
   return respuesta;
 }
 
+/**
+ * Realiza una tirada de habilidad de Dungeon World (2d6 + modificador)
+ * @param name Nombre del personaje
+ * @id identificador del chat
+ * @modificador Modificador de característica a aplicar a la tirada
+ */
+function tiraHerc(modificador, texto_descriptivo, texto_accion, dl) {
+  
+  var dado1 = tiraDX(8);
+  var dado2 = tiraD6();
+  if (isNaN(modificador)) {
+    modificador = 0;
+  }
+  var texto_modificador = "";
+  var respuesta = "";
+  var resultado = dado1+dado2;
+  if (modificador!=0) {
+    texto_modificador = " "+SUMA+" ("+modificador+")";
+    resultado = resultado + parseInt(modificador);
+  }
+  
+  var nombrePJ = bold(dl.name);
+  var hayficha = dl.hojaPJ!="";
+  if (hayficha) {
+    nombrePJ = bold(valorXPosicion(dl.hojaPJ, posiciones.nombre));
+  } 
+  var texto_herc = "";
+  if(dado2>dado1) {
+    texto_herc = RETORNO_CARRO+Utilities.formatString(_("¡Los apetitos de %s tienen terribles consecuencias!"),nombrePJ);
+  }
+  
+  var texto_experiencia = "";
+  if (resultado<7) {
+      var cadena = Utilities.formatString(_("¡%s obtiene un PX!"),nombrePJ);
+      texto_experiencia = RETORNO_CARRO+bold(cadena);
+      if (hayficha) {
+        var px = valorXPosicion(dl.hojaPJ, posiciones.px);
+        Logger.log("PX ANTIGUOS:"+px);
+        if (dl.isActivo) 
+          grabarXPosicion(dl.hojaPJ, posiciones.px,px+1);
+        texto_experiencia = texto_experiencia+RETORNO_CARRO+_("PX totales:")+valorXPosicion(dl.hojaPJ, posiciones.px);
+        if (!dl.isActivo)
+          texto_experiencia += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
+      }
+  }
+  respuesta = nombrePJ + texto_accion+" (herc) "+texto_descriptivo+": "+RETORNO_CARRO+
+      dado1+ " "+SUMA+" " + dado2 + texto_modificador+RETORNO_CARRO+
+      " = " + bold(resultado)+texto_herc+texto_experiencia;
+  Logger.log("RESPUESTA tiraDADOS: "+respuesta);
+  return respuesta;
+}
+
 function tiraDados(expresion){
   Logger.log("Tirada de dados en Expresión: "+expresion);
 

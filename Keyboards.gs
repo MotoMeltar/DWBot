@@ -45,6 +45,31 @@ var keyboard =  { disparar:
      ]
    }
    },
+   musica: 
+   { "es" : {
+     inline_keyboard: [
+       [
+         {text:'Cura 1d8 de daño',callback_data:'musica_curar'},
+         {text:'+1d4 al daño',callback_data:'musica_danyo'}
+       ],
+       [
+         {text:'Liberar de encantamiento',callback_data:'musica_encantamiento'},
+         {text:'+2 al ayudar',callback_data:'musica_ayudar'}
+       ]
+     ]
+   },"en" : {
+     inline_keyboard: [
+       [
+         {text:'Heals 1d8 damage',callback_data:'musica_curar'},
+         {text:'+1d4 to damage',callback_data:'musica_danyo'}
+       ],
+       [
+         {text:'Release from enchantment',callback_data:'musica_encantamiento'},
+         {text:'+2 to help',callback_data:'musica_ayudar'}
+       ]
+     ]
+   }
+   },
    level_up_caracteristica: 
    { "es" : {
      inline_keyboard: [
