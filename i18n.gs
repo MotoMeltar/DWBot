@@ -56,7 +56,7 @@ Utilities.formatString(I18N.ngettext("I have %s apple", "I have %s apples", n), 
       return msgid1;
 
     var locale = getLocale();
-    Logger.log("LOCALE:"+locale)
+    //Logger.log("LOCALE:"+locale)
     if(!locale)
       return msgid1;
     

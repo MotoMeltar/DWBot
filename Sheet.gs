@@ -92,11 +92,29 @@ function cargaHojaPersonaje(username,dl) {
       Logger.log("hoja objetivo:"+valorXPosicion(hojaPJ,posiciones.nombre));
       dl.parametros.shift();
     } else {
-      throw( _("No se encuentra hoja de personaje para Alias:")+bold(username)+_(" en el archivo "+cursiva(dl.sheet.getName())));
+      throw( Utilities.formatString(_("No se encuentra hoja de personaje para Alias:%s en el archivo %s"),bold(username),cursiva(dl.sheet.getName())));
     }
   } else {
-    throw( _("No se encuentra hoja de personaje para Alias:")+bold(username)+_(" ya que no encuentro ningún archivo relacionado con él."));
+    throw( Utilities.formatString(_("No se encuentra hoja de personaje para Alias:%s ya que no encuentro ningún archivo relacionado con él."),bold(username)));
   }
 
   return hojaPJ;
+}
+
+/**
+ * Carga una ficha de otro personaje suministrado por parámetro
+ * @param username Nombre del usuario en Telegram
+ * @param dl Objeto con los datos de la llamada.
+ */
+function cargaHojaPersonajeObligatorio(posicion,dl) {
+  var objetivo = "";
+  if (dl.parametros.length>posicion) {
+    var nombrePJ = dl.parametros[posicion];
+    Logger.log("parametros tras quitar expresion:"+dl.parametros+" y nombre extraído:"+nombrePJ);
+    objetivo = cargaHojaPersonaje(nombrePJ,dl);
+  } else {
+      throw(_("Falta el alias del personaje a modificar"));
+  }
+
+  return objetivo;
 }

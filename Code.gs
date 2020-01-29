@@ -474,36 +474,26 @@ function executeFijar(dl) {
   //Primer parámetro: Valor
   var valor = dl.parametros[0];
   Logger.log("Valor:"+valor);
-  dl.parametros.shift();
   
   //Segundo parámetro: campo a modificar
-  var posicion = posiciones[dl.parametros[0]];
+  var posicion = posiciones[dl.parametros[1]];
   Logger.log("Posicion: "+JSON.stringify(posicion));
   if (posicion == undefined) {
-    sendText(dl.id,_("No encuentro el campo que mencionas: ")+dl.parametros[0]);
-    return;
+    throw(dl.id,_("No encuentro el campo que mencionas: ")+dl.parametros[0]);
   }
-  dl.parametros.shift();
   
   //Tercer parámetro: Personaje
-  var objetivo = "";
-  if (dl.parametros.length>0) {
-    var nombrePJ = dl.parametros[0];
-    Logger.log("parametros tras quitar expresion:"+dl.parametros+" y nombre extraído:"+nombrePJ);
-    objetivo = cargaHojaPersonaje(nombrePJ,dl);
-  } else {
-      throw(_("Falta el alias del personaje a modificar"));
-  }
+  var objetivo = cargaHojaPersonajeObligatorio(2,dl);
 
-  if (dl.parametros.length>0) {
-    texto_descriptivo = " ("+cursiva(mensajeParametros(dl.parametros))+")";
+  if (dl.parametros.length>3) {
+    texto_descriptivo = " ("+cursiva(mensajeParametros(dl.parametros.slice(2)))+")";
   }
   
   var values = objetivo.getDataRange().getValues();
   var nombrePJ = bold(values[posiciones.nombre.fila-1][posiciones.nombre.columna-1]);
   Logger.log("Nombre del personaje objetivo:"+nombrePJ);
 
-  respuesta = Utilities.formatString(_("El valor de %s del personaje %s es ahora %s."),cursiva(posicion.nombre),nombrePJ,valor);
+  respuesta = Utilities.formatString(_("El valor de %s del personaje %s es ahora %s."),cursiva(posicion.nombre),nombrePJ,valor)+texto_descriptivo;
     
   Logger.log("Valor original:|"+values[posicion.fila-1][posicion.columna-1]+"|   Nuevo valor:"+valor);
   

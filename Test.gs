@@ -133,7 +133,7 @@ function testEquipo() {
 }
 
 function testFijar() {
-    dataMensaje.message.text = "/set 1d10+5 danyo @Willmor";
+    dataMensaje.message.text = "/set 1d10+5 danyo @Willmor el vino que tiene asunción";
     doPostData(dataMensaje);
 }
 

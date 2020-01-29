@@ -163,6 +163,8 @@ I18N.loadLanguage('messages',"es",
 "%s aumenta el daño de un compañero en +1d4.": { "msgstr" : "%s aumenta el daño de un compañero en +1d4."},
 "%s libera a un compañero de un encantamiento.": { "msgstr" : "%s libera a un compañero de un encantamiento."},
 "%s hace que la próxima ayuda de un compañero a otro otorgue un +2.": { "msgstr" : "%s hace que la próxima ayuda de un compañero a otro otorgue un +2."},
-"El valor de %s del personaje %s es ahora %s.": { "msgstr" : "El valor de %s del personaje %s es ahora %s."}
+"El valor de %s del personaje %s es ahora %s.": { "msgstr" : "El valor de %s del personaje %s es ahora %s."},
+"No se encuentra hoja de personaje para Alias:%s ya que no encuentro ningún archivo relacionado con él.": { "msgstr" : "No se encuentra hoja de personaje para Alias:%s ya que no encuentro ningún archivo relacionado con él."},
+"No se encuentra hoja de personaje para Alias:%s en el archivo %s": { "msgstr" : "No se encuentra hoja de personaje para Alias:%s en el archivo %s"}
 }
 );
