@@ -43,6 +43,22 @@ function findSheetByPCName(name,ssId) {
   return "";
 }
 
+/**
+ * Devuelve la hoja del personaje a partir de su alias de telegram
+ * @param name Alias de telegram del personaje
+ */
+function findSheetByPCNameWithFile(name,dl) {
+  name = name.replace("@","");
+  var hojas = dl.sheet.getSheets();
+  for(n = 0; n < hojas.length; n++) {
+     if (valorXPosicion(hojas[n],posiciones.alias)==name) {
+       Logger.log("Hoja encontrada:"+hojas[n].getSheetName()+" para nombre:"+name);
+        return hojas[n];//.getSheetName();
+     }
+  }
+  return "";
+}
+
 /** 
  * Devuelve el valor de la celda a partir de la posición
  * @param hoja Hoja Excel que se está consultando
@@ -61,4 +77,26 @@ function valorXPosicion(hoja, posicion) {
  */
 function grabarXPosicion(hoja, posicion, valor) {
   hoja.getRange(posicion.fila, posicion.columna, 1, 1).setValue(valor)
+}
+
+/**
+ * Carga una ficha de otro personaje suministrado por parámetro
+ * @param username Nombre del usuario en Telegram
+ * @param dl Objeto con los datos de la llamada.
+ */
+function cargaHojaPersonaje(username,dl) {
+  if (dl.ssId!=null) {
+    hojaPJ = findSheetByPCNameWithFile(username,dl);
+    var hayficha = hojaPJ!="";
+    if (hayficha) {
+      Logger.log("hoja objetivo:"+valorXPosicion(hojaPJ,posiciones.nombre));
+      dl.parametros.shift();
+    } else {
+      throw( _("No se encuentra hoja de personaje para Alias:")+bold(username)+_(" en el archivo "+cursiva(dl.sheet.getName())));
+    }
+  } else {
+    throw( _("No se encuentra hoja de personaje para Alias:")+bold(username)+_(" ya que no encuentro ningún archivo relacionado con él."));
+  }
+
+  return hojaPJ;
 }

@@ -160,7 +160,7 @@ function testPartida() {
 
 function testStatus() {  
   sendText(id,"Prueba de consulta con parámetro");
-  dataMensaje.message.text = "/status@DWMochilaBot @Willmor";
+  dataMensaje.message.text = "/status@DWMochilaBot @paco";
   doPostData(dataMensaje);
 
   sendText(id,"Prueba de consulta sin parámetro");

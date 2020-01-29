@@ -231,26 +231,14 @@ function executeMov(dl) {
 }
 
 function executeStatus(dl) {
-  var hojaPJ = "";
+  var hojaPJ = dl.hojaPJ;
   var nombrePJ = dl.name;
   if (dl.parametros.length>0) {
     nombrePJ = dl.parametros[0];
-    Logger.log("parametros tras quitar expresion:"+dl.parametros+" y nombre extraído:"+nombrePJ);
-    hojaPJ = findSheetByPCName(nombrePJ,dl.ssId);
-    var hayficha = hojaPJ!="";
-    if (hayficha) {
-      objetivo = hojaPJ;
-      Logger.log("hoja objetivo:"+valorXPosicion(hojaPJ,posiciones.nombre));
-      dl.parametros.shift();
-    } else {
-      sendText(id,_("No se encuentra hoja de personaje para Alias:")+nombrePJ);
-      return;
-    }
-  } else {
-    hojaPJ = dl.hojaPJ;
-  }
+    hojaPJ = cargaHojaPersonaje(nombrePJ,dl);
+  } 
+  
   Logger.log("Buscando hoja para "+nombrePJ+" y encontramos:"+hojaPJ);
-  var respuesta = _("No se encuentra hoja de personaje para Alias:")+name;
   if (hojaPJ!="") {
     var values = hojaPJ.getDataRange().getValues();
     var respuesta = Utilities.formatString(_("%s (%s) tiene:"), bold(values[posiciones.nombre.fila-1][posiciones.nombre.columna-1]),
@@ -267,11 +255,13 @@ function executeStatus(dl) {
       respuesta += RETORNO_CARRO+Utilities.formatString("puedes usar este comando abriéndome un canal %s", link(_("privado"),"https://telegram.me/DWMochilaBot"));
     }
   } else {
+    var logError = _("No se encuentra hoja de personaje para Alias:")+nombrePJ;
     if (dl.ssId!=null) {
-      respuesta += " en la hoja "+dl.sheet.getName();
+      logError += " en la hoja "+dl.sheet.getName();
     } else {
-      respuesta += " ya que no encuentro ningún archivo relacionado con él.";
+      logError += " ya que no encuentro ningún archivo relacionado con él.";
     }
+    throw (logError);
   }
   Logger.log("RESPUESTA: "+respuesta);
   sendText(dl.id,respuesta);
@@ -412,8 +402,7 @@ function executeDar(dl) {
   var texto_alineamiento = "";
   //Primer parámetro: Modificador
   if (dl.parametros.length==0 || isNaN(dl.parametros[0])) {
-    sendText(id,_("El primer parámetro debe ser un número natural: ")+parametros[0]);
-    return;
+    throw(("El primer parámetro debe ser un número natural: ")+parametros[0]);
   }
   modificador = dl.parametros[0];
   Logger.log("Modificador:"+modificador);
@@ -423,12 +412,10 @@ function executeDar(dl) {
   var posicion = posiciones[dl.parametros[0]];
   Logger.log("Posicion: "+JSON.stringify(posicion));
   if (posicion == undefined) {
-    sendText(dl.id,_("No encuentro el campo que mencionas: ")+dl.parametros[0]);
-    return;
+    throw(_("No encuentro el campo que mencionas: ")+dl.parametros[0]);
   }
   if (posicion.contable == undefined) {
-    sendText(dl.id,_("El campo indicado no es contable: ")+dl.parametros[0]);
-    return;
+    throw(_("El campo indicado no es contable: ")+dl.parametros[0]);
   }
   dl.parametros.shift();
   
@@ -437,20 +424,10 @@ function executeDar(dl) {
   if (dl.parametros.length>0) {
     var nombrePJ = dl.parametros[0];
     Logger.log("parametros tras quitar expresion:"+dl.parametros+" y nombre extraído:"+nombrePJ);
-    var hojaPJ = findSheetByPCName(nombrePJ,dl.ssId);
-    var hayficha = hojaPJ!="";
-    if (hayficha) {
-      objetivo = hojaPJ;
-      Logger.log("hoja objetivo:"+valorXPosicion(hojaPJ,posiciones.nombre));
-      dl.parametros.shift();
-    } else {
-      sendText(dl.id,_("No se encuentra hoja de personaje para Alias:")+nombrePJ);
-      return;
-    }
+    objetivo = cargaHojaPersonaje(nombrePJ,dl);
   } else {
-      sendText(dl.id,_("Falta el alias del personaje a modificar"));
-      return;
-    }
+    throw(_("Falta el alias del personaje a modificar"));
+  }
   if (dl.parametros[0]=="al") {
     texto_alineamiento=marcarAlineamiento(nombrePJ, objetivo,dl.isActivo);
     dl.parametros.shift();
@@ -513,16 +490,7 @@ function executeFijar(dl) {
   if (dl.parametros.length>0) {
     var nombrePJ = dl.parametros[0];
     Logger.log("parametros tras quitar expresion:"+dl.parametros+" y nombre extraído:"+nombrePJ);
-    var hojaPJ = findSheetByPCName(nombrePJ,dl.ssId);
-    var hayficha = hojaPJ!="";
-    if (hayficha) {
-      objetivo = hojaPJ;
-      Logger.log("hoja objetivo:"+valorXPosicion(hojaPJ,posiciones.nombre));
-      dl.parametros.shift();
-    } else {
-      sendText(dl.id,_("No se encuentra hoja de personaje para Alias:")+nombrePJ);
-      return;
-    }
+    objetivo = cargaHojaPersonaje(nombrePJ,dl);
   } else {
       sendText(dl.id,_("Falta el alias del personaje a modificar"));
       return;
@@ -592,16 +560,7 @@ function executeCurar(dl) {
   if (dl.parametros.length>0) {
     var nombrePJ = dl.parametros[0];
     Logger.log("parametros tras quitar expresion:"+dl.parametros+" y nombre extraído:"+nombrePJ);
-    var hojaPJ = findSheetByPCName(nombrePJ,dl.ssId);
-    var hayficha = hojaPJ!="";
-    if (hayficha) {
-      objetivo = hojaPJ;
-      Logger.log("hoja objetivo:"+valorXPosicion(hojaPJ,posiciones.nombre));
-      dl.parametros.shift();
-    } else {
-      sendText(dl.id,_("No se encuentra hoja de personaje para Alias:")+nombrePJ);
-      return;
-    }
+    objetivo = cargaHojaPersonaje(nombrePJ,dl);
   }
   if (dl.parametros.length>0) {
     texto_descriptivo = " ("+cursiva(mensajeParametros(dl.parametros))+")";
@@ -648,17 +607,7 @@ function executeHerir(dl) {
   if (dl.parametros.length>0) {
     var nombrePJ = dl.parametros[0];
     Logger.log("parametros tras quitar expresion:"+dl.parametros+" y nombre extraído:"+nombrePJ);
-    var hojaPJ = findSheetByPCName(nombrePJ,dl.ssId);
-    var hayficha = hojaPJ!="";
-    if (hayficha) {
-      objetivo = hojaPJ;
-      nombrePJ = valorXPosicion(hojaPJ,posiciones.nombre);
-      Logger.log("hoja objetivo:"+nombrePJ);
-      dl.parametros.shift();
-    } else {
-      sendText(dl.id,_("No se encuentra hoja de personaje para Alias:")+nombrePJ);
-      return;
-    }
+    objetivo = cargaHojaPersonaje(nombrePJ,dl);
   }
   var posicion = "";
   if (dl.parametros.length>0) {
@@ -712,14 +661,7 @@ function executeDanyo(dl) {
   if (dl.parametros.length>0 && dl.isGM) {
     var nombrePJ = dl.parametros[0];
     Logger.log("parametros tras quitar expresion:"+dl.parametros+" y nombre extraído:"+nombrePJ);
-    var hojaPJ = findSheetByPCName(nombrePJ,dl.ssId);
-    var hayficha = hojaPJ!="";
-    if (hayficha) {
-      objetivo = hojaPJ;
-      Logger.log("hoja objetivo:"+valorXPosicion(hojaPJ,posiciones.nombre));
-      dl.parametros.shift();
-      texto_descriptivo = _(" sufre daño");
-    }
+    objetivo = cargaHojaPersonaje(nombrePJ,dl);
   } 
   if (dl.parametros.length>0) {
     texto_descriptivo += " ("+cursiva(mensajeParametros(dl.parametros))+")";
@@ -825,18 +767,22 @@ function doPostData(data) {
     Logger.log("Ignoramos al no ser un comando:"+data.message.from.text);
     return;
   }
-  
+
   var datosLlamada = new DatosLlamada(data);
-  
-  Logger.log("Objeto DatosLlamada:"+JSON.stringify(datosLlamada));
-
-  
-  if (datosLlamada.isCallback) {
-    procesaCallback(datosLlamada);
-
-  } else {
+  try {  
+    Logger.log("Objeto DatosLlamada:"+JSON.stringify(datosLlamada));
     
-    procesaMensaje(datosLlamada);
+    
+    if (datosLlamada.isCallback) {
+      procesaCallback(datosLlamada);
+      
+    } else {
+      
+      procesaMensaje(datosLlamada);
+    }
+  } catch (e) {
+      sendText(datosLlamada.id,e);
+
   }
 
 }
