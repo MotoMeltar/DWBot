@@ -33,7 +33,7 @@ function executeEquipo(dl) {
       }
     }
     if (!dl.isPrivate) {
-      respuesta += RETORNO_CARRO+cursiva("puedes usar este comando abriéndome un canal ")+"[privado](https://telegram.me/DWMochilaBot)";
+      respuesta += RETORNO_CARRO+Utilities.formatString("puedes usar este comando abriéndome un canal %s", link(_("privado"),"https://telegram.me/DWMochilaBot"));
     }
   }
   Logger.log("RESPUESTA: "+respuesta);

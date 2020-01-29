@@ -264,7 +264,7 @@ function executeStatus(dl) {
     respuesta += RETORNO_CARRO +" - "+ statusChar(values,posiciones.int)+", "+statusChar(values,posiciones.sab)+", "+statusChar(values,posiciones.car);
     respuesta += RETORNO_CARRO+" - "+bold(_("Alineamiento"))+": "+values[posiciones.alineamiento.fila-1][posiciones.alineamiento.columna-1]+" ("+cursiva(values[posiciones.alineamiento.fila-1][posiciones.alineamiento.columna])+")";
     if (!dl.isPrivate) {
-      respuesta += RETORNO_CARRO+Utilities.formatString(cursiva(_("puedes usar este comando abriéndome un canal %s")), link(_("privado"),"https://telegram.me/DWMochilaBot"));
+      respuesta += RETORNO_CARRO+Utilities.formatString("puedes usar este comando abriéndome un canal %s", link(_("privado"),"https://telegram.me/DWMochilaBot"));
     }
   } else {
     if (dl.ssId!=null) {
@@ -820,6 +820,12 @@ function doPost(e) {
 }
 
 function doPostData(data) {
+    Logger.log("---NUEVA LLAMADA---:"+JSON.stringify(data));
+  if (data.message && data.message.text.charAt(0)!="/") {
+    Logger.log("Ignoramos al no ser un comando:"+data.message.from.text);
+    return;
+  }
+  
   var datosLlamada = new DatosLlamada(data);
   
   Logger.log("Objeto DatosLlamada:"+JSON.stringify(datosLlamada));
