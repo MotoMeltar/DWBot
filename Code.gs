@@ -492,9 +492,8 @@ function executeFijar(dl) {
     Logger.log("parametros tras quitar expresion:"+dl.parametros+" y nombre extraído:"+nombrePJ);
     objetivo = cargaHojaPersonaje(nombrePJ,dl);
   } else {
-      sendText(dl.id,_("Falta el alias del personaje a modificar"));
-      return;
-    }
+      throw(_("Falta el alias del personaje a modificar"));
+  }
 
   if (dl.parametros.length>0) {
     texto_descriptivo = " ("+cursiva(mensajeParametros(dl.parametros))+")";
@@ -546,8 +545,7 @@ function executeCurar(dl) {
      tirada = tiraDados(expresion);
      curacion = eval(tirada);
   } else if (dl.parametros.length==0 || isNaN(dl.parametros[0])) {
-    sendText(dl.id,_("La cantidad de daño a curar debe ser un número:")+dl.parametros[0]);
-    return;
+    throw(_("La cantidad de daño a curar debe ser un número o una expresión de dados:")+dl.parametros[0]);
   } else {
     curacion = dl.parametros[0];
   }
@@ -625,13 +623,11 @@ function executeHerir(dl) {
     } else if (herida==_(posiciones.car.nombre).toLowerCase() || herida == _(posiciones.car.herida).toLowerCase()) {
       posicion = posiciones.car;
     }  else {
-      sendText(dl.id,_("El nombre del atributo o condición a aplicar no se encuentra."));
-      return;
+      throw(_("El nombre del atributo o condición a aplicar no se encuentra."));
     }
     dl.parametros.shift();
   } else {
-    sendText(dl.id,_("Es necesario un atributo o herida que aplicar"));
-    return;
+    throw(_("Es necesario un atributo o herida que aplicar"));
   }
   if (dl.parametros.length>0) {
     texto_descriptivo = " ("+cursiva(mensajeParametros(dl.parametros))+")";

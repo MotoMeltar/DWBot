@@ -76,7 +76,7 @@ I18N.loadLanguage('messages',"en",
   "Ahora tiene ": { "msgstr" : "Now has "},
   "Se ha cumplido el alineamiento esta aventura": { "msgstr" : "Alignment has been fulfilled in this game."},
   //Textos executeCurar
-  "La cantidad de daño a curar debe ser un número:": { "msgstr" : "The damage to heal must be a number:"},
+  "La cantidad de daño a curar debe ser un número o una expresión de dados:": { "msgstr" : "The damage to heal must be a number or dice expression:"},
   " recupera %s PG, para un total de %s/%s.": { "msgstr" : " recovers %s HP, for a total of %s/%s."},
   //Texto de executeHerir
   "El nombre del atributo o condición a aplicar no se encuentra.": { "msgstr" : "The condition's name  is not found."},

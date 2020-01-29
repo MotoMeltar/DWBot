@@ -76,7 +76,7 @@ I18N.loadLanguage('messages',"es",
   "Ahora tiene ": { "msgstr" : "Ahora tiene "},
   "Se ha cumplido el alineamiento esta aventura": { "msgstr" : "Se ha cumplido el alineamiento esta aventura."},
   //Textos EXECUTECURAR
-  "La cantidad de daño a curar debe ser un número:": { "msgstr" : "La cantidad de daño a curar debe ser un número:"},
+  "La cantidad de daño a curar debe ser un número o una expresión de dados:": { "msgstr" : "La cantidad de daño a curar debe ser un número o una expresión de dados:"},
   " recupera %s PG, para un total de %s/%s.": { "msgstr" : " recupera %s PG, para un total de %s/%s."},
   //Texto de EXECUTEHERIR
   "El nombre del atributo o condición a aplicar no se encuentra.": { "msgstr" : "El nombre del atributo o condición a aplicar no se encuentra."},
