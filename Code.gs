@@ -232,7 +232,7 @@ function executeMov(dl) {
 
 function executeStatus(dl) {
   var hojaPJ = "";
-  var nombrePJ = name;
+  var nombrePJ = dl.name;
   if (dl.parametros.length>0) {
     nombrePJ = dl.parametros[0];
     Logger.log("parametros tras quitar expresion:"+dl.parametros+" y nombre extraído:"+nombrePJ);
@@ -265,6 +265,12 @@ function executeStatus(dl) {
     respuesta += RETORNO_CARRO+" - "+bold(_("Alineamiento"))+": "+values[posiciones.alineamiento.fila-1][posiciones.alineamiento.columna-1]+" ("+cursiva(values[posiciones.alineamiento.fila-1][posiciones.alineamiento.columna])+")";
     if (!dl.isPrivate) {
       respuesta += RETORNO_CARRO+Utilities.formatString(cursiva(_("puedes usar este comando abriéndome un canal %s")), link(_("privado"),"https://telegram.me/DWMochilaBot"));
+    }
+  } else {
+    if (dl.ssId!=null) {
+      respuesta += " en la hoja "+dl.sheet.getName();
+    } else {
+      respuesta += " ya que no encuentro ningún archivo relacionado con él.";
     }
   }
   Logger.log("RESPUESTA: "+respuesta);
