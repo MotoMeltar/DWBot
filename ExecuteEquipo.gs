@@ -1,6 +1,6 @@
 function executeEquipo(dl) {
   var hojaPJ = "";
-  var nombrePJ = name;
+  var nombrePJ = dl.name;
   if (dl.parametros.length>0) {
     nombrePJ = dl.parametros[0];
     Logger.log("parametros tras quitar expresion:"+dl.parametros+" y nombre extraído:"+nombrePJ);
@@ -11,14 +11,13 @@ function executeEquipo(dl) {
       Logger.log("hoja objetivo:"+valorXPosicion(hojaPJ,posiciones.nombre));
       dl.parametros.shift();
     } else {
-      sendText(id,"No se encuentra hoja de personaje para Alias:"+nombrePJ);
-      return;
+      throw(_("No se encuentra hoja de personaje para Alias:")+nombrePJ);
     }
   } else {
     hojaPJ = dl.hojaPJ;
   }
   Logger.log("Buscando hoja para "+nombrePJ+" y encontramos:"+hojaPJ);
-  var respuesta = "No hay ningún personaje para el alias de Telegram "+name;
+  var respuesta = _("No se encuentra hoja de personaje para Alias:")+dl.name;
   if (hojaPJ!="") {
     var values = hojaPJ.getRange(posiciones.equipo.fila, posiciones.equipo.columna, (posiciones.equipo.filafin-posiciones.equipo.fila), posiciones.equipo.columnaNotas).getValues();
     var respuesta = bold(valorXPosicion(hojaPJ,posiciones.nombre))+ " tiene en su inventario:";

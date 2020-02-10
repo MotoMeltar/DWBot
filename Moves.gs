@@ -153,7 +153,7 @@ var moves = {
       " - El intendente reduce el número de raciones necesarias en 1.",
       parcial:cursiva("Entre 7 y 9")+", cada uno desempeña su tarea adecuadamente: se consume el número normal de raciones, el viaje dura lo esperado y nadie os pilla por sorpresa, pero tampoco lo pilláis vosotros.",
       fracaso:"",
-      texto:""  }
+      texto:""
     },
     "en": {
       nombre:"Undertake a Perilous Journey",
@@ -166,5 +166,33 @@ var moves = {
       fracaso:"",
       texto:""
     }
+  },
+  final: {
+    "es": {
+      nombre:"Fin de sesión",
+      condicion:"",
+      total:"",
+      parcial:"",
+      fracaso:"",
+      texto: "Cuando llegas al final de la sesión, escoge un vínculo que creas que haya sido resuelto (que esté completamente explorado, que ya no sea importante u otra cosa). Pregunta al jugador con el que tienes el vínculo si está de acuerdo. Si lo está, marca PX y anota un nuevo vínculo con quien quieras. Cuando se hayan actualizado todos los vínculos, echa un vistazo a tu alineamiento. Si lo cumpliste al menos una vez a lo largo de la sesión, marca PX."+RETORNO_CARRO+
+      "Luego responded juntos estas tres preguntas:"+RETORNO_CARRO+
+      " • ¿Hemos aprendido algo nuevo e importante sobre el mundo?"+RETORNO_CARRO+
+      " • ¿Hemos vencido a un monstruo o enemigo importante?"+RETORNO_CARRO+
+      " • ¿Hemos obtenido un tesoro memorable? Por cada respuesta afirmativa, todo el mundo marca PX."
+    },
+    "en": {
+      nombre:"End of Session",
+      condicion:"",
+      total:"",
+      parcial:"",
+      fracaso:"",
+      texto:"When you reach the end of a session, choose one your bonds that you feel is resolved (completely explored, no longer relevant, or otherwise). Ask the player of the character you have the bond with if they agree. If they do, mark XP and write a new bond with whomever you wish. Once bonds have been updated look at your alignment. If you fulfilled that alignment at least once this session, mark XP."+RETORNO_CARRO+
+      "Then answer these three questions as a group:"+RETORNO_CARRO+
+      "Did we learn something new and important about the world?"+RETORNO_CARRO+
+      "Did we overcome a notable monster or enemy?"+RETORNO_CARRO+
+      "Did we loot a memorable treasure?"+RETORNO_CARRO+
+      "For each “yes” answer everyone marks XP."
+    }
+  }
 
 }

@@ -66,6 +66,9 @@ var dataMensaje = {
     ]
   }
 };
+
+dataMensaje = {"update_id":598144343,"message":{"message_id":94,"from":{"id":476302333,"is_bot":false,"first_name":"Ravn","last_name":"Vinter","username":"RavnVinter","language_code":"es"},"chat":{"id":-1001080511765,"title":"Serpent King's Tomb ON","type":"supergroup"},"date":1580906381,"text":"/dar 1 px @DungueonMaster","entities":[{"offset":0,"length":4,"type":"bot_command"},{"offset":10,"length":15,"type":"mention"}]}};
+
 function testAcampar() {
     dataMensaje.message.from.language_code = "en";// abastecerse";
 
@@ -74,7 +77,7 @@ function testAcampar() {
 }
 
 function testArchivo() {
-  dataMensaje.message.text = "/archivo https://docs.google.com/spreadsheets/d/1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw/edit?usp=sharing";
+  //dataMensaje.message.text = "/archivo https://docs.google.com/spreadsheets/d/1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw/edit?usp=sharing";
   doPostData(dataMensaje);
 }
 
@@ -113,7 +116,7 @@ function testCurar() {
 }
 
 function testDanyo() {
-  dataMensaje.message.text = "/daño 1d20+20 @MotoMeltar";
+  dataMensaje.message.text = "/daño +1d12-1d6";
   doPostData(dataMensaje);
 }
 

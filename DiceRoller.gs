@@ -183,9 +183,13 @@ function tiraDanyo(expresion, objetivo, texto_descriptivo, dl) {
       tirada = tiraDados(danyoPJ);
       expresion = danyoPJ;
     } else {
-      return _("No se encuentra hoja de personaje para Alias:")+name;
+      return _("No se encuentra hoja de personaje para Alias:")+dl.name;
     }
   } else {
+    var primerCaracter = expresion.charAt(0);
+    if (primerCaracter =="+" || primerCaracter =="-") {
+      expresion = danyoPJ+expresion;
+    }
     tirada = tiraDados(expresion);
   }
   var resultado = eval(tirada)

@@ -132,7 +132,7 @@ function procesaMensaje(dl) {
     executeArchivo(dl);
   } else if (esComando(comando,"/tocar") || esComando(comando,"/play")) {
     Logger.log("Ejecutando comando Tocar");
-    executeTiradaTeclado(dl, _(" toca una mágica melodía."), posiciones.car, keyboard.musica[I18N.getLocale()], false);
+    executeTocar(dl);
   } else if (dl.isGM) {
     Logger.log("Entramos en comandos de GM");
     if (esComando(comando,"/curar") || esComando(comando,"/cura") || esComando(comando,"/heal")) {
@@ -158,28 +158,27 @@ function executeVida(dl) {
   var name = dl.name;
   var id = dl.id;
   
-  if (dl.ssId!=null && dl.ssId!="") {
-    var allsheets = SpreadsheetApp.openById(dl.ssId).getSheets();
-    respuesta = _("Resumen de puntos de vida:");
-    for (var currentSheet in allsheets) {
-      try {
-      var values = allsheets[currentSheet].getDataRange().getValues();
-      Logger.log("enjuego:"+values[posiciones.enjuego.fila-1][posiciones.enjuego.columna-1]+" "+JSON.stringify(posiciones.pg)+" "+JSON.stringify(values[posiciones.pg.fila-1]));
-      if (values[posiciones.enjuego.fila-1][posiciones.enjuego.columna-1]===true) {
-         //respuesta += RETORNO_CARRO+"- "+bold(values[posiciones.nombre.fila-1][posiciones.nombre.columna-1])
-         //  +" PG:"+values[posiciones.pg.fila-1][posiciones.pg.columna-1]+"/"+values[posiciones.pgmax.fila-1][posiciones.pgmax.columna-1];
-        respuesta += RETORNO_CARRO+Utilities.formatString(_("- %s PG:%s/%s"), bold(values[posiciones.nombre.fila-1][posiciones.nombre.columna-1]),
-                                            values[posiciones.pg.fila-1][posiciones.pg.columna-1],values[posiciones.pgmax.fila-1][posiciones.pgmax.columna-1]);
-        
-      }
-      }catch (e) {
-        Logger.info("Hoja sin dato");
-      }
-    }
-
-  } else {
-    respuesta = _("No hay ninguna ficha asignada al chat ni al usuario.");
+  if (dl.ssId==null && dl.ssId=="") {
+    throw ( _("No hay ninguna ficha asignada al chat ni al usuario."));
   }
+  var allsheets = SpreadsheetApp.openById(dl.ssId).getSheets();
+  respuesta = _("Resumen de puntos de vida:");
+  for (var currentSheet in allsheets) {
+    try {
+    var values = allsheets[currentSheet].getDataRange().getValues();
+    Logger.log("enjuego:"+values[posiciones.enjuego.fila-1][posiciones.enjuego.columna-1]+" "+JSON.stringify(posiciones.pg)+" "+JSON.stringify(values[posiciones.pg.fila-1]));
+    if (values[posiciones.enjuego.fila-1][posiciones.enjuego.columna-1]===true) {
+       //respuesta += RETORNO_CARRO+"- "+bold(values[posiciones.nombre.fila-1][posiciones.nombre.columna-1])
+       //  +" PG:"+values[posiciones.pg.fila-1][posiciones.pg.columna-1]+"/"+values[posiciones.pgmax.fila-1][posiciones.pgmax.columna-1];
+      respuesta += RETORNO_CARRO+Utilities.formatString(_("- %s PG:%s/%s"), bold(values[posiciones.nombre.fila-1][posiciones.nombre.columna-1]),
+                                          values[posiciones.pg.fila-1][posiciones.pg.columna-1],values[posiciones.pgmax.fila-1][posiciones.pgmax.columna-1]);
+      
+    }
+    }catch (e) {
+      throw("Hoja sin dato");
+    }
+  }
+
   Logger.log("RESPUESTA: "+respuesta);
   sendText(id,respuesta);
 }
@@ -639,9 +638,8 @@ function executeDanyo(dl) {
   var texto_descriptivo = _(" tira danyo");
   if (dl.parametros.length>0 && dl.parametros[0].toLowerCase().match(rexp)!=null) {
       expresion = dl.parametros[0];
-      if (dl.parametros.length>1) {
-        dl.parametros.shift();
-      }
+      dl.parametros.shift();
+      Logger.log("parametros tras quitar expresion:"+dl.parametros+" y expresion extraída:"+expresion);
   }
   var objetivo = "";
   if (dl.parametros.length>0 && dl.isGM) {
@@ -656,6 +654,11 @@ function executeDanyo(dl) {
   respuesta = tiraDanyo(expresion, objetivo, texto_descriptivo, dl);
   
   sendText(dl.id,sustituir(respuesta,"+",SUMA));
+}
+
+function executeTocar(dl) {
+  var tecladoMusical = keyboard.musica[I18N.getLocale()];
+  executeTiradaTeclado(dl, _(" toca una mágica melodía."), posiciones.car, tecladoMusical, false);
 }
 
 function executeTiradaTeclado(dl, texto_accion, posicion, teclado, soloParcial) {
@@ -750,7 +753,7 @@ function doPost(e) {
 function doPostData(data) {
     Logger.log("---NUEVA LLAMADA---:"+JSON.stringify(data));
   if (data.message && data.message.text.charAt(0)!="/") {
-    Logger.log("Ignoramos al no ser un comando:"+data.message.from.text);
+    Logger.log("Ignoramos al no ser un comando:"+data.message.text);
     return;
   }
 
