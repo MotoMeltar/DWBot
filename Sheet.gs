@@ -22,11 +22,6 @@ function getSheetURL(id) {
   return "https://docs.google.com/spreadsheets/d/"+id+"/edit#gid=0";
 }
 
-function appendRow(id, name, text, answer) {
-  var sheetName = sheet.getSheetByName("DATOS");
-  sheetName.appendRow([new Date(),id,name,text,answer])
-}
-
 /**
  * Devuelve la hoja del personaje a partir de su alias de telegram
  * @param name Alias de telegram del personaje
@@ -44,7 +39,7 @@ function findSheetByPCName(name,ssId) {
 }
 
 /**
- * Devuelve la hoja del personaje a partir de su alias de telegram
+ * Devuelve la hoja del personaje a partir de su alias de telegram a partir de la almacenada en el DatosLlamada
  * @param name Alias de telegram del personaje
  */
 function findSheetByPCNameWithFile(name,dl) {

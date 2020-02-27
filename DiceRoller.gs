@@ -147,7 +147,7 @@ function tiraDados(expresion){
     cadenaDados = tiraYDX(dados[1],dados[2]);
     expresion = expresion.toLowerCase().replace(dados[0],cadenaDados);
     debugger;
-    Logger.log("Tras el loop la expresion es "+expresion+" y hará otro loop: "+expresion.toLowerCase().match('\([1-9]\d*)?[d]([1-9]\d*)([\x][1-9]\d*)?')!=null);
+    Logger.log("Tras el loop la expresion es "+expresion+" y hará otro loop: "+expresion.toLowerCase().match('\([1-9]\d*)?[d]([1-9]\d*)([x][1-9]\d*)?')!=null);
   }
   Logger.log("Respuesta tiraDados: "+expresion);
   Logger.log("Total: "+eval(expresion));
@@ -225,38 +225,3 @@ function tiraDanyo(expresion, objetivo, texto_descriptivo, dl) {
   Logger.log("RESPUESTA tiraDADOS: "+respuesta);
   return respuesta;
 }
-
-
-function sendTextKeyboard(chatId,text,keyBoard){
-
-   keyBoard = keyBoard || 0;
-
-  if(keyBoard.inline_keyboard || keyBoard.keyboard){
-    Logger.log("mandando teclado");
-     var data = {
-      method: "post",
-      payload: {
-         method: "sendMessage",
-         chat_id: String(chatId),
-         text: text,
-         parse_mode: "Markdown",
-         reply_markup: JSON.stringify(keyBoard)
-       }
-     }
-    }else{
-          Logger.log("mandando mensaje");
-
-      var data = {
-        method: "post",
-        payload: {
-          method: "sendMessage",
-          chat_id: String(chatId),
-          text: text,
-          parse_mode: "HTML"
-        }
-      }
-    }
-
-   UrlFetchApp.fetch('https://api.telegram.org/bot' + tokenString + '/', data);
-
- }

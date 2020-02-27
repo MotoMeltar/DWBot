@@ -106,13 +106,6 @@ function getPrimeraPalabra(text) {
   return respuesta;
 }
 
-/** 
- * Comprueba si el id indicado es el id del GM
- */
-function checkGM(id) {
-  return (id===idGM)
-}
-
 /**
  * Comprobamos si el chat es privado o un grupo comparando el tipo de chat recibido
  */
@@ -144,3 +137,43 @@ function extraerResultado(respuesta) {
 function isExitoParcial(resultado) {
   return (resultado <10 && resultado >6);
 }
+
+/**
+ * Envía una respuesta con un teclado anexado a la misma
+ * @param chatId Identificador del chat
+ * @param text Texto que precede al teclado
+ * @param keyBoard Objeto JSON del teclado
+ */
+function sendTextKeyboard(chatId,text,keyBoard){
+
+   keyBoard = keyBoard || 0;
+
+  if(keyBoard.inline_keyboard || keyBoard.keyboard){
+    Logger.log("mandando teclado");
+     var data = {
+      method: "post",
+      payload: {
+         method: "sendMessage",
+         chat_id: String(chatId),
+         text: text,
+         parse_mode: "Markdown",
+         reply_markup: JSON.stringify(keyBoard)
+       }
+     }
+    }else{
+          Logger.log("mandando mensaje");
+
+      var data = {
+        method: "post",
+        payload: {
+          method: "sendMessage",
+          chat_id: String(chatId),
+          text: text,
+          parse_mode: "HTML"
+        }
+      }
+    }
+
+   UrlFetchApp.fetch('https://api.telegram.org/bot' + tokenString + '/', data);
+
+ }
