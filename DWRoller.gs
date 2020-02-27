@@ -75,7 +75,7 @@ function tiraDW(modificador, texto_descriptivo, texto_accion, dl) {
           texto_experiencia += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
       }
   }
-  respuesta = nombrePJ + texto_accion+" "+texto_descriptivo+": "+RETORNO_CARRO+
+  respuesta = nombrePJ + texto_accion+texto_descriptivo+": "+RETORNO_CARRO+
       dado1+ " "+SUMA+" " + dado2 + texto_modificador+RETORNO_CARRO+
       " = " + bold(resultado)+texto_experiencia;
   Logger.log("RESPUESTA tiraDADOS: "+respuesta);
@@ -127,7 +127,7 @@ function tiraHerc(modificador, texto_descriptivo, texto_accion, dl) {
           texto_experiencia += RETORNO_CARRO+cursiva(_("(Fuera de juego, no se graban datos)"));
       }
   }
-  respuesta = nombrePJ + texto_accion+" (herc) "+texto_descriptivo+": "+RETORNO_CARRO+
+  respuesta = nombrePJ + texto_accion+" (herc)"+texto_descriptivo+": "+RETORNO_CARRO+
       dado1+ " "+SUMA+" " + dado2 + texto_modificador+RETORNO_CARRO+
       " = " + bold(resultado)+texto_herc+texto_experiencia;
   Logger.log("RESPUESTA tiraDADOS: "+respuesta);

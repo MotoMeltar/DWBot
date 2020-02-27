@@ -67,54 +67,8 @@ var dataMensaje = {
   }
 };
 
-function testAcampar() {
-    dataMensaje.message.from.language_code = "en";// abastecerse";
-
-  dataMensaje.message.text = "/acampar";
-  doPostData(dataMensaje);
-}
-
 function testArchivo() {
   //dataMensaje.message.text = "/archivo https://docs.google.com/spreadsheets/d/1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw/edit?usp=sharing";
-  doPostData(dataMensaje);
-}
-
-function testAyuda() {
-  Logger.log(JSON.stringify(keyboard.ayuda));
-  dataMensaje.message.text = "/ayuda";
-  doPostData(dataMensaje);
-    dataMensaje.message.text = "/help game";
-  doPostData(dataMensaje);
-    dataMensaje.message.text = "/help characters";
-  doPostData(dataMensaje);
-    dataMensaje.message.text = "/help gm";
-  doPostData(dataMensaje);
-}
-
-function testCallback() {
-  dataCallback.callback_query.data = "conjuro_penalizador";
-  doPostData(dataCallback);
-  
-}
-
-function testCon() {
-    dataMensaje.message.text = "/int Me cubro con mi escudo";
-    doPostData(dataMensaje);
-  
-}
-
-function testConjuro() {
-  dataMensaje.message.text = "/conjuro";
-  doPostData(dataMensaje);
-}
-
-function testCurar() {
-  dataMensaje.message.text = "/curar 1d4 @Willmor";
-  doPostData(dataMensaje);
-}
-
-function testDanyo() {
-  dataMensaje.message.text = "/daño +1d12-1d6";
   doPostData(dataMensaje);
 }
 
@@ -123,49 +77,13 @@ function testDar() {
   doPostData(dataMensaje);
 }
 
-function testDisparar() {
-  dataMensaje.message.text = "/disparar";
-  doPostData(dataMensaje);
-}
-
-function testEquipo() {
-  dataMensaje.message.text = "/equipo";
-  doPostData(dataMensaje);
-}
-
 function testFijar() {
     dataMensaje.message.text = "/set 1d10+5 danyo @Willmor el vino que tiene asunción";
     doPostData(dataMensaje);
 }
 
-function testHerir() {
-    dataMensaje.message.text = "/Herir @MotoMeltar FUERZA";
-    doPostData(dataMensaje);
-
-}
-
-function testMov() {
-    dataMensaje.message.text = "/mov volley";// abastecerse";
-    doPostData(dataMensaje);
-}
-
-function testLevelup() {
-  dataMensaje.message.text = "/levelup";
-  doPostData(dataMensaje);
-}
-
 function testPartida() {
   dataMensaje.message.text = "/partida https://docs.google.com/spreadsheets/d/1yjFgHL6HHZnLzDT6PgfOaDEf1K1EZrqJPPj_qCxkcg8/edit";
-  doPostData(dataMensaje);
-}
-
-function testStatus() {  
-  sendText(id,"Prueba de consulta con parámetro");
-  dataMensaje.message.text = "/status@DWMochilaBot @paco";
-  doPostData(dataMensaje);
-
-  sendText(id,"Prueba de consulta sin parámetro");
-  dataMensaje.message.text = "/status";
   doPostData(dataMensaje);
 }
 
@@ -189,18 +107,6 @@ function testTiraYDX() {
   var respuesta = tiraYDX(5,6);
   Logger.log(respuesta);
   
-}
-
-function testTocar() {
-  dataMensaje.message.from.language_code = "en";// abastecerse";
-  dataMensaje.message.text = "/tocar +2";
-  doPostData(dataMensaje);
-}
-
-function testVida() {
-  dataMensaje.message.from.language_code = "en";// abastecerse";
-  dataMensaje.message.text = "/vida";
-  doPostData(dataMensaje);
 }
 
 function TestConDatosLLamada() {

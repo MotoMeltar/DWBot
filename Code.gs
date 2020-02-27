@@ -1,5 +1,4 @@
 var tokenString = "750768171:AAHXEU2MPZbjxLa_-7AdcCjqA36sROQayIg"; // FILL IN YOUR OWN TOKEN
-var telegramUrl = "https://api.telegram.org/bot" + tokenString;
 var webAppUrl = "https://script.google.com/macros/s/AKfycbwZwHKwHZOkDhT8jH_UgZ4CJxabNtmL8eDlmJkNrUJg9AEKkW5q/exec"; // FILL IN YOUR GOOGLE WEB APP ADDRESS
 var arrayMagos = ["Mago"];
 var arrayClerigos = ["Explorador","Clérigo","Paladín"];
@@ -33,45 +32,11 @@ var posiciones = { oro: { fila:5, columna: 4, nombre: "Oro", contable: "monedas 
                   equipo: { fila:41, columna: 2, nombre: "En juego",columnaUsos: 3, columnaNotas:6, filafin:51}
                  };
 
-function getMe() {
-  var url = telegramUrl + "/getMe";
-  var response = UrlFetchApp.fetch(url);
-  Logger.log(response.getContentText());
-}
-
-function getUpdates() {
-  var url = telegramUrl + "/getUpdates";
-  var response = UrlFetchApp.fetch(url);
-  Logger.log(response.getContentText());
-}
-
-function setWebhook() {
-  var url = telegramUrl + "/setWebhook?url=" + webAppUrl;
-  var response = UrlFetchApp.fetch(url);
-  Logger.log(response.getContentText());
-}
-
-function getWebhook() {
-  var url = telegramUrl + "/getWebhook";
-  var response = UrlFetchApp.fetch(url);
-  Logger.log(response.getContentText());
-}
-
 function doGet(e) {
   var params = JSON.stringify(e);
   return HtmlService.createHtmlOutput(params);
 }
-/*function doGet(e) {
-  var params = JSON.stringify(e);
-  var html = HtmlService.createHtmlOutput(params);
-  html = html.evaluate();
-  html.setSandboxMode(HtmlService.SandboxMode.EMULATED);
-  return html;
-}*/
-/**
- * Realiza todas las acciones de procesamiento de mensaje.
- */
-//function procesaMensaje(data,text,id,name,isGM,isPrivate) {
+
 function procesaMensaje(dl) {
   
   var comando = getPrimeraPalabra(dl.text).toLowerCase();
@@ -345,15 +310,6 @@ function executeAcampar(dl) {
   sendText(dl.id,respuesta);
 }
 
-
-function mensajeParametros(parametros) {
-  var respuesta = "";
-  for(n = 0; n < parametros.length; n++) {
-     respuesta = respuesta +" "+ parametros[n];
-  }
-  return respuesta.substr(1);
-}
-
 function executeCharRoll(dl, posicion) {
 
   var texto_accion = Utilities.formatString(_(" hace una tirada de %s"),_(posicion.nombre));
@@ -364,7 +320,7 @@ function executeCharRoll(dl, posicion) {
   if (dl.parametros.length>0) {
     if (!isNaN(dl.parametros[0])) {
       modificador = dl.parametros[0];
-      texto_descriptivo += "["+modificador+"]";
+      texto_descriptivo += " ["+modificador+"]";
       dl.parametros.shift();
     }
   }
@@ -375,7 +331,7 @@ function executeCharRoll(dl, posicion) {
     }
   }
   if (dl.parametros.length>0) {
-    texto_descriptivo += "("+cursiva(mensajeParametros(dl.parametros))+")";
+    texto_descriptivo += " ("+cursiva(dl.parametros.join(" "))+")";
   }
   Logger.log(dl.hayHojaPJ)
   //if (modificador===0) {
@@ -436,7 +392,7 @@ function executeCurar(dl) {
     objetivo = cargaHojaPersonaje(nombrePJ,dl);
   }
   if (dl.parametros.length>0) {
-    texto_descriptivo = " ("+cursiva(mensajeParametros(dl.parametros))+")";
+    texto_descriptivo = " ("+cursiva(dl.parametros.join(" "))+")";
   }
 
   respuesta = curar(curacion, objetivo, texto_descriptivo, dl);
@@ -505,7 +461,7 @@ function executeHerir(dl) {
     throw(_("Es necesario un atributo o herida que aplicar"));
   }
   if (dl.parametros.length>0) {
-    texto_descriptivo = " ("+cursiva(mensajeParametros(dl.parametros))+")";
+    texto_descriptivo = " ("+cursiva(dl.parametros.join(" "))+")";
   }
 
   respuesta = bold(nombrePJ)+Utilities.formatString(_(" está ahora %s"),bold(posicion.herida));
@@ -534,7 +490,7 @@ function executeDanyo(dl) {
     objetivo = cargaHojaPersonaje(nombrePJ,dl);
   } 
   if (dl.parametros.length>0) {
-    texto_descriptivo += " ("+cursiva(mensajeParametros(dl.parametros))+")";
+    texto_descriptivo += " ("+cursiva(dl.parametros.join(" "))+")";
   }
 
   respuesta = tiraDanyo(expresion, objetivo, texto_descriptivo, dl);
@@ -560,7 +516,7 @@ function executeTiradaTeclado(dl, texto_accion, posicion, teclado, soloParcial) 
     }
   }
   if (dl.parametros.length>0) {
-    texto_descriptivo += "("+cursiva(mensajeParametros(dl.parametros))+")";
+    texto_descriptivo += "("+cursiva(dl.parametros.join(" "))+")";
   }
   
   //if (modificador===0) {
@@ -609,7 +565,7 @@ function executeRoll(dl) {
     }
   }
   if (dl.parametros.length>0) {
-    texto_descriptivo += "("+cursiva(mensajeParametros(dl.parametros))+")";
+    texto_descriptivo += "("+cursiva(dl.parametros.join(" "))+")";
   }
   
   if (isExpresion) {
@@ -622,31 +578,8 @@ function executeRoll(dl) {
   sendText(dl.id,respuesta);
 }
 
-/*
- * Este es el punto de entrada de las llamadas al Bot. Parseamos el objeto data y comenzamos a trabajar con él.
- */
-function doPost(e) {
-  // this is where telegram works
-
-  var data = JSON.parse(e.postData.contents);
-  try {
-  doPostData(data);
-  } catch(e) {
-    Logger.log("ERROR:"+e);
-  }
-}
-
-function doPostData(data) {
-    Logger.log("---NUEVA LLAMADA---:"+JSON.stringify(data));
-  if (data.message && data.message.text.charAt(0)!="/") {
-    Logger.log("Ignoramos al no ser un comando:"+data.message.text);
-    return;
-  }
-
-  var datosLlamada = new DatosLlamada(data);
-  try {  
-    Logger.log("Objeto DatosLlamada:"+JSON.stringify(datosLlamada));
-    
+function doPostData(datosLlamada) {
+ 
     
     if (datosLlamada.isCallback) {
       procesaCallback(datosLlamada);
@@ -655,9 +588,5 @@ function doPostData(data) {
       
       procesaMensaje(datosLlamada);
     }
-  } catch (e) {
-      sendText(datosLlamada.id,e);
-
-  }
 
 }

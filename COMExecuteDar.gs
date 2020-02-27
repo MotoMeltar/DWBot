@@ -32,7 +32,7 @@ function executeDar(dl) {
     throw(_("Falta el alias del personaje a modificar"));
   }
   if (dl.parametros.length>0) {
-    texto_descriptivo = " ("+cursiva(mensajeParametros(dl.parametros))+")";
+    texto_descriptivo = " ("+cursiva(dl.parametros.join(" "))+")";
   }
   
   var values = objetivo.getDataRange().getValues();

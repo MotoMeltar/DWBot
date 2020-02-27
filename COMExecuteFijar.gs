@@ -17,7 +17,7 @@ function executeFijar(dl) {
   var objetivo = cargaHojaPersonajeObligatorio(2,dl);
 
   if (dl.parametros.length>3) {
-    texto_descriptivo = " ("+cursiva(mensajeParametros(dl.parametros.slice(2)))+")";
+    texto_descriptivo = " ("+cursiva(dl.parametros.slice(2).join(" "))+")";
   }
   
   var values = objetivo.getDataRange().getValues();

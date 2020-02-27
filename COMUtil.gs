@@ -177,3 +177,40 @@ function sendTextKeyboard(chatId,text,keyBoard){
    UrlFetchApp.fetch('https://api.telegram.org/bot' + tokenString + '/', data);
 
  }
+
+/**
+ * Crea una cadena con todos los parámetros de un array
+ * @parametros array que debe conformar la cadena
+ */
+function mensajeParametros(parametros) {
+  var respuesta = "";
+  for(n = 0; n < parametros.length; n++) {
+     respuesta = respuesta +" "+ parametros[n];
+  }
+  return respuesta.substr(1);
+}
+
+/*
+ * Este es el punto de entrada de las llamadas al Bot. Parseamos el objeto data y comenzamos a trabajar con él.
+ * Debe crearse en el bot un método doPostData con las acciones que debe hacer por cada bot específico
+ */
+function doPost(e) {
+  // this is where telegram works
+
+  var data = JSON.parse(e.postData.contents);
+  Logger.log("---NUEVA LLAMADA---:"+JSON.stringify(data));
+  if (data.message && data.message.text.charAt(0)!="/") {
+    Logger.log("Ignoramos al no ser un comando:"+data.message.text);
+    return;
+  }
+  
+  try {
+    var datosLlamada = new DatosLlamada(data);
+    Logger.log("Objeto DatosLlamada:"+JSON.stringify(datosLlamada));
+    
+    doPostData(datosLlamada);
+  } catch(e) {
+    Logger.log("ERROR:"+e);
+    sendText(datosLlamada.id,e);
+  }
+}
