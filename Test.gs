@@ -67,14 +67,22 @@ var dataMensaje = {
   }
 };
 
-function testArchivo() {
-  dataMensaje.message.text = "/archivo https://docs.google.com/spreadsheets/d/197TFWx01O5EXTXXkrRIKEFVIz3qG1ojvGTmWb9zW3NI/edit#gid=0";
+function testAyuda() {
+  Logger.log(JSON.stringify(keyboard.ayuda));
+  dataMensaje.message.text = "/ayuda";
+  doPostData(dataMensaje);
+    dataMensaje.message.text = "/help game";
+  doPostData(dataMensaje);
+    dataMensaje.message.text = "/help characters";
+  doPostData(dataMensaje);
+    dataMensaje.message.text = "/help gm";
   doPostData(dataMensaje);
 }
 
-function testDar() {
-  dataMensaje.message.text = "/dar 1 px Willmor al";
-  doPostData(dataMensaje);
+function testCallback() {
+  dataCallback.callback_query.data = "conjuro_penalizador";
+  doPostData(dataCallback);
+  
 }
 
 function testFijar() {
@@ -82,8 +90,13 @@ function testFijar() {
     doPostData(dataMensaje);
 }
 
-function testPartida() {
-  dataMensaje.message.text = "/partida https://docs.google.com/spreadsheets/d/1yjFgHL6HHZnLzDT6PgfOaDEf1K1EZrqJPPj_qCxkcg8/edit";
+function testStatus() {  
+  sendText(id,"Prueba de consulta con parámetro");
+  dataMensaje.message.text = "/status@DWMochilaBot @paco";
+  doPostData(dataMensaje);
+
+  sendText(id,"Prueba de consulta sin parámetro");
+  dataMensaje.message.text = "/status";
   doPostData(dataMensaje);
 }
 
@@ -100,13 +113,6 @@ function testTirar() {
 
   dataMensaje.message.text = "/tira -2";
   doPostData(dataMensaje);
-}
-
-
-function testTiraYDX() {
-  var respuesta = tiraYDX(5,6);
-  Logger.log(respuesta);
-  
 }
 
 function TestConDatosLLamada() {

@@ -92,7 +92,7 @@ function DatosLlamada(data) {
   }
   
   
-  
+  log("TEXTO:"+this.text);
   Logger.log(log);
 
 }
