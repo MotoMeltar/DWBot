@@ -88,9 +88,9 @@ function testPartida() {
 }
 
 function testTiraDados() {
-  var expresion = "3d6+10D10+2D20";
-  var respuesta = tiraDados(expresion);
-  Logger.log("FINAL:"+respuesta);
+  var expresion = "2d10+4DF+3";
+  var respuesta = lanzaDados(expresion);
+  Logger.log("FINAL:"+JSON.stringify(respuesta));
   
 }
 
@@ -104,8 +104,8 @@ function testTirar() {
 
 
 function testTiraYDX() {
-  var respuesta = tiraYDX(5,6);
-  Logger.log(respuesta);
+  var respuesta = tiraYDXArray(4,"F");
+  Logger.log(JSON.stringify(respuesta));
   
 }
 
