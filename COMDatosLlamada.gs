@@ -41,7 +41,7 @@ function DatosLlamada(data) {
   this.isPrivate = checkPrivate(this.chatType);
   
   
-  var ssIdUser = getUserSsId(this.userId);
+  var ssIdUser = getUserSsId(this.name);
   
    // Logger.log("SSID USER:"+ssIdUser);
 

@@ -68,7 +68,7 @@ var dataMensaje = {
 };
 
 function testArchivo() {
-  dataMensaje.message.text = "/archivo https://docs.google.com/spreadsheets/d/1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw/edit?usp=sharing";
+  dataMensaje.message.text = "/archivo https://docs.google.com/spreadsheets/d/197TFWx01O5EXTXXkrRIKEFVIz3qG1ojvGTmWb9zW3NI/edit#gid=0";
   doPostData(new DatosLlamada(dataMensaje));
 }
 

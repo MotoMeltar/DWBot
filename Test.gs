@@ -91,13 +91,13 @@ function testFijar() {
 }
 
 function testStatus() {  
-  sendText(id,"Prueba de consulta con parámetro");
+  /*sendText(id,"Prueba de consulta con parámetro");
   dataMensaje.message.text = "/status@DWMochilaBot @paco";
-  doPostData(dataMensaje);
+  doPostData(dataMensaje);*/
 
-  sendText(id,"Prueba de consulta sin parámetro");
+  //sendText(id,"Prueba de consulta sin parámetro");
   dataMensaje.message.text = "/status";
-  doPostData(dataMensaje);
+  doPostData(new DatosLlamada(dataMensaje));
 }
 
 function testTiraDados() {
@@ -116,7 +116,6 @@ function testTirar() {
 }
 
 function TestConDatosLLamada() {
-  
   datosLlamada = {"sheet":{},"isActivo":false,"hojaPJ":"","values":null,"parametros":["https://docs.google.com/spreadsheets/d/1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw/edit#gid=1545656547"],"chatTitle":"Crónicas de Murogris: La caza del Orgullo Inmortal","isCallback":false,"text":"/partida https://docs.google.com/spreadsheets/d/1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw/edit#gid=1545656547","name":"MotoMeltar","id":-363628446,"userId":2937540,"chatType":"group","nombrePJ":"MotoMeltar","isPrivate":false,"ssId":"1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw","hayHojaPJ":false,"isGM":true};
   procesaMensaje(datosLlamada);
 }
