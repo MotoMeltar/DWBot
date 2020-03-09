@@ -61,7 +61,7 @@ function DatosLlamada(data) {
       log += " (obtenido de la partida):"+this.ssId;
       if (ssIdUser==null) {
         log += " (y se carga en el usuario)";
-          cargaArchivoEnProperties(prefijoUsuario+this.userId,this.ssId);
+          cargaArchivoEnProperties(prefijoUsuario+this.name,this.ssId);
       }
     } else {
       this.ssId = ssIdUser;
