@@ -54,6 +54,9 @@ function procesaMensaje(dl) {
   } else if (esComando(comando,"/archivo") || esComando(comando,"/file")) {
     Logger.log("Ejecutando comando Archivo");
     executeArchivo(dl);
+  } else if (esSkill(comando)) {
+    Logger.log("Ejecutando Skill "+comando);    
+    executeSkillRoll(dl,posiciones.skills[comando.substring(1).toLowerCase()]);
   } else if (dl.isGM) {
     Logger.log("Entramos en comandos de GM");
     if (esComando(comando,"/dar") || esComando(comando,"/give")) {
@@ -69,43 +72,12 @@ function procesaMensaje(dl) {
   }
 }
 
-function executeCharRoll(dl, posicion) {
-
-  var texto_accion = Utilities.formatString(_(" hace una tirada de %s"),_(posicion.nombre));
-  var modificador = 0;
-  var texto_descriptivo = "";
-  var respuesta = "";
-  var esHerc = false;
-  if (dl.parametros.length>0) {
-    if (!isNaN(dl.parametros[0])) {
-      modificador = dl.parametros[0];
-      texto_descriptivo += " ["+modificador+"]";
-      dl.parametros.shift();
-    }
+function esSkill(comando) {
+  Logger.log("comprobamos si "+comando+" es Skill");
+  if (comando.indexOf(nombreBot)>-1) {
+    comando = comando.replace(nombreBot,'');
   }
-  if (dl.parametros.length>0) {
-    if (dl.parametros[0] == 'herc') {
-      esHerc = true;
-      dl.parametros.shift();
-    }
-  }
-  if (dl.parametros.length>0) {
-    texto_descriptivo += " ("+cursiva(dl.parametros.join(" "))+")";
-  }
-  Logger.log(dl.hayHojaPJ)
-  //if (modificador===0) {
-    if (dl.hayHojaPJ) {
-      modificador = parseInt(valorXPosicion(dl.hojaPJ,posicion))+parseInt(modificador);
-      Logger.log("VALOR DE CARACTERISTICA + MODIFICADOR: "+modificador);
-    }
-  //}
-
-  if (esHerc) {
-    respuesta = tiraHerc(modificador, texto_descriptivo, texto_accion, dl);
-  } else {
-    respuesta = tiraDW(modificador, texto_descriptivo, texto_accion, dl);
-  }
-  sendText(dl.id,respuesta);
+  return (posiciones.skills[comando.substring(1).toLowerCase()]!= undefined);
 }
 
 function doPostData(datosLlamada) {

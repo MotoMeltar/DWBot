@@ -107,6 +107,12 @@ function testTiraDados() {
   
 }
 
+function testSkill() {
+  dataMensaje.message.text = "/notar";
+  doPostData(new DatosLlamada(dataMensaje));
+  
+}
+
 function testTirar() {
   dataMensaje.message.text = "/tira 2d8 curar";
   doPostData(dataMensaje);
