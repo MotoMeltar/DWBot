@@ -13,6 +13,7 @@ var posiciones = { nombre: { fila:3, columna: 6, nombre: "Nombre"},
                   alias: { fila:3, columna: 8, nombre: "Telegram"},
                   destino: { fila:3, columna: 9, nombre: "Puntos de Destino"},
                   destinomax: { fila:3, columna: 10, nombre: "Puntos de Destino Máximos"},
+                  estres: { fila:20, columna: 8, nombre: "Estrés"},
                   concepto: { fila:6, columna: 3, nombre: "Concepto"},
                   enjuego: { fila:5, columna: 5, nombre: "En juego"},
                   decomPosi: { fila:7, columna: 4, nombre: "Decompresión Positiva"},
@@ -20,7 +21,7 @@ var posiciones = { nombre: { fila:3, columna: 6, nombre: "Nombre"},
                   relacion1: { fila:9, columna: 3, nombre: "Relación"},
                   relacion2: { fila:10, columna: 3, nombre: "Relación"},
                   adicional: { fila:11, columna: 3, nombre: "Adicional"},
-                  proezas: { fila:14, columna: 2, nombre: "Proezas",columnaNotas:3, filafin:18},
+                  proezas: { fila:14, columna: 2, nombre: "Proezas",columnaNotas:4, filafin:18},
                   skills: {
                     artilleria: { fila:20, columna: 3, nombre: "Artillería"},
                     pilotar: { fila:21, columna: 3, nombre: "Pilotar"},
@@ -37,7 +38,7 @@ var posiciones = { nombre: { fila:3, columna: 6, nombre: "Nombre"},
                     investigar: { fila:23, columna: 7, nombre: "Investigar"},
                     provocar: { fila:24, columna: 7, nombre: "Provocar"}
                   },
-                  consecuencias: { fila:20, columna: 8, nombre: "Consecuencias",columnaNotas:9, filafin:24}
+                  consecuencias: { fila:21, columna: 8, nombre: "Consecuencias",columnaNotas:9, filafin:24}
 
                  };	
 

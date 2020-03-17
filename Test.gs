@@ -90,16 +90,6 @@ function testFijar() {
     doPostData(dataMensaje);
 }
 
-function testStatus() {  
-  /*sendText(id,"Prueba de consulta con parámetro");
-  dataMensaje.message.text = "/status@DWMochilaBot @paco";
-  doPostData(dataMensaje);*/
-
-  //sendText(id,"Prueba de consulta sin parámetro");
-  dataMensaje.message.text = "/status";
-  doPostData(new DatosLlamada(dataMensaje));
-}
-
 function testTiraDados() {
   var expresion = "3d6+10D10+2D20";
   var respuesta = tiraDados(expresion);

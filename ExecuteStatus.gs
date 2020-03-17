@@ -1,3 +1,13 @@
+function testStatus() {  
+  /*sendText(id,"Prueba de consulta con parámetro");
+  dataMensaje.message.text = "/status@DWMochilaBot @paco";
+  doPostData(dataMensaje);*/
+
+  //sendText(id,"Prueba de consulta sin parámetro");
+  dataMensaje.message.text = "/status";
+  doPostData(new DatosLlamada(dataMensaje));
+}
+
 function executeStatus(dl) {
   var hojaPJ = dl.hojaPJ;
   var nombrePJ = dl.name;
@@ -47,24 +57,42 @@ Adicional: [Adicional]
     var i=0;
     for (var row in proezasRange) {
       var valoresFila = proezasRange[row];
-      Logger.log(i+"VALOR 0:"+valoresFila[0]+valoresFila[1]);
+      Logger.log(i+"VALOR 0:"+valoresFila[0]+valoresFila[2]);
       if (valoresFila!=undefined && valoresFila[0].trim()!="") {
         respuesta += RETORNO_CARRO+" - "+bold(valoresFila[0]);
-        if (valoresFila[1]!="") {
-          respuesta += " ("+cursiva(valoresFila[1])+")";
+        if (valoresFila[2]!="") {
+          respuesta += " ("+cursiva(valoresFila[2])+")";
         }
       }
     }
     
-    var skillsStatus = {0:[],1:[],2:[],3:[],4:[],5:[]};
-    respuesta += bold(_("HABILIDADES"));
+    var listaSkills = "";
+    var skillsStatus = {0:new Array(),1:new Array(),2:new Array(),3:new Array(),4:new Array(),5:new Array()};
+    respuesta += RETORNO_CARRO+bold(_("HABILIDADES"));
     for (var pos in posiciones.skills) {
-      var valor = posiciones.skills[pos];
-    if (valor == undefined || valor =="") {
-      valor = 0;
+      Logger.log("---------- SKILLS ---------");
+      var skill = posiciones.skills[pos];
+      var valor = dl.getValues(skill);
+      if (valor == undefined || valor =="") {
+        valor = 0;
+      }
+
+      skillsStatus[valor].push(skill.nombre);
     }
-    skillsStatus[valor] = skillsStatus[valor].push(posiciones.skills[pos].nombre);
+    
+    Logger.log("skillsStatus:"+JSON.stringify(skillsStatus));
+    
+    for (var j=5;j>0;j--) {
+            Logger.log("VALOR DEL LOOP:"+j);
+      Logger.log("skillsStatus[j]:"+skillsStatus[j+" con longitud:"+skillsStatus[j].length])
+      if (skillsStatus[j].length>0) {
+        Logger.log(bold(j)+": "+skillsStatus[j].join(","));
+        listaSkills += RETORNO_CARRO+bold(j)+": "+skillsStatus[j].join(",");
+      }
     }
+    Logger.log(listaSkills);
+
+    respuesta += listaSkills;
 
     
     var listaConsecuencias = "";
@@ -72,7 +100,6 @@ Adicional: [Adicional]
     var i=0;
     for (var row in consecuenciasRange) {
       var valoresFilaCon = consecuenciasRange[row];
-      Logger.log(i+"VALOR 0:"+valoresFila[0]+valoresFila[1]);
       if (valoresFilaCon!=undefined && valoresFilaCon[1].trim()!="") {
         listaConsecuencias += RETORNO_CARRO+" - "+bold(valoresFilaCon[0])+" ("+cursiva(valoresFilaCon[1])+")";
       }

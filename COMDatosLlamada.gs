@@ -90,11 +90,12 @@ function DatosLlamada(data) {
       log += " NO ENCONTRADO PERSONAJE en hoja "+this.sheet.getName();
     }
   }
-  
-  getValues: function(posicion) {
-    return this.values[posicion.fila-1][posicion.columna-1];
-  }
-  
+ 
+  this.getValues = function(posicion) {            
+     return this.values[posicion.fila-1][posicion.columna-1];            
+  };         
+                                               
+
   
   Logger.log(log);
 
