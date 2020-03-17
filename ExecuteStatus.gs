@@ -40,10 +40,10 @@ Adicional: [Adicional]
 [Consecuencias]
 */
   
-    var respuesta = Utilities.formatString(_('%s "%s", Destino: %s/%s'),
+    var respuesta = Utilities.formatString(_('%s "%s", Destino: %s/%s, Estrés %s/5'),
                                            values[posiciones.nombre.fila-1][posiciones.nombre.columna-1],
         values[posiciones.apodo.fila-1][posiciones.apodo.columna-1],values[posiciones.destino.fila-1][posiciones.destino.columna-1],
-                                           values[posiciones.destinomax.fila-1][posiciones.destinomax.columna-1])+RETORNO_CARRO;
+                                           values[posiciones.destinomax.fila-1][posiciones.destinomax.columna-1],values[posiciones.estres.fila-1][posiciones.estres.columna-1])+RETORNO_CARRO;
     respuesta += bold(_("ASPECTOS"))+RETORNO_CARRO;
     respuesta += _("Concepto: ")+values[posiciones.concepto.fila-1][posiciones.concepto.columna-1]+RETORNO_CARRO;
     respuesta += Utilities.formatString(_("Descompresión: %s/%s"),values[posiciones.decomPosi.fila-1][posiciones.decomPosi.columna-1],

@@ -13,7 +13,7 @@ var posiciones = { nombre: { fila:3, columna: 6, nombre: "Nombre"},
                   alias: { fila:3, columna: 8, nombre: "Telegram"},
                   destino: { fila:3, columna: 9, nombre: "Puntos de Destino"},
                   destinomax: { fila:3, columna: 10, nombre: "Puntos de Destino Máximos"},
-                  estres: { fila:20, columna: 8, nombre: "Estrés"},
+                  estres: { fila:21, columna: 9, nombre: "Estrés"},
                   concepto: { fila:6, columna: 3, nombre: "Concepto"},
                   enjuego: { fila:5, columna: 5, nombre: "En juego"},
                   decomPosi: { fila:7, columna: 4, nombre: "Decompresión Positiva"},
@@ -38,7 +38,7 @@ var posiciones = { nombre: { fila:3, columna: 6, nombre: "Nombre"},
                     investigar: { fila:23, columna: 7, nombre: "Investigar"},
                     provocar: { fila:24, columna: 7, nombre: "Provocar"}
                   },
-                  consecuencias: { fila:21, columna: 8, nombre: "Consecuencias",columnaNotas:9, filafin:24}
+                  consecuencias: { fila:22, columna: 8, nombre: "Consecuencias",columnaNotas:9, filafin:25}
 
                  };	
 
