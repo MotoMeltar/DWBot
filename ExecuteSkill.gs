@@ -3,11 +3,22 @@ function executeSkillRoll(dl, posicion) {
   var modificador = 0;
   var texto_descriptivo = "";
   var respuesta = Utilities.formatString(_("%s hace una tirada de %s:"),bold(dl.nombrePJ),_(posicion.nombre));
+  var max = 0;
+  var min = 0;
+  
+  //Primer parámetro: Modificador
   if (dl.parametros.length>0) {
     if (!isNaN(dl.parametros[0])) {
       modificador = dl.parametros[0];
       texto_descriptivo += "+"+modificador;
       dl.parametros.shift();
+    }
+  }
+  
+  //Segundo parámetro: MAX/MIN
+  if (dl.parametros.length>0) {
+    if (dl.parametros[0]=="M") {
+      
     }
   }
   if (dl.parametros.length>0) {

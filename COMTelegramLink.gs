@@ -14,6 +14,7 @@ function getUpdates(tokenString) {
 
 function setWebhook(tokenString) {
   var url = telegramUrl + tokenString + "/setWebhook?url=" + webAppUrl;
+  Logger.log(url);
   var response = UrlFetchApp.fetch(url);
   Logger.log(response.getContentText());
 }

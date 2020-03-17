@@ -1,7 +1,12 @@
-var tokenString = "750768171:AAHXEU2MPZbjxLa_-7AdcCjqA36sROQayIg"; // FILL IN YOUR OWN TOKEN
-var webAppUrl = "https://script.google.com/macros/s/AKfycbwZwHKwHZOkDhT8jH_UgZ4CJxabNtmL8eDlmJkNrUJg9AEKkW5q/exec"; // FILL IN YOUR GOOGLE WEB APP ADDRESS
+var tokenString = "1008566459:AAH3TsPpxRpMcWSN6t-8DJdckJvMORqV0kM"; // FILL IN YOUR OWN TOKEN
+var webAppUrl = "https://script.google.com/macros/s/AKfycbwbaMuG2lz_IqoUHTMzRE-CvxKekPf7zRHVTzY2/exec"; // FILL IN YOUR GOOGLE WEB APP ADDRESS
 
 Logger = BetterLog.useSpreadsheet('1Ex5UIrWedt3_bFswREnJcip8CKmzi7JziMdu8ffUyT4'); 
+
+function webhook() {
+  setWebhook(tokenString);
+}
+
 
 var posiciones = { nombre: { fila:3, columna: 6, nombre: "Nombre"},
                   apodo: { fila:3, columna: 7, nombre: "Apodo"},
@@ -15,7 +20,7 @@ var posiciones = { nombre: { fila:3, columna: 6, nombre: "Nombre"},
                   relacion1: { fila:9, columna: 3, nombre: "Relación"},
                   relacion2: { fila:10, columna: 3, nombre: "Relación"},
                   adicional: { fila:11, columna: 3, nombre: "Adicional"},
-                  proezas: { fila:13, columna: 2, nombre: "Proezas",columnaNotas:3, filafin:18},
+                  proezas: { fila:14, columna: 2, nombre: "Proezas",columnaNotas:3, filafin:18},
                   skills: {
                     artilleria: { fila:20, columna: 3, nombre: "Artillería"},
                     pilotar: { fila:21, columna: 3, nombre: "Pilotar"},
@@ -54,6 +59,9 @@ function procesaMensaje(dl) {
   } else if (esComando(comando,"/archivo") || esComando(comando,"/file")) {
     Logger.log("Ejecutando comando Archivo");
     executeArchivo(dl);
+  } else if (esComando(comando,"/enfrentamiento") || esComando(comando,"/engagement")) {
+    Logger.log("Ejecutando comando Enfrentamiento");
+    executeEnfrentamiento(dl);
   } else if (esSkill(comando)) {
     Logger.log("Ejecutando Skill "+comando);    
     executeSkillRoll(dl,posiciones.skills[comando.substring(1).toLowerCase()]);

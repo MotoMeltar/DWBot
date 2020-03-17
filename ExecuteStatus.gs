@@ -55,6 +55,18 @@ Adicional: [Adicional]
         }
       }
     }
+    
+    var skillsStatus = {0:[],1:[],2:[],3:[],4:[],5:[]};
+    respuesta += bold(_("HABILIDADES"));
+    for (var pos in posiciones.skills) {
+      var valor = posiciones.skills[pos];
+    if (valor == undefined || valor =="") {
+      valor = 0;
+    }
+    skillsStatus[valor] = skillsStatus[valor].push(posiciones.skills[pos].nombre);
+    }
+
+    
     var listaConsecuencias = "";
     var consecuenciasRange = hojaPJ.getRange(posiciones.consecuencias.fila, posiciones.consecuencias.columna, (posiciones.consecuencias.filafin-posiciones.consecuencias.fila), posiciones.consecuencias.columnaNotas).getValues();
     var i=0;
