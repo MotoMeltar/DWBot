@@ -135,15 +135,15 @@ function executeEnfrentamiento(dl) {
   }
   
   if (resultadoGM.total>mayorJG+3) {
-    respuesta += bold(_("TODAS LAS NAVES ENEMIGAS SE ENCUENTRAN OCULTAS"));
+    respuesta += RETORNO_CARRO+bold(_("TODAS LAS NAVES ENEMIGAS SE ENCUENTRAN OCULTAS"));
   } else if (resultadoGM.total>mayorJG) {
-    respuesta += _("Una de las naves enemigas permanece Oculta.");
+    respuesta += RETORNO_CARRO+_("Una de las naves enemigas permanece Oculta.");
   } else if (resultadoGM.total<menorJG-3) {
-    respuesta += bold(_("TODAS LAS NAVES ALIADAS SE ENCUENTRAN OCULTAS"));
+    respuesta += RETORNO_CARRO+bold(_("TODAS LAS NAVES ALIADAS SE ENCUENTRAN OCULTAS"));
   } else if (resultadoGM.total<menorJG) {
-    respuesta += _("Una de las naves aliadas permanece Oculta.");
+    respuesta += RETORNO_CARRO+_("Una de las naves aliadas permanece Oculta.");
   } else {
-    respuesta += _("Todas las naves son visibles.");
+    respuesta += RETORNO_CARRO+_("Todas las naves son visibles.");
   }
   
   
@@ -166,11 +166,16 @@ function executeTurno(dl) {
     if (nave.debeManiobrar()) {
       expresion = "4DF+"+enfrentamiento.naves[i].tactica;
       resultado = lanzaDados(expresion);
-      respuesta += RETORNO_CARRO+nave.nombre+" maniobra :"+expresion.replace("4DF",transformaDadosFudge(resultado))+" = "+bold(resultado.total)
+      respuesta += RETORNO_CARRO+bold(nave.nombre)+" maniobra :"+expresion.replace("4DF",transformaDadosFudge(resultado))+" = "+bold(resultado.total)
       grabarNavePosicion(i+2,posEnfrentamiento.maniobra+1,hojaEnfrentamiento,resultado.total);
       grabarNavePosicion(i+2,posEnfrentamiento.remaniobra+1,hojaEnfrentamiento,false);
       enfrentamiento.naves[i].maniobra = resultado.total;
       enfrentamiento.naves[i].remaniobra = false;
+    } else {
+      if (Number.isInteger(nave.maniobra)) {
+        enfrentamiento.naves[i].maniobra = enfrentamiento.naves[i].maniobra-1;
+        respuesta += RETORNO_CARRO+nave.nombre+" reduce su Maniobra en 1, para un total de "+enfrentamiento.naves[i].maniobra;
+      }
     }
     Logger.log("Nave: "+JSON.stringify(nave))
   }
