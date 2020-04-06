@@ -61,6 +61,9 @@ function procesaMensaje(dl) {
   } else if (esComando(comando,"/archivo") || esComando(comando,"/file")) {
     Logger.log("Ejecutando comando Archivo");
     executeArchivo(dl);
+  } else if (esComando(comando,"/tira") || esComando(comando,"/roll")) {
+    Logger.log("Ejecutando comando Tira");
+    executeTira(dl);
   } else if (esComando(comando,"/enfrentamiento") || esComando(comando,"/engagement")) {
     Logger.log("Ejecutando comando Enfrentamiento");
     executeEnfrentamiento(dl);
@@ -83,6 +86,47 @@ function procesaMensaje(dl) {
       executeFijar(dl);
     }
   }
+}
+
+function executeTira(dl) {
+  
+  var texto_accion = _(" tira los dados");
+  var modificador = 0;
+  var texto_descriptivo = "";
+  var respuesta = "";
+  var isExpresion = false;
+  var expresion = "4DF";
+  if (dl.parametros.length>0) {
+    if (dl.parametros[0].toLowerCase().match(rexp)!=null) {
+      isExpresion = true;
+      expresion = dl.parametros[0];
+      texto_descriptivo =  _(" tira los dados");
+      if (dl.parametros.length>1) {
+        dl.parametros.shift();
+      }
+    } else if (!isNaN(dl.parametros[0])) {
+      modificador = dl.parametros[0];
+      if (dl.parametros.length>1) {
+        dl.parametros.shift();
+      }
+      expresion += "+"+parseInt(modificador);
+    }
+  }
+  if (dl.parametros.length>0) {
+    texto_descriptivo += "("+cursiva(dl.parametros.join(" "))+")";
+  }
+  var respuesta = Utilities.formatString(_("%s hace una tirada:"),bold(dl.nombrePJ));
+
+  
+  if (isExpresion) {
+    var resultado = lanzaDados(expresion);
+    respuesta +=  RETORNO_CARRO+"lanzamos "+expresion+" = "+bold(resultado.total);
+
+  } else {
+    var resultado = lanzaDados(expresion);
+    respuesta +=  RETORNO_CARRO+expresion.replace("4DF",transformaDadosFudge(resultado))+" = "+bold(resultado.total);
+  }
+  sendText(dl.id,respuesta);
 }
 
 function esSkill(comando) {
