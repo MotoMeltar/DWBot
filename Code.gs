@@ -1,5 +1,6 @@
 var tokenString = "1008566459:AAH3TsPpxRpMcWSN6t-8DJdckJvMORqV0kM"; // FILL IN YOUR OWN TOKEN
 var webAppUrl = "https://script.google.com/macros/s/AKfycbwbaMuG2lz_IqoUHTMzRE-CvxKekPf7zRHVTzY2/exec"; // FILL IN YOUR GOOGLE WEB APP ADDRESS
+var nombreBot = "@tachyonrpgbot";
 
 Logger = BetterLog.useSpreadsheet('1Ex5UIrWedt3_bFswREnJcip8CKmzi7JziMdu8ffUyT4'); 
 
@@ -23,20 +24,20 @@ var posiciones = { nombre: { fila:3, columna: 6, nombre: "Nombre"},
                   adicional: { fila:11, columna: 3, nombre: "Adicional"},
                   proezas: { fila:14, columna: 2, nombre: "Proezas",columnaNotas:4, filafin:18},
                   skills: {
-                    artilleria: { fila:20, columna: 3, nombre: "Artillería"},
-                    pilotar: { fila:21, columna: 3, nombre: "Pilotar"},
-                    tactica: { fila:22, columna: 3, nombre: "Táctica"},
-                    tecnologia: { fila:23, columna: 3, nombre: "Tecnología"},
-                    atletismo: { fila:20, columna: 5, nombre: "Atletismo"},
-                    disparar: { fila:21, columna: 5, nombre: "Disparar"},
-                    pelear: { fila:22, columna: 5, nombre: "Pelear"},
-                    notar: { fila:23, columna: 5, nombre: "Notar"},
-                    sigilo: { fila:24, columna: 5, nombre: "Sigilo"},
-                    compenetracion: { fila:20, columna: 7, nombre: "Compenetración"},
-                    disciplina: { fila:21, columna: 7, nombre: "Disciplina"},
-                    empatia: { fila:22, columna: 7, nombre: "Empatia"},
-                    investigar: { fila:23, columna: 7, nombre: "Investigar"},
-                    provocar: { fila:24, columna: 7, nombre: "Provocar"}
+                    artilleria: { fila:21, columna: 3, nombre: "Artillería"},
+                    pilotar: { fila:22, columna: 3, nombre: "Pilotar"},
+                    tactica: { fila:23, columna: 3, nombre: "Táctica"},
+                    tecnologia: { fila:24, columna: 3, nombre: "Tecnología"},
+                    atletismo: { fila:21, columna: 5, nombre: "Atletismo"},
+                    disparar: { fila:22, columna: 5, nombre: "Disparar"},
+                    pelear: { fila:23, columna: 5, nombre: "Pelear"},
+                    notar: { fila:24, columna: 5, nombre: "Notar"},
+                    sigilo: { fila:25, columna: 5, nombre: "Sigilo"},
+                    compenetracion: { fila:21, columna: 7, nombre: "Compenetración"},
+                    disciplina: { fila:22, columna: 7, nombre: "Disciplina"},
+                    empatia: { fila:23, columna: 7, nombre: "Empatia"},
+                    investigar: { fila:24, columna: 7, nombre: "Investigar"},
+                    provocar: { fila:25, columna: 7, nombre: "Provocar"}
                   },
                   consecuencias: { fila:22, columna: 8, nombre: "Consecuencias",columnaNotas:9, filafin:25}
 
@@ -63,6 +64,9 @@ function procesaMensaje(dl) {
   } else if (esComando(comando,"/enfrentamiento") || esComando(comando,"/engagement")) {
     Logger.log("Ejecutando comando Enfrentamiento");
     executeEnfrentamiento(dl);
+  } else if (esComando(comando,"/turno") || esComando(comando,"/turn")) {
+    Logger.log("Ejecutando comando Turno");
+    executeTurno(dl);
   } else if (esSkill(comando)) {
     Logger.log("Ejecutando Skill "+comando);    
     executeSkillRoll(dl,posiciones.skills[comando.substring(1).toLowerCase()]);

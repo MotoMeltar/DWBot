@@ -22,7 +22,7 @@ function executeStatus(dl) {
     var values = hojaPJ.getDataRange().getValues();
   
   /*
-  [nombre] "[apodo]", Destino: [Destino actual]/[Destino máximo]
+  [nombre] "[apodo]", Destino: [Destino actual]/[Destino máximo], Estrés [Estrés actual]/5
 **ASPECTOS**
 Concepto: [concepto]
 Descompresión: [descompresion positiva]/[descompresión negativa]

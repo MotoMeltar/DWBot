@@ -7,7 +7,6 @@ var RESTA = "%2D";
 var RESTA_HTML = "-";
 var BOLD = "**";
 var idGM = "MotoMeltar";
-var nombreBot = "@dwmochilabot";
 
 /**
  * Envía un mensaje al chat de telegram indicado. Usamos POST para que puedan mandarse cadenas más largas.

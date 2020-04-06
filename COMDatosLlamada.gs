@@ -81,7 +81,7 @@ function DatosLlamada(data) {
     this.sheet = SpreadsheetApp.openById(this.ssId);
     this.hojaPJ = findSheetByPCName(this.name,this.ssId);
     this.hayHojaPJ = this.hojaPJ!="";
-    if (this.hayHojaPJ) {
+    if (this.hayHojaPJ && this.isActivo) {
       this.values = this.hojaPJ.getDataRange().getValues();
       this.nombrePJ= this.values[posiciones.nombre.fila-1][posiciones.nombre.columna-1];
       log += " ENCONTRADO PERSONAJE en hoja "+this.sheet.getName();
