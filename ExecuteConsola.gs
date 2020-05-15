@@ -10,9 +10,14 @@ function executeConsola(dl) {
          {text:'SAB',callback_data:'levelupChar sab'},
          {text:'CAR',callback_data:'levelupChar car'}       ]
   ]};
-    var enfrentamiento = cargarNavesExcel(dl);
-  var textoEncoded = codeMarkdown(_("Opciones de combate:"));
+  var enfrentamiento = cargarNavesExcel(dl);
+  enfrentamiento.ordenaNaves();
+  var textoEncoded = codeMarkdown(_("Opciones de Ataque:"));
+  teclado.inlineKeyboard.push([{text:'Disparo (1)',callback_data:'disparo'}]);
+  teclado.inlineKeyboard.push([{text:'Atacar objetivo grande (1+2)',callback_data:'disparoGrande'}]);
+  teclado.inlineKeyboard.push([{text:'En su cola (1+2)',callback_data:'enSuCola'}]);
+
   
-    sendTextKeyboard(dl.id,textoEncoded,teclado);
+  sendTextKeyboard(dl.id,textoEncoded,teclado);
 
 }
