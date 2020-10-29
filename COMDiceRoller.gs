@@ -59,7 +59,7 @@ function tiraYDXArray(tiradas,caras) {
   for (i=0;i<tiradas;i++) {
       respuesta.push(new Dado(caras));
   }
-  Logger.log("respuesta tiraYDX: "+respuesta);
+  Logger.log("respuesta tiraYDX: "+JSON.stringify(respuesta));
   return respuesta;
 }
 
@@ -139,7 +139,7 @@ function lanzaDados(expresion){
   
     Logger.log("dados: "+dados);
     arrayGrupo = tiraYDXArray(dados[1],dados[2]);
-    resultado.dados.push(arrayGrupo);
+    resultado.dados = resultado.dados.concat(arrayGrupo);
     cadenaDados = transformaArrayDadosenString(arrayGrupo);
     expresion = expresion.replace(dados[0],cadenaDados);
     
@@ -148,7 +148,7 @@ function lanzaDados(expresion){
   resultado.cadena = expresion;
   Logger.log("Respuesta tiraDados: "+resultado.cadena);
   resultado.total  = eval(expresion);
-  Logger.log("Total: "+resultado.total);
+  Logger.log("Total: "+JSON.stringify(resultado)));
   return resultado;
 
 }
