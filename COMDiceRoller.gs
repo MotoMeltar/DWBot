@@ -147,7 +147,9 @@ function lanzaDados(expresion){
   }
   resultado.cadena = expresion;
   resultado.total  = eval(expresion);
+
   Logger.log("Total: "+JSON.stringify(resultado));
+
   return resultado;
 
 }

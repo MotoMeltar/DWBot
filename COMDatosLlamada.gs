@@ -94,7 +94,6 @@ function DatosLlamada(data) {
   this.getValues = function(posicion) {            
      return this.values[posicion.fila-1][posicion.columna-1];            
   };         
-                                               
 
   
   Logger.log(log);
