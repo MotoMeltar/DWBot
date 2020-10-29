@@ -16,7 +16,7 @@ function executeArchivo(dl) {
   var idSheet = recoverSheetID(dl.parametros[0]);
   var respuesta = "";
   if (idSheet!=null) {
-    cargaArchivoEnProperties(prefijoUsuario+dl.userId,idSheet);
+    cargaArchivoEnProperties(prefijoUsuario+dl.name,idSheet);
     respuesta = Utilities.formatString(_("El archivo por defecto para tu usuario está [aquí](%s)"),getSheetURL(idSheet));
   } else {
     respuesta = Utilities.formatString(_("No he podido obtener una hoja de cálculo accesible desde %s"),dl.parametros[0]);

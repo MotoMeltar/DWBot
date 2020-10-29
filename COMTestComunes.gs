@@ -68,51 +68,51 @@ var dataMensaje = {
 };
 
 function testArchivo() {
-  //dataMensaje.message.text = "/archivo https://docs.google.com/spreadsheets/d/1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw/edit?usp=sharing";
-  doPostData(dataMensaje);
+  dataMensaje.message.text = "/archivo https://docs.google.com/spreadsheets/d/1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw/edit?usp=sharing";
+  doPostData(new DatosLlamada(dataMensaje));
 }
 
 function testDar() {
   dataMensaje.message.text = "/dar 1 px Willmor al";
-  doPostData(dataMensaje);
+  doPostData(new DatosLlamada(dataMensaje));
 }
 
 function testFijar() {
-    dataMensaje.message.text = "/set 1d10+5 danyo @Willmor el vino que tiene asunción";
-    doPostData(dataMensaje);
+  dataMensaje.message.text = "/set 1d10+5 danyo @Willmor el vino que tiene asunción";
+  doPostData(new DatosLlamada(dataMensaje));
 }
 
 function testPartida() {
   dataMensaje.message.text = "/partida https://docs.google.com/spreadsheets/d/1yjFgHL6HHZnLzDT6PgfOaDEf1K1EZrqJPPj_qCxkcg8/edit";
-  doPostData(dataMensaje);
+  doPostData(new DatosLlamada(dataMensaje));
 }
 
 function testTiraDados() {
-  var expresion = "3d6+10D10+2D20";
-  var respuesta = tiraDados(expresion);
-  Logger.log("FINAL:"+respuesta);
+  var expresion = "2d10+4DF+3";
+  var respuesta = lanzaDados(expresion);
+  Logger.log("FINAL:"+JSON.stringify(respuesta));
   
 }
 
 function testTirar() {
   dataMensaje.message.text = "/tira 2d8 curar";
-  doPostData(dataMensaje);
+  doPostData(new DatosLlamada(dataMensaje));
 
   dataMensaje.message.text = "/tira -2";
-  doPostData(dataMensaje);
+  doPostData(new DatosLlamada(dataMensaje));
 }
 
 
 function testTiraYDX() {
-  var respuesta = tiraYDX(5,6);
-  Logger.log(respuesta);
+  var respuesta = tiraYDXArray(4,"F");
+  Logger.log(JSON.stringify(respuesta));
   
 }
 
 function TestConDatosLLamada() {
   
   datosLlamada = {"sheet":{},"isActivo":false,"hojaPJ":"","values":null,"parametros":["https://docs.google.com/spreadsheets/d/1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw/edit#gid=1545656547"],"chatTitle":"Crónicas de Murogris: La caza del Orgullo Inmortal","isCallback":false,"text":"/partida https://docs.google.com/spreadsheets/d/1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw/edit#gid=1545656547","name":"MotoMeltar","id":-363628446,"userId":2937540,"chatType":"group","nombrePJ":"MotoMeltar","isPrivate":false,"ssId":"1pBV5mcRb6v0bqnzpg2b6m4odaY1gqDXG9yLog6SsCdw","hayHojaPJ":false,"isGM":true};
-  procesaMensaje(datosLlamada);
+  doPostData(new DatosLlamada(dataMensaje));
 }
 
             

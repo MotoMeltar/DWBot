@@ -184,7 +184,6 @@ function testTirar() {
   doPostData(dataMensaje);
 }
 
-
 function testTiraYDX() {
   var respuesta = tiraYDX(5,6);
   Logger.log(respuesta);

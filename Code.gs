@@ -1,5 +1,6 @@
 var tokenString = "750768171:AAHXEU2MPZbjxLa_-7AdcCjqA36sROQayIg"; // FILL IN YOUR OWN TOKEN
 var webAppUrl = "https://script.google.com/macros/s/AKfycbwZwHKwHZOkDhT8jH_UgZ4CJxabNtmL8eDlmJkNrUJg9AEKkW5q/exec"; // FILL IN YOUR GOOGLE WEB APP ADDRESS
+
 var arrayMagos = ["Mago"];
 var arrayClerigos = ["Explorador","Clérigo","Paladín"];
 
@@ -38,7 +39,8 @@ function doGet(e) {
 }
 
 function procesaMensaje(dl) {
-  
+  Logger.log(JSON.stringify(dl));
+
   var comando = getPrimeraPalabra(dl.text).toLowerCase();
   Logger.log("COMANDO: "+comando);
   if (esComando(comando,"/estado") || esComando(comando,"/status")) {

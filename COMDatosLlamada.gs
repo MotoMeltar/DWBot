@@ -41,7 +41,7 @@ function DatosLlamada(data) {
   this.isPrivate = checkPrivate(this.chatType);
   
   
-  var ssIdUser = getUserSsId(this.userId);
+  var ssIdUser = getUserSsId(this.name);
   
    // Logger.log("SSID USER:"+ssIdUser);
 
@@ -61,7 +61,7 @@ function DatosLlamada(data) {
       log += " (obtenido de la partida):"+this.ssId;
       if (ssIdUser==null) {
         log += " (y se carga en el usuario)";
-          cargaArchivoEnProperties(prefijoUsuario+this.userId,this.ssId);
+          cargaArchivoEnProperties(prefijoUsuario+this.name,this.ssId);
       }
     } else {
       this.ssId = ssIdUser;
@@ -81,7 +81,7 @@ function DatosLlamada(data) {
     this.sheet = SpreadsheetApp.openById(this.ssId);
     this.hojaPJ = findSheetByPCName(this.name,this.ssId);
     this.hayHojaPJ = this.hojaPJ!="";
-    if (this.hayHojaPJ) {
+    if (this.hayHojaPJ && this.isActivo) {
       this.values = this.hojaPJ.getDataRange().getValues();
       this.nombrePJ= this.values[posiciones.nombre.fila-1][posiciones.nombre.columna-1];
       log += " ENCONTRADO PERSONAJE en hoja "+this.sheet.getName();
@@ -91,6 +91,9 @@ function DatosLlamada(data) {
     }
   }
   
+  this.getValues = function(posicion) {            
+     return this.values[posicion.fila-1][posicion.columna-1];            
+  };  
   
   
   Logger.log(log);
